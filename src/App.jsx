@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Routes,Route } from 'react-router-dom';
 import IntroPage from './pages/IntroPage';
 import RegisterPage from './pages/RegisterPage';
+import AccountListPage from './pages/AccountListPage';
 import { GlobalPortal } from './GlobalPortal';
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
     <Routes>
       <Route path="/" element={<IntroPage/>}></Route>
       <Route path="/registerPage" element={<RegisterPage/>}></Route>
+      <Route path="/accountList" element= {<AccountListPage/>}></Route>
     </Routes>
   </Layout>
   
