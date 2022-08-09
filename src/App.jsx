@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { Routes,Route } from 'react-router-dom';
 import IntroPage from './pages/IntroPage';
+import RegisterPage from './pages/RegisterPage';
 function App() {
   return (
   <>
   <Layout>
     <Routes>
       <Route path="/" element={<IntroPage/>}></Route>
+      <Route path="/registerPage" element={<RegisterPage/>}></Route>
     </Routes>
   </Layout>
   
