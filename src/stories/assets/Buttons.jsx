@@ -21,7 +21,7 @@ const StyledButton = styled.button`
   margin: 0;
   border: none;
   cursor: pointer;
-  width:100%;
+  width:90%;
   font-family: "Noto Sans KR", sans-serif;
   font-size: var(--button-font-size, 1rem);
   padding: var(--button-padding, 12px 16px);

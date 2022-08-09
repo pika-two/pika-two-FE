@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import './App.css';
 import IntroPage from './page/UI/IntroPage';
+import RegisterInfo from './page/UI/RegisterInfo';
+import { BrowserRouter as Router, Route, Link, Routes, BrowserRouter } from 'react-router-dom';
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <IntroPage/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path = "/" element = {<IntroPage/>}/>
+        <Route exact path = "/register" element = {<RegisterInfo/>}/>
+        
+      </Routes>
+    </BrowserRouter>
+
+
   )
 }
 
 
 
-export default App
+export default App;
