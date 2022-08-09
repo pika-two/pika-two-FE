@@ -6,10 +6,12 @@ import styled ,{ css } from "styled-components";
 
 
 
-function Buttons({ disabled, children, font_color, background_color }) {
+function Buttons({ disabled, children, color, background }) {
 
     return (
-        <StyledButton
+        <StyledButton 
+          background={background}
+          color = {color}
           disabled={disabled}
         >
           {children}
@@ -26,20 +28,10 @@ const StyledButton = styled.button`
   font-size: var(--button-font-size, 1rem);
   padding: var(--button-padding, 12px 16px);
   border-radius: var(--button-radius, 20px);
-  background: var(--button-bg-color, #FFFFFF);
-  color: var(--button-color, #000000);
-  ${props=>props.size}
-  &:active,
-  &:hover,
-  &:focus {
-    background: var(--button-hover-bg-color, #025ce2);
-  }
+  background: ${(props) => props.background};
+  color: ${(props) => props.color};
+ 
 
-  &:disabled {
-    cursor: default;
-    opacity: 0.5;
-    background: var(--button-bg-color, #025ce2);
-  }
 `;
 
 export default Buttons;

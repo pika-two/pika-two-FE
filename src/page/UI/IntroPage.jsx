@@ -1,7 +1,8 @@
 import dolguLogo from '../assets/dolgu_logo.png';
-import Buttons from '../../stories/assets/Buttons';
+import Buttons from '../assets/Buttons';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import palette from '../../styles/palette';
 
 
 
@@ -13,7 +14,7 @@ export default function IntroPage({location, history}){
             </div>
             <div className="card">
                 <Link to = "/register">
-                    <Buttons>
+                    <Buttons background={palette.white} color = {palette.black}>
                         시작하기
                     </Buttons>
                 </Link>
@@ -30,9 +31,13 @@ const Img= styled.img`
 `;
 
 const Div = styled.div`
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: #ffcc00;
+    text-align: center;
+    max-width: 2000px;
+    margin: 0 auto;
 `;
+
 
 

@@ -1,7 +1,8 @@
 
 import React from "react";
-import Buttons from "../../stories/assets/Buttons";
-import Titles from "../../stories/Titles"
+import Titles from "../assets/Titles";
+
+import styled from "styled-components";
 
 const RegisterInfo = props => {
 
@@ -11,10 +12,19 @@ const RegisterInfo = props => {
 
     
     return(
-        <div>
-            <h1>hihi</h1>
-        </div>
+        <Div>
+            
+            <h2>기본정보 등록</h2>
+        </Div>
     );
 };
+
+const Div = styled.div`
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    margin: 10% auto;
+    
+`;
 
 export default RegisterInfo;

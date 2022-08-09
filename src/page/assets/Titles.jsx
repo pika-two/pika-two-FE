@@ -21,6 +21,7 @@ const StyledLink = styled(Link)`
   font-weight: bold;
   font-family: "Bold";
   font-size: 1.5rem;
+  color : #000000;
 `;
 
 export default Titles;
