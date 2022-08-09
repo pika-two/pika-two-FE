@@ -1,6 +1,6 @@
 import GeneralHeader from "../components/Composition/GeneralHeader";
 import Input from '../components/ui/Input'
-import Button from "../components/ui/Button";
+import FixedBottomButton from '../components/ui/FixedBottomButton'
 export default function RegisterPage() {
   return (
     <div>
@@ -19,9 +19,9 @@ export default function RegisterPage() {
                 (필수) 마이데이터 연동을 통해 계좌 정보 및 적용 내용을 연동 하는 것에 동의합니다.
                 </label>
             </div>
-            <Button background="#FFCC00" color="white">
+            <FixedBottomButton background="#FFCC00" color="white">
                 입력 완료
-            </Button>
+            </FixedBottomButton>
         </div>
     </div>
   )
