@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Routes,Route } from 'react-router-dom';
-import MainPage from './pages/IntroPage';
+import IntroPage from './pages/IntroPage';
 function App() {
   return (
   <>
