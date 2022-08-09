@@ -1,13 +1,14 @@
 import styled ,{ css } from "styled-components";
 
 
-export default function Button({ disabled, children, color, background = '#FFFFFF' }) {
+export default function Button({ disabled, children, color, background = '#FFFFFF',...rest }) {
 
     return (
         <StyledButton 
           background={background}
           color = {color}
           disabled={disabled}
+          {...rest}
         >
           <span>{children}</span>
         </StyledButton>
