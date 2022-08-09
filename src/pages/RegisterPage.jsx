@@ -1,7 +1,10 @@
 import GeneralHeader from "../components/Composition/GeneralHeader";
 import Input from '../components/ui/Input'
 import FixedBottomButton from '../components/ui/FixedBottomButton'
+import { useInternalRouter } from "./routing";
+
 export default function RegisterPage() {
+  const {push} = useInternalRouter();
   return (
     <div>
         <GeneralHeader title="신상 정보 기입 페이지"/>
@@ -19,7 +22,7 @@ export default function RegisterPage() {
                 (필수) 마이데이터 연동을 통해 계좌 정보 및 적용 내용을 연동 하는 것에 동의합니다.
                 </label>
             </div>
-            <FixedBottomButton background="#FFCC00" color="white">
+            <FixedBottomButton onClick={()=>push('/accountList')}  background="#FFCC00" color="white">
                 입력 완료
             </FixedBottomButton>
         </div>
