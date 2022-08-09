@@ -1,37 +1,22 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import dolguLogo from './assets/dolgu_logo.png'
 import './App.css'
 import styled from 'styled-components';
+import Buttons from './stories/assets/Buttons';
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <Wrapper>
-        <Title>
-          Hello World!
-        </Title>
-      </Wrapper>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <div className="logo">
+        <img src={dolguLogo} />
+      </div><br/><br/>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <Buttons onClick={() => setCount((count) => count + 1)}>
+          시작하기
+        </Buttons>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   )
 }
@@ -48,5 +33,9 @@ const Title = styled.h1`
 const Wrapper = styled.section`
   padding: 4em;
   background: papayawhip;
+`;
+
+const Background = styled.div`
+  background: #ffcc00;
 `;
 export default App
