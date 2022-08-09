@@ -1,12 +1,17 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-
+import styled from 'styled-components';
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
+      <Wrapper>
+        <Title>
+          Hello World!
+        </Title>
+      </Wrapper>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -31,4 +36,17 @@ function App() {
   )
 }
 
+
+// Create a Title component that'll render an <h1> tag with some styles
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+// Create a Wrapper component that'll render a <section> tag with some styles
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
 export default App
