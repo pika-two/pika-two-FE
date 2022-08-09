@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import { css } from 'styled-components';
 import styled from 'styled-components';
+import { Routes,Route } from 'react-router-dom';
+import MainPage from './pages/IntroPage';
 function App() {
   return (
   <>
   <Layout>
-    {<div>안녕하세요</div>}
+    <Routes>
+      <Route path="/" element={<IntroPage/>}></Route>
+    </Routes>
   </Layout>
   
   </>
@@ -20,5 +22,4 @@ width: 100%;
 padding: 0;
 margin: 0;
 height: auto;
-background-color : blue;
 `
