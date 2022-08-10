@@ -15,7 +15,7 @@ export default function IncomeListPage () {
    },[])
   return (
     <div>
-        <LeftOnlyHeader left={<BackIcon onClick={()=>{goBack()}}/>} title="급여내역 선택"/>
+        <LeftOnlyHeader left={<BackIcon onClick={()=>goBack()}/>} title="급여내역 선택"/>
         <div style={{
           margin : "0 30px"
         }}>
