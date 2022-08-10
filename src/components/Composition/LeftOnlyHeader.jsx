@@ -5,7 +5,7 @@ export default function LeftOnlyHeader({left,title}) {
       <Header style={
         {
             display : 'grid',
-            gridTemplateColumns : '30px auto'
+            gridTemplateColumns : '0px auto'
         }
       }>
         {left?left:<div>테스트</div>}
