@@ -23,7 +23,7 @@ export default function IncomeConnectPage() {
               2022년 까지 받은 금액은?</Top02>
             <Boldtext fontsize="30px" color="black">3287만원</Boldtext>
             <Button 
-              onClick={()=>push('/myPage')} 
+              onClick={()=>push('/mainPage')} 
               background="#FFCC00"
               style={{
                 marginTop: "30px"
