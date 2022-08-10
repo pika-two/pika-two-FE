@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const message = styled.p`
+const Message = styled.p`
     white-space: pre-line;
     font-weight: bold;
     padding: 0 10px;
@@ -12,4 +12,4 @@ const message = styled.p`
     margin: 2%;
     font-family: "Noto Sans KR", sans-serif;
 `;
-export default message;
+export default Message;
