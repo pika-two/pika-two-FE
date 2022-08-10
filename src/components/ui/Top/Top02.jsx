@@ -7,7 +7,7 @@ const Top02 = styled.p`
     line-height: 40px;
     word-break: keep-all;
     text-align : center;
-    color: #FFF;
+    color: ${props => props.color?props.color:'#FFF'};
     margin: 2%;
     font-family: 
     font-family: "Noto Sans KR", sans-serif;
