@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-const Top02 = styled.h3`
+const Top02 = styled.p`
     white-space: pre-line;
-    font-weight: bold;
-    padding: 0 24px;
-    font-size: 32px;
+    padding: 0 12px;
+    font-size: 20px;
     line-height: 40px;
     word-break: keep-all;
     text-align : center;
+    color: #FFF;
+    margin: 2%;
+    font-family: 
+    font-family: "Noto Sans KR", sans-serif;
 `
 export default Top02
