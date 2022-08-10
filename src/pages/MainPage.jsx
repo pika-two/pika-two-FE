@@ -4,6 +4,8 @@ import MyPageIcon from '../components/ui/icon/MyPageIcon'
 import Input from '../components/ui/Input'
 import BadgeBox from '../components/Composition/BadgeBox'
 import { useInternalRouter } from "./routing";
+import Top02 from "../components/ui/Top/Top02";
+import JobPostList from "../components/Composition/JobPostList";
 export default function MainPage() {
   const {push} = useInternalRouter();
   return (
@@ -16,6 +18,8 @@ export default function MainPage() {
         }}>
         <Input />
         <BadgeBox/>
+        <Top02 color="#000">채용 진행 중인 공고</Top02>
+        <JobPostList></JobPostList>
       </div>
         
     </div>
