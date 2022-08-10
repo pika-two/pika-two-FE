@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const Top02 = styled.p`
+const Boldtext = styled.p`
     white-space: pre-line;
     padding: 0 12px;
-    font-size: ${props => props.fontsize?props.fontsize:'20px'};
+    font-size: ${props => props.fontsize?props.fontsize:'14px'};
     line-height: 40px;
     word-break: keep-all;
     text-align : center;
@@ -11,5 +11,6 @@ const Top02 = styled.p`
     margin: 2%;
     font-family: 
     font-family: "Noto Sans KR", sans-serif;
+    font-weight: bold;
 `
-export default Top02
+export default Boldtext;

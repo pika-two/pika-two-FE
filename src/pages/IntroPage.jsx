@@ -7,7 +7,7 @@ export default function IntroPage(){
     return (
         <div>
             <Logo/>
-            <Button onClick={()=>push('/registerPage')}>
+            <Button  onClick={()=>push('/registerPage')} style = {{margin : "0 15px"}}>
                 시작하기
             </Button>
             <BackGroundCover backgroundColor='#FC0'/>

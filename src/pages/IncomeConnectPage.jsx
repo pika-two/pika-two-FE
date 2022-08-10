@@ -2,6 +2,7 @@ import CenterBox from "../components/Composition/CenterBox"
 import BackGroundCover from "../components/ui/BackGroundCover"
 import Button from "../components/ui/Button"
 import Top02 from "../components/ui/Top/Top02"
+import Boldtext from "../components/ui/Boldtext"
 import { useInternalRouter } from "./routing";
 
 export default function IncomeConnectPage() {
@@ -9,10 +10,25 @@ export default function IncomeConnectPage() {
   return (
     <div>
         <CenterBox>
-            <Top02 color="black">급여계좌 연동 완료</Top02>
-            <Top02 color="black">2022년 까지 받은 금액은?</Top02>
-            <Top02 color="black">3287만원</Top02>
-            <Button onClick={()=>push('/myPage')} background="#FFCC00">연동 완료하기</Button>
+            <Boldtext fontsize="20px" color="black"
+              style={{
+                marginTop: "40px"
+              }}>
+                급여계좌 연동 완료
+            </Boldtext>
+            <Top02  fontsize="17px" color="black"
+              style={{
+                marginTop: "30px"
+              }}>
+              2022년 까지 받은 금액은?</Top02>
+            <Boldtext fontsize="30px" color="black">3287만원</Boldtext>
+            <Button 
+              onClick={()=>push('/myPage')} 
+              background="#FFCC00"
+              style={{
+                marginTop: "30px"
+              }}>
+              연동 완료하기</Button>
         </CenterBox>
         <BackGroundCover backgroundColor='#FC0'/>
     </div>
