@@ -13,9 +13,14 @@ const FixedBottomButton = forwardRef(function FixedBottomButton(props, forwarded
                 width : "100%"
             }}>
                 <div style={{
-                    padding: "0 20px 18px"
+                    padding: "0 20px 18px",
+                    
                 }}>
-                    <Button {...props} ref={forwardedRef} />
+                    <Button style={{
+                        margin : "0 17px"
+                    }}
+                    color="#FFF"
+                    {...props} ref={forwardedRef} />
                 </div>
             </div>
         </GlobalPortal.Consumer>

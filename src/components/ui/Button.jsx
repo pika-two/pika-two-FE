@@ -15,14 +15,14 @@ export default function Button({ disabled, children, color, background = '#FFFFF
       );
 }
 const StyledButton = styled.button`
-  margin: 0;
+  margin: 0 auto;
   border: none;
   cursor: pointer;
-  width:100%;
+  width:90%;
   font-family: "Noto Sans KR", sans-serif;
-  font-size: var(--button-font-size, 1rem);
-  padding: var(--button-padding, 12px 16px);
-  border-radius: var(--button-radius, 20px);
+  font-size: 1rem;
+  padding: 12px 16px;
+  border-radius: 20px;
   background: ${(props) => props.background};
   color: ${(props) => props.color};
  
