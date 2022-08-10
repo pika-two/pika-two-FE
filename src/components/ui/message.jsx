@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Message = styled.p`
 
     white-space: pre-line;
-    font-weight: bold;
     padding: 0 10px;
     font-size: 19px;
     line-height: 40px;
