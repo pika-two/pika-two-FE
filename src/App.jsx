@@ -6,6 +6,7 @@ import AccountListPage from './pages/AccountListPage';
 import { GlobalPortal } from './GlobalPortal';
 import IncomeListPage from './pages/IncomeListPage';
 import IncomeConnectPage from './pages/IncomeConnectPage';
+import MainPage from './pages/MainPage'
 function App() {
   return (
   <GlobalPortal.Provider>
@@ -16,6 +17,7 @@ function App() {
       <Route path="/accountList" element= {<AccountListPage/>}></Route>
       <Route path="/incomeList" element={<IncomeListPage/>}></Route>
       <Route path="/incomeConnect"  element={<IncomeConnectPage/>} ></Route>
+      <Route path="/mainPage" element={<MainPage/>}></Route>
     </Routes>
   </Layout>
   
