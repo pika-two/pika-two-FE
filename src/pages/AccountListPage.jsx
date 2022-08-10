@@ -3,6 +3,7 @@ import GeneralHeader from "../components/Composition/GeneralHeader";
 import FixedBottomButton from "../components/ui/FixedBottomButton";
 import AccountsList from "../components/Composition/AccountsList";
 import { useInternalRouter } from "./routing";
+import Message from "../components/ui/message";
 const mockDataKeyList = ['account_id','account_name','account_number','bank_name','amount']
 
 export default function AccountListPage() {
@@ -28,6 +29,10 @@ export default function AccountListPage() {
   return (
     <div>
         <GeneralHeader title="계좌목록" />
+        <div>
+            <Message style={{margin: "30px",}}>아래 계좌 중 급여가 입금되는 <br/> 계좌를 선택해주세요</Message>
+        </div>
+
         <div>
             <AccountsList onClick={()=>{alert('안녕')}} accounts={accountList}></AccountsList>
         </div>
