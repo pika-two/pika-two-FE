@@ -2,7 +2,6 @@ import React from 'react'
 import BackIcon from '../components/ui/icon/BackIcon'
 import { useInternalRouter } from "./routing";
 import LeftOnlyHeader from '../components/Composition/LeftOnlyHeader';
-import Text from '../components/ui/Text';
 import FixedBottomButton from '../components/ui/FixedBottomButton'
 import IncomeList from '../components/Composition/IncomeList';
 import { useState } from 'react';

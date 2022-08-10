@@ -9,7 +9,7 @@ export default function CenterBox({children}) {
         backgroundColor : 'white',
         borderRadius : "15px 15px",
         display : "flex",
-        flexDirection : "column"
+        flexDirection : "column",
     }}
     >{children}</div>
   )
