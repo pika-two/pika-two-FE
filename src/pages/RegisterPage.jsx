@@ -2,14 +2,15 @@ import GeneralHeader from "../components/Composition/GeneralHeader";
 import Input from '../components/ui/Input'
 import FixedBottomButton from '../components/ui/FixedBottomButton'
 import { useInternalRouter } from "./routing";
+import "../App.css";
 
 export default function RegisterPage() {
   const {push} = useInternalRouter();
   return (
     <div>
-        <GeneralHeader title="신상 정보 기입 페이지"/>
+        <GeneralHeader title="기본정보 등록"/>
         <div style={{
-            margin : '0 20px'}
+            margin : '20px 20px'}
             }>
             <Input/>
             <Input/>
@@ -18,7 +19,7 @@ export default function RegisterPage() {
             margin : '16px 0'}
             }>
                 <label>
-                <input type="checkbox" />
+                <input type="checkbox"/>
                 (필수) 마이데이터 연동을 통해 계좌 정보 및 적용 내용을 연동 하는 것에 동의합니다.
                 </label>
             </div>
