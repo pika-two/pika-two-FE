@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const message = styled.p`
     white-space: pre-line;
+    font-weight: bold;
     padding: 0 10px;
     font-size: 20px;
     line-height: 40px;
