@@ -10,7 +10,11 @@ export default function RegisterPage() {
     <div>
         <GeneralHeader title="기본정보 등록"/>
         <div style={{
-            margin : '20px 20px'}
+            margin : '20px 20px',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }
             }>
             <Input/>
             <Input/>

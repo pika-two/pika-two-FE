@@ -5,7 +5,7 @@ export default function RightOnlyHeader({right,title}) {
       <Header style={
         {
             display : 'grid',
-            gridTemplateColumns : 'auto 25px'
+            gridTemplateColumns : 'auto 50px'
         }
       }>
         <div>
