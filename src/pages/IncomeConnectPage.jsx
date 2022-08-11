@@ -4,6 +4,7 @@ import Button from "../components/ui/Button"
 import Top02 from "../components/ui/Top/Top02"
 import Boldtext from "../components/ui/Boldtext"
 import { useInternalRouter } from "./routing";
+import Message from "../components/ui/message"
 
 export default function IncomeConnectPage() {
     const {push} = useInternalRouter();
@@ -16,11 +17,11 @@ export default function IncomeConnectPage() {
               }}>
                 급여계좌 연동 완료
             </Boldtext>
-            <Top02  fontsize="17px" color="black"
+            <Message  fontsize="17px" color="black"
               style={{
                 marginTop: "30px"
               }}>
-              2022년 까지 받은 금액은?</Top02>
+              2022년 까지 받은 금액은?</Message>
             <Boldtext fontsize="30px" color="black">3287만원</Boldtext>
             <Button 
               onClick={()=>push('/mainPage')} 

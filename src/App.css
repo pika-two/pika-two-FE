@@ -1,4 +1,32 @@
 body{
     margin: 0px;
-    font-family: "Noto Sans KR", sans-serif;
+}
+@font-face {
+    font-family: "one";
+    src: url("./fonts/SCDream1.otf");
+}
+
+@font-face {
+    font-family: "two";
+    src: url("./fonts/SCDream2.otf");
+}
+
+@font-face {
+    font-family: "three";
+    src: url("./fonts/SCDream3.otf");
+}
+
+@font-face {
+    font-family: "four";
+    src: url("./fonts/SCDream4.otf");
+}
+
+@font-face {
+    font-family: "six";
+    src: url("./fonts/SCDream6.otf");
+}
+
+@font-face {
+    font-family: "seven";
+    src: url("./fonts/SCDream7.otf");
 }

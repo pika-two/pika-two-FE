@@ -9,8 +9,6 @@ const Boldtext = styled.p`
     text-align : center;
     color: ${props => props.color?props.color:'#FFF'};
     margin: 2%;
-    font-family: 
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: bold;
+    font-family: "six";
 `
 export default Boldtext;

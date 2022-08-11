@@ -3,6 +3,7 @@ import Input from '../components/ui/Input'
 import FixedBottomButton from '../components/ui/FixedBottomButton'
 import { useInternalRouter } from "./routing";
 import "../App.css";
+import Blank from "../components/ui/Blank";
 
 export default function RegisterPage() {
   const {push} = useInternalRouter();
@@ -17,14 +18,19 @@ export default function RegisterPage() {
           }
             }>
             <Input/>
+            <Blank/>
             <Input/>
+            <Blank/>
             <Input/>
             <div style={{
-            margin : '16px 0'}
+            margin : '16px 0',
+            fontFamily : "three",
+            textAlign : "center"
+            }
             }>
                 <label>
-                <input type="checkbox"/>
-                (필수) 마이데이터 연동을 통해 계좌 정보 및 적용 내용을 연동 하는 것에 동의합니다.
+                <input type="checkbox" />
+                (필수) 마이데이터 연동을 통해 계좌 정보 및 <br/>적용 내용을 연동 하는 것에 동의합니다.
                 </label>
             </div>
             <FixedBottomButton onClick={()=>push('/accountList')}  background="#FFCC00" color="white">
