@@ -1,9 +1,9 @@
 import ImageCard from "./ImageCard"
 import Bold from "./Bold"
 import Message from "./message"
-export default function CompanyListItem({image}) {
+export default function CompanyListItem({image,right}) {
   return (
-    <ImageCard image={image} content={<CompnyInfo/>}/>
+    <ImageCard image={image} content={<CompnyInfo/>} right={right}/>
   )
 }
 
