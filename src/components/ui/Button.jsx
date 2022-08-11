@@ -19,8 +19,8 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   width:90%;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 1rem;
+  font-family: "four";
+  font-size: 1.3rem;
   padding: 12px 16px;
   border-radius: 20px;
   border-width: 2px;

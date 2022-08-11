@@ -5,7 +5,7 @@ export default function BothHeader({left,right,title}) {
         <Header style={
           {
               display : 'grid',
-              gridTemplateColumns : '25px auto 25px'
+              gridTemplateColumns : '30px auto 50px'
           }
         }>
             {left?left:<div>왼쪽</div>}

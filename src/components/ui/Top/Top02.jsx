@@ -10,7 +10,6 @@ const Top02 = styled.p`
     color: ${props => props.color?props.color:'#000'};
     margin: 0;
     margin-left: 10px;
-    font-family: 
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "four";
 `
 export default Top02

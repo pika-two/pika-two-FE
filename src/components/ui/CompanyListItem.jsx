@@ -1,5 +1,6 @@
 import ImageCard from "./ImageCard"
 import Bold from "./Bold"
+import Message from "./message"
 export default function CompanyListItem({image}) {
   return (
     <ImageCard image={image} content={<CompnyInfo/>}/>
@@ -14,10 +15,10 @@ const CompnyInfo = function({compnyinfo}){
             flexDirection : "column",
             justifyContent : "center",
             backgroundColor : "#F6F6F6",
-            margin : "0 15px 15px 15px",
+            margin : "0 0 5px 10px",
         }}>
             <Bold>KB국민은행</Bold>
-            <Bold>blah</Bold>
+            <div style = {{fontFamily : "two", textAlign : "center", margin: " 0, vh"}}>blah</div>
         </div>
     )
 }

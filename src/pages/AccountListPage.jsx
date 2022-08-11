@@ -29,7 +29,10 @@ export default function AccountListPage() {
   return (
     <div>
         <GeneralHeader title="계좌목록" />
-        <div>
+        <div
+        style = {{
+            borderBottom : "10px solid #e8eaeb"
+        }}>
             <Message style={{margin: "30px",}}>아래 계좌 중 급여가 입금되는 <br/> 계좌를 선택해주세요</Message>
         </div>
 

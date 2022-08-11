@@ -12,7 +12,7 @@ export default function AccountListItem({account,...rest}) {
         
                 <img width={80} height = {80} src="https://play-lh.googleusercontent.com/K1rBzVJjq9qtSxC2vkWIsp3GPtPOCwLPf1aCJ0tL0TvWdNcAKQKhYwjPMY90XJwyW-E" alt=""
                 style={{
-                    margin : "20px",
+                    margin : "30px 20px 20px 0px",
                 }}/>
                 <div style={{
                     display : "flex",
@@ -21,10 +21,10 @@ export default function AccountListItem({account,...rest}) {
                     margin: "30px",
                 }}>
                     <div>
-                        <Title>{account_name}</Title>
+                        <Title>KB 국민ONE 통장{bank_name}</Title>
                     </div>
-                    <div><Smallfont>{account_number}</Smallfont></div>
-                    <div><Amount>{amount}</Amount></div>
+                    <div><Smallfont>1234-5678{account_number}</Smallfont></div>
+                    <div><Amount>{amount}원</Amount></div>
                 </div>
             </Div>
 
@@ -44,8 +44,8 @@ const Title = styled.p`
     font-size: 20px;
     word-break: keep-all;
     color: #000;
-    margin: 0;
-    font-family: "Noto Sans KR", sans-serif;
+    margin: 2px 0 10px 0 ;
+    font-family: "six";
 `;
 
 const Smallfont = styled.p`
@@ -53,10 +53,10 @@ const Smallfont = styled.p`
     white-space: pre-line;
     padding: 0;
     font-size: 17px;
-    margin: 0;
+    margin: 0 0 10px 0;
     word-break: keep-all;
     color: #000;
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "three";
 `;
 
 const Amount = styled.p`
@@ -66,6 +66,6 @@ const Amount = styled.p`
     font-size: 15px;
     margin: 0;
     word-break: keep-all;
-    color: #000;
-    font-family: "Noto Sans KR", sans-serif;
+    color: #053b99;
+    font-family: "four";
 `;

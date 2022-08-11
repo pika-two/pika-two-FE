@@ -10,7 +10,7 @@ word-break: keep-all;
 text-align : center;
 color: #000;
 margin: 0;
-font-family: "Noto Sans KR", sans-serif;
+font-family: "six";
 `;
 
 export default Bold;
