@@ -4,8 +4,9 @@ import JobPostListItem from '../ui/JobPostListItem'
 export default function JobPostList() {
   return (
     <div style={{
-        display : "flex",
-        flexWrap: "nowrap",
+        display : "grid",
+        gridTemplateColumns: "150px 150px",
+        justifyContent: "space-evenly",
         overflowX: "auto"
     }}>
         <JobPostListItem/>
