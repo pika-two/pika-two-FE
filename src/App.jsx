@@ -10,6 +10,7 @@ import MainPage from './pages/MainPage'
 import SearchPage from './pages/SearchPage';
 import CompanyInfoPage from './pages/CompanyInfoPage'
 import MyPage from './pages/MyPage';
+import ReviewPage from './pages/ReviewPage';
 import BookmarkPage from './pages/BookmarkPage';
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path="/search/:keyword" element = {<SearchPage/>}></Route>
       <Route path="/company/:id" element={<CompanyInfoPage/>}></Route>
       <Route path="/myPage" element={<MyPage/>}></Route>
+      <Route path="/reviewPage" element={<ReviewPage/>}></Route>
       <Route path="/bookmark" element={<BookmarkPage/>}></Route>
     </Routes>
   </Layout>

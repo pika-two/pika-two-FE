@@ -18,7 +18,7 @@ export default function MyPage() {
             <Button>일정관리 보기</Button>
             <Button>지원현황 보기</Button>
             <Button onClick={()=>push('/bookmark')}>찜한 기업 보기</Button>
-            <Button>리뷰 작성하기</Button>
+            <Button onClick={()=>push('/reviewPage')}>리뷰 작성하기</Button>
         </MyPageCenterBox>
         <MyPageSalary>
             <p style = {{
