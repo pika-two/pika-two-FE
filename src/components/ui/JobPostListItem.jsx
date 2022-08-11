@@ -11,7 +11,7 @@ export default function JobPostListItem() {
     <div style={{margin : "10px auto 0 auto",
     fontFamily: "four",
     }}>국민은행</div>
-    <div style={{margin : "0px auto 10px auto", fontFamily: "two"}}>날짜~날짜</div>
+    <div style={{margin : "0px auto 10px auto", fontFamily: "two"}}>날짜~~날짜</div>
     </div>
   )
 }
