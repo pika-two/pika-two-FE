@@ -9,6 +9,7 @@ import IncomeConnectPage from './pages/IncomeConnectPage';
 import MainPage from './pages/MainPage'
 import SearchPage from './pages/SearchPage';
 import CompanyInfoPage from './pages/CompanyInfoPage'
+import MyPage from './pages/MyPage';
 function App() {
   return (
   <GlobalPortal.Provider>
@@ -22,6 +23,7 @@ function App() {
       <Route path="/mainPage" element={<MainPage/>}></Route>
       <Route path="/search/:keyword" element = {<SearchPage/>}></Route>
       <Route path="/company/:id" element={<CompanyInfoPage/>}></Route>
+      <Route path="/myPage" element={<MyPage/>}></Route>
     </Routes>
   </Layout>
   
