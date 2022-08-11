@@ -13,7 +13,7 @@ const FixedBottomButton = forwardRef(function FixedBottomButton(props, forwarded
                 width : "100%"
             }}>
                 <div style={{
-                    padding: "0 20px 18px",
+                    padding: "0 0px 18px",
                     
                 }}>
                     <Button style={{
