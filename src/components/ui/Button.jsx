@@ -23,7 +23,10 @@ const StyledButton = styled.button`
   font-size: 1rem;
   padding: 12px 16px;
   border-radius: 20px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #000000;
   background: ${(props) => props.background};
-  color: ${(props) => props.color};
+  color: #000000;
  
 `;

@@ -10,6 +10,7 @@ export default function CenterBox({children}) {
         borderRadius : "15px 15px",
         display : "flex",
         flexDirection : "column",
+        border : "2px solid #000000",
     }}
     >{children}</div>
   )
