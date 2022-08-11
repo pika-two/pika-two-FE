@@ -10,7 +10,7 @@ const Message = styled.p`
     text-align : center;
     color: #000;
     margin: 20px 0;
-    font-family: "two";
+    font-family: "three";
 `;
 
 
