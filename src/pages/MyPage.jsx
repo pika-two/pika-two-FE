@@ -6,6 +6,7 @@ import Button from '../components/ui/Button'
 import FixedBottomButton from '../components/ui/FixedBottomButton'
 import HomeIcon from '../components/ui/icon/HomeIcon'
 import MyPageSalary from '../components/Composition/MyPageSalary'
+import starfriends from '../assets/starfriends.png'
 export default function MyPage() {
   return (
     <div>
@@ -17,12 +18,34 @@ export default function MyPage() {
             <Button>리뷰 작성하기</Button>
         </MyPageCenterBox>
         <MyPageSalary>
-            <Bold>직전년도 나의 연봉</Bold>
-            <Bold>2021년 춤추는 사자님의 급여는</Bold>
-            <Bold>6500만원</Bold>
+            <p style = {{
+              fontFamily : "Six",
+              fontSize : "30px", textAlign : "center", lineHeight: "10px", margin: "0"
+            }}>직전년도 나의 연봉</p>
+            <p style = {{
+              fontFamily : "one",
+              fontSize : "20px",
+              textAlign : "center"
+            }}>2021년 춤추는 사자님의 급여:</p>
+            <p style = {{
+              fontFamily : "four",
+              fontSize : "30px",
+              textAlign : "center",
+              background : "yellow",
+              margin : " 0, 40px"
+            }}>6500만원 </p> 
         </MyPageSalary>
-        <Button style={{position : 'fixed',bottom : '80px'}}>KB 국민은행 급여계좌 만들러가기</Button>
-        <FixedBottomButton>연봉별 금융상품 추천 받으러 가기</FixedBottomButton>
+        <div style = {{display: "flex", justifyContent: "center", margin: "10px"}}>  
+            <img  
+            
+            width= "90%" height="auto" src={starfriends} alt="" />
+        </div>
+        <div 
+        style = {{
+          display: "flex", justifyContent: "center", marginTop: "50px"
+        }}>
+        <Button  background = "#fffcab" style={{bottom : '80px'}}>KB 국민은행 급여계좌 만들기</Button></div>
+        <FixedBottomButton background = "#fffcab">연봉별 금융상품 추천 받기</FixedBottomButton>
     </div>
   )
 }
