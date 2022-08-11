@@ -12,6 +12,7 @@ import CompanyInfoPage from './pages/CompanyInfoPage'
 import MyPage from './pages/MyPage';
 import ReviewPage from './pages/ReviewPage';
 import BookmarkPage from './pages/BookmarkPage';
+import ApplyCompanyListPage from './pages/ApplyCompanyListPage'
 function App() {
   return (
   <GlobalPortal.Provider>

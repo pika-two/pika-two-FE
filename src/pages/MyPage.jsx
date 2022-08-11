@@ -15,7 +15,7 @@ export default function MyPage() {
         <RightOnlyHeader title="마이페이지"   right={<HomeIcon onClick={()=>push('/mainPage')}/>}></RightOnlyHeader>
         <MyPageCenterBox>
             <Button>일정관리 보기</Button>
-            <Button>지원현황 보기</Button>
+            <Button onClick={()=>push('/applyCompanyList')} >지원현황 보기</Button>
             <Button onClick={()=>push('/bookmark')}>찜한 기업 보기</Button>
             <Button onClick={()=>push('/reviewPage')}>리뷰 작성하기</Button>
         </MyPageCenterBox>
