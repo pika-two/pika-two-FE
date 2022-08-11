@@ -12,6 +12,7 @@ import CompanyInfoPage from './pages/CompanyInfoPage'
 import MyPage from './pages/MyPage';
 import ReviewPage from './pages/ReviewPage';
 import BookmarkPage from './pages/BookmarkPage';
+import ApplyCompanyListPage from './pages/ApplyCompanyListPage'
 function App() {
   return (
   <GlobalPortal.Provider>
@@ -28,6 +29,7 @@ function App() {
       <Route path="/myPage" element={<MyPage/>}></Route>
       <Route path="/reviewPage" element={<ReviewPage/>}></Route>
       <Route path="/bookmark" element={<BookmarkPage/>}></Route>
+      <Route path="/applyCompanyList" element={<ApplyCompanyListPage/>}></Route>
     </Routes>
   </Layout>
   
