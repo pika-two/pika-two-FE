@@ -1,9 +1,9 @@
-import ImageCard from "./ImageCard"
+import ImageCardBoth from "./ImageCardBoth"
 import Bold from "./Bold"
-import Message from "./message"
-export default function CompanyListItem({image,right}) {
+
+export default function BookMarkListItem({image,right}) {
   return (
-    <ImageCard image={image} content={<CompnyInfo/>} right={right}/>
+    <ImageCardBoth image={image} content={<CompnyInfo/>} right={right}/>
   )
 }
 

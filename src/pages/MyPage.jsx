@@ -6,6 +6,7 @@ import Button from '../components/ui/Button'
 import FixedBottomButton from '../components/ui/FixedBottomButton'
 import HomeIcon from '../components/ui/icon/HomeIcon'
 import MyPageSalary from '../components/Composition/MyPageSalary'
+import { useInternalRouter } from './routing'
 import starfriends from '../assets/starfriends.png'
 import { useInternalRouter } from './routing'
 export default function MyPage() {
@@ -16,7 +17,7 @@ export default function MyPage() {
         <MyPageCenterBox>
             <Button>일정관리 보기</Button>
             <Button>지원현황 보기</Button>
-            <Button>찜한 기업 보기</Button>
+            <Button onClick={()=>push('/bookmark')}>찜한 기업 보기</Button>
             <Button onClick={()=>push('/reviewPage')}>리뷰 작성하기</Button>
         </MyPageCenterBox>
         <MyPageSalary>
