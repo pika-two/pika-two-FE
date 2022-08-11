@@ -8,7 +8,11 @@ export default function BookmarkPage() {
   return (
     <div>
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="찜한 목록"></BothHeader>
-        <BookMarkList/>
+        <div style = {{
+          margin : "3vh 5vw"
+        }}>
+          <BookMarkList/>
+        </div>
     
     </div>
   )

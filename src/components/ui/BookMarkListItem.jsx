@@ -14,7 +14,7 @@ const CompnyInfo = function({compnyinfo}){
             display : "flex",
             flexDirection : "column",
             justifyContent : "center",
-            backgroundColor : "#F6F6F6",
+            backgroundColor : "#fffff2",
             margin : "0 0 5px 10px",
         }}>
             <Bold>KB국민은행</Bold>
