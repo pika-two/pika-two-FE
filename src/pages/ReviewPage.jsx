@@ -4,8 +4,7 @@ import { useInternalRouter } from "./routing";
 import LeftOnlyHeader from '../components/Composition/LeftOnlyHeader';
 import FixedBottomButton from '../components/ui/FixedBottomButton'
 import Input from '../components/ui/Input';
-import { useState } from 'react';
-import { useEffect } from 'react';
+
 
 export default function ReviewPage() {
 

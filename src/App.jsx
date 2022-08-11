@@ -13,6 +13,7 @@ import MyPage from './pages/MyPage';
 import ReviewPage from './pages/ReviewPage';
 import BookmarkPage from './pages/BookmarkPage';
 import ApplyCompanyListPage from './pages/ApplyCompanyListPage'
+import SalaryListPage from './pages/SalaryListPage';
 function App() {
   return (
   <GlobalPortal.Provider>
@@ -30,6 +31,7 @@ function App() {
       <Route path="/reviewPage" element={<ReviewPage/>}></Route>
       <Route path="/bookmark" element={<BookmarkPage/>}></Route>
       <Route path="/applyCompanyList" element={<ApplyCompanyListPage/>}></Route>
+      <Route path="/company/:id/salary/:year" element={<SalaryListPage/>}></Route>
     </Routes>
   </Layout>
   

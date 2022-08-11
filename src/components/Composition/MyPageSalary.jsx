@@ -3,7 +3,10 @@ import Stack from '../ui/Stack'
 
 export default function MyPageSalary({children}) {
   return (
-    <Stack>
+    <Stack style={{
+      padding: '70px 24px',
+      fontFamily: "one"
+    }}>
         {children}
     </Stack>
   )
