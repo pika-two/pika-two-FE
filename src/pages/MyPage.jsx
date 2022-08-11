@@ -7,10 +7,12 @@ import FixedBottomButton from '../components/ui/FixedBottomButton'
 import HomeIcon from '../components/ui/icon/HomeIcon'
 import MyPageSalary from '../components/Composition/MyPageSalary'
 import starfriends from '../assets/starfriends.png'
+import { useInternalRouter } from './routing'
 export default function MyPage() {
+  const {push} = useInternalRouter();
   return (
     <div>
-        <RightOnlyHeader title="마이페이지"   right={<HomeIcon/>}></RightOnlyHeader>
+        <RightOnlyHeader title="마이페이지"   right={<HomeIcon onClick={()=>push('/mainPage')}/>}></RightOnlyHeader>
         <MyPageCenterBox>
             <Button>일정관리 보기</Button>
             <Button>지원현황 보기</Button>
