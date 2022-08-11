@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 const InputStyled = styled.input`
-width : 100%;
+width : 90%;
 height : 48px;
-border:2px solid #f6f6f6;
-border-radius:10px;
-margin:8px 0;
+border:2px solid #000000;
+margin:0 auto 10px auto;
 outline:none;
 padding:8px;
 box-sizing:border-box;

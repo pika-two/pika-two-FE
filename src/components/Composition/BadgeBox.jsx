@@ -5,10 +5,10 @@ export default function BadgeBox() {
     <div style={{
         display : 'flex',
     }}>
-        <Badge background="#FFCC00">대기업</Badge>
-        <Badge background="#FFCC00">연봉 5000이상</Badge>
-        <Badge background="#FFCC00">스타트업</Badge>
-        <Badge background="#FFCC00">신입</Badge>
+        <Badge background="#FFE006">대기업</Badge>
+        <Badge background="#FFE006">연봉 5000이상</Badge>
+        <Badge background="#FFE006">스타트업</Badge>
+        <Badge background="#FFE006">신입</Badge>
     </div>
   )
 }
