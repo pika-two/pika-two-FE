@@ -8,7 +8,6 @@ import HomeIcon from '../components/ui/icon/HomeIcon'
 import MyPageSalary from '../components/Composition/MyPageSalary'
 import { useInternalRouter } from './routing'
 import starfriends from '../assets/starfriends.png'
-import { useInternalRouter } from './routing'
 export default function MyPage() {
   const {push} = useInternalRouter();
   return (
