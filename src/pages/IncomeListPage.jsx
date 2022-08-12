@@ -29,7 +29,7 @@ export default function IncomeListPage () {
           }}>
             {/* //TODO High : 선택 시 체크 되는 표시를 나타내는 css 필요 */}
             {/* //TODO High : 선택된 데이터들을 저장해서 관리하는 로직 필요, axios 요청 보내기 위한 용도*/}
-            <IncomeList onClick={()=>{alert('안녕')}} incomes ={incomes}></IncomeList>
+            <IncomeList onClick={()=>{}} incomes ={incomes}></IncomeList>
           </div>
         </div>
         {/* //TODO High : 선택된 데이터들이 하나도 없을 시 경고 문구 및 맞는지 확인 창 선택된 적요 axios 요청 */}

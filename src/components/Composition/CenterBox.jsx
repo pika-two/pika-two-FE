@@ -11,6 +11,7 @@ export default function CenterBox({children}) {
         display : "flex",
         flexDirection : "column",
         border : "2px solid #000000",
+        boxShadow: "10px 10px black ",
     }}
     >{children}</div>
   )

@@ -35,6 +35,9 @@ export default function AccountListItem({account,...rest}) {
 }
 const Div = styled.div`
     border-top: 2px solid #d2d4d9;
+    &:hover{
+        background: #faeaac;
+    }
 `;
 const Title = styled.p`
 
