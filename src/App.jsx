@@ -15,7 +15,7 @@ import BookmarkPage from './pages/BookmarkPage';
 import ApplyCompanyListPage from './pages/ApplyCompanyListPage';
 import SuggestPage from './pages/SuggestPage';
 import SalaryListPage from './pages/SalaryListPage';
-
+import CalenderPage from './pages/CalenderPage';
 function App() {
   return (
   <GlobalPortal.Provider>
@@ -35,6 +35,7 @@ function App() {
       <Route path="/applyCompanyList" element={<ApplyCompanyListPage/>}></Route>
       <Route path="/suggestList" element={<SuggestPage/>}></Route>
       <Route path="/company/:id/salary/:year" element={<SalaryListPage/>}></Route>
+      <Route path="/calender" element={<CalenderPage/>}></Route>
     </Routes>
   </Layout>
   
