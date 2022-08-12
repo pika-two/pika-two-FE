@@ -20,6 +20,7 @@ export default function SearchPage() {
 
           background: "#FFCC00",
           }}>
+            {/* //TODO high : Main 페이지와 같은 로직 hook으로 만들수 있으면 고려 대상 */}
           <Input />
         </div>
         
@@ -27,6 +28,7 @@ export default function SearchPage() {
           margin : "0 5vw"
         }}>
           <Blank/>
+          {/* //TODO low : 회사 클릭시 해당 회사 상세 페이지로 이동 기능 추가 그러므로 CompanyList의 props로 상속 필요 */}
           <CompanyList/>
         </div>
     </div>

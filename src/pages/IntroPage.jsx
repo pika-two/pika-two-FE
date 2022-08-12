@@ -7,6 +7,7 @@ export default function IntroPage(){
     return (
         <div>
             <Logo/>
+            {/* //TODO Low : registerPage 상수화 */}
             <Button  onClick={()=>push('/registerPage')} style = {{margin : "0 17px"}}>
                 시작하기
             </Button>

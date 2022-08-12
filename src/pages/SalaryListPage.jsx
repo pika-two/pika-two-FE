@@ -14,6 +14,7 @@ export default function SalaryListPage() {
         <Top02>기업 이름</Top02>
         <Bold>1년차</Bold>
         <Stack>
+          {/* //TODO middle : 백에 요청하여 연봉정보 가져오기 */}
             <DotList middle={"춤추는 사자"} amount={3000}></DotList>
             <DotList middle={"춤추는 사자"} amount={3000}></DotList>
             <DotList middle={"춤추는 사자"} amount={3000}></DotList>
