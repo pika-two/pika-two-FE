@@ -44,10 +44,10 @@ export default function MyPage() {
         </div>
         <div 
         style = {{
-          display: "flex", justifyContent: "center", marginTop: "50px"
+          display: "flex", justifyContent: "center", marginTop: "100px"
         }}>
-        <Button  background = "#fffcab" style={{bottom : '80px'}}>KB 국민은행 급여계좌 만들기</Button></div>
-        <FixedBottomButton background = "#fffcab">연봉별 금융상품 추천 받기</FixedBottomButton>
+        <Button onClick={() => window.open( "https://obank.kbstar.com/")} background = "#fffcab" style={{bottom : '80px'}}>KB 국민은행 급여계좌 만들기</Button></div>
+        <FixedBottomButton onClick={()=>push('/suggestList')} background = "#fffcab">연봉별 금융상품 추천 받기</FixedBottomButton>
     </div>
   )
 }

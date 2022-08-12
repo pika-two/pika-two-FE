@@ -4,7 +4,7 @@ export default function Stack({children}) {
   return (
     <div
       style={{
-        padding: '70px 24px',
+        padding: '30px 24px',
         display: 'flex',
         flexDirection: 'column',
         fontFamily: "one"
