@@ -1,5 +1,9 @@
 import React from 'react'
 import Stack from '../ui/Stack'
+import Top02 from '../ui/Top/Top02'
+import Message from '../ui/message'
+import Boldtext from '../ui/Boldtext'
+import Bold from '../ui/Bold'
 
 export default function ReviewList() {
   return (
@@ -17,14 +21,14 @@ export default function ReviewList() {
 const Review = function(){
     return (
         <div style={{
-            border : '1px solid',
+            border : '2px solid',
         }}>
-            <div>
+            <Bold>
                 작성자
-            </div>
-            <div>
+            </Bold>
+            <Message>
                 내용
-            </div>
+            </Message>
         </div>
     )
 }
