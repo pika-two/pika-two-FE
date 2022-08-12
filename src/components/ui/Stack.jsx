@@ -1,14 +1,13 @@
 import React from 'react'
 
-export default function Stack({children}) {
+export default function Stack({children,...rest}) {
   return (
     <div
       style={{
-        padding: '30px 24px',
         display: 'flex',
         flexDirection: 'column',
-        fontFamily: "one"
       }}
+      {...rest}
     >
       {children}
     </div>

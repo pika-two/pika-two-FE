@@ -14,6 +14,7 @@ export default function MyPage() {
     <div>
         <RightOnlyHeader title="마이페이지"   right={<HomeIcon onClick={()=>push('/mainPage')}/>}></RightOnlyHeader>
         <MyPageCenterBox>
+          {/* //TODO high : calendar 라이브러리 탐색 후 연동 필요성 */}
             <Button>일정관리 보기</Button>
             <Button onClick={()=>push('/applyCompanyList')} >지원현황 보기</Button>
             <Button onClick={()=>push('/bookmark')}>찜한 기업 보기</Button>
@@ -29,6 +30,7 @@ export default function MyPage() {
               fontSize : "20px",
               textAlign : "center"
             }}>2021년 춤추는 사자님의 급여:</p>
+            {/* //TODO low : mounted 전 axios로 연봉 정보 가져오기 */}
             <p style = {{
               fontFamily : "four",
               fontSize : "30px",
