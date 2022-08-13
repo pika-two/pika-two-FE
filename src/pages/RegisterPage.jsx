@@ -60,8 +60,8 @@ export default function RegisterPage() {
     }
     if(!typeCheckJoinYear(joinYear)){
       alert('입사년도를 입력해주세요')
-      joinYear.current.value = 0;
-      joinYear.current.focus();
+      joinYearInputRef.current.value = 0;
+      joinYearInputRef.current.focus();
       return
     }
     if(!selectGender){
