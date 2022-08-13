@@ -1,13 +1,15 @@
 
 import styled from "styled-components";
 
-export default function AccountListItem({account,...rest}) {
-  const {account_id, account_name, account_number, bank_name, amount} = account;
+export default function AccountListItem({account,selected,...rest}) {
+  const {account_id, account : account_name, bank_name, balance} = account;
   return (
         (
             <Div style={{
                 display : "flex",
-                padding : "10px 20px"
+                padding : "10px 20px",
+                border : selected?'1px solid #FC0':'',
+                background : selected?'#FC0':'white'
             }} {...rest}>
         
                 <img width={80} height = {80} src="https://play-lh.googleusercontent.com/K1rBzVJjq9qtSxC2vkWIsp3GPtPOCwLPf1aCJ0tL0TvWdNcAKQKhYwjPMY90XJwyW-E" alt=""
@@ -21,10 +23,10 @@ export default function AccountListItem({account,...rest}) {
                     margin: "30px",
                 }}>
                     <div>
-                        <Title>KB 국민ONE 통장{bank_name}</Title>
+                        <Title>{bank_name}</Title>
                     </div>
-                    <div><Smallfont>1234-5678{account_number}</Smallfont></div>
-                    <div><Amount>{amount}원</Amount></div>
+                    <div><Smallfont>{account_name}</Smallfont></div>
+                    <div><Amount>{balance}원</Amount></div>
                 </div>
             </Div>
 
