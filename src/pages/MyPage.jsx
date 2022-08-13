@@ -34,7 +34,6 @@ export default function MyPage() {
               fontSize : "20px",
               textAlign : "center"
             }}>2021년 춤추는 사자님의 급여:</p>
-            {/* //TODO low : mounted 전 axios로 연봉 정보 가져오기 */}
             <p style = {{
               fontFamily : "four",
               fontSize : "30px",
