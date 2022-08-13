@@ -19,7 +19,7 @@ export default function MyPage() {
         <RightOnlyHeader title="마이페이지"   right={<HomeIcon onClick={()=>push('/mainPage')}/>}></RightOnlyHeader>
         <MyPageCenterBox>
           {/* //TODO high : calendar 라이브러리 탐색 후 연동 필요성 */}
-            <Button>일정관리 보기</Button>
+            <Button onClick={()=>push('/calender')}>일정관리 보기</Button>
             <Button onClick={()=>push('/applyCompanyList')} >지원현황 보기</Button>
             <Button onClick={()=>push('/bookmark')}>찜한 기업 보기</Button>
             <Button onClick={()=>push('/reviewPage')}>리뷰 작성하기</Button>
@@ -49,7 +49,7 @@ export default function MyPage() {
         </div>
         <div 
         style = {{
-          display: "flex", justifyContent: "center", marginTop: "100px"
+          display: "flex", justifyContent: "center", marginTop: "60px"
         }}>
         <Button onClick={() => window.open( "https://obank.kbstar.com/")} background = "#fffcab" style={{bottom : '80px'}}>KB 국민은행 급여계좌 만들기</Button></div>
         <FixedBottomButton onClick={()=>push('/suggestList')} background = "#fffcab">연봉별 금융상품 추천 받기</FixedBottomButton>

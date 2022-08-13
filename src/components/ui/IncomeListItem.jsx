@@ -1,15 +1,13 @@
 import Bold from "./Bold"
 export default function IncomeListItem({income,selected,...rest}) {
   return (
-    <div
+    <Div
     style={{
         display : "flex",
         flexDirection : "column",
         justifyContent : "center",
         backgroundColor : selected?'#FC0':"#F6F6F6",
-        margin : "0 15px 15px 15px",
-        width: "140px",
-        height:"140px",
+        borderRadius : "20px"
     }}
     {...rest}
     >
@@ -20,3 +18,13 @@ export default function IncomeListItem({income,selected,...rest}) {
     </div>
   )
 }
+
+const Div = styled.div`
+  margin : 0 15px 15px 15px;
+  width: 140px;
+  height:140px;
+  &:hover{
+    
+    background: #faeaac;
+  }
+`;

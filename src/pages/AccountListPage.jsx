@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import GeneralHeader from "../components/Composition/GeneralHeader";
 import FixedBottomButton from "../components/ui/FixedBottomButton";
 import AccountsList from "../components/Composition/AccountsList";
