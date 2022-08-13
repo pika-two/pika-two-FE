@@ -1,7 +1,8 @@
 import React from 'react'
 import JobPostListItem from '../ui/JobPostListItem'
-
-export default function JobPostList() {
+import { useInternalRouter } from "../../pages/routing";
+export default function JobPostList({jobPosts}) {
+  const {push} = useInternalRouter();
   return (
     <div style={{
         display : "grid",
@@ -9,16 +10,8 @@ export default function JobPostList() {
         justifyContent: "space-evenly",
         overflowX: "auto"
     }}>
-        <JobPostListItem/>
-        <JobPostListItem/>
-        <JobPostListItem/>
-        <JobPostListItem/>
-        <JobPostListItem/>
-        <JobPostListItem/>
-        <JobPostListItem/>
-        <JobPostListItem/>
-        <JobPostListItem/>
-        <JobPostListItem/>
+        {jobPosts.map( jobPost =><JobPostListItem key={jobPost.post_id} onClick={()=>{push(`/company/${jobPost.company_id}`)
+      }} jobPost={jobPost}/>)}
     </div>
   )
 }
