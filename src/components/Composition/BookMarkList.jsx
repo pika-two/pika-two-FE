@@ -1,14 +1,16 @@
 import React from 'react'
 import TrashCanIcon from '../ui/icon/TrachCanIcon'
 import BookMarkListItem from '../ui/BookMarkListItem'
+import { useInternalRouter } from '../../pages/routing'
 export default function BookMarkList({bookmarks}) {
+  const {push} = useInternalRouter();
   return (
         <div style={{
       display : 'grid',
       gridTemplateColumns : 'auto',
       gap : '1em'
     }}>
-        {bookmarks.map((bookmark)=><BookMarkListItem key={bookmark.fav_company_id} bookmark={bookmark} right={<TrashCanIcon/>}/>)}
+        {bookmarks.map((bookmark)=><BookMarkListItem onClick={()=>push(`/company/${bookmark.company_id}`)} key={bookmark.fav_company_id} bookmark={bookmark} right={<TrashCanIcon/>}/>)}
     </div>
   )
 }
