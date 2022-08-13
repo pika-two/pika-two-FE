@@ -3,7 +3,7 @@ import FixedBottomButton from '../components/ui/FixedBottomButton'
 import { useInternalRouter } from "./routing";
 import "../App.css";
 import Blank from "../components/ui/Blank";
-import { useState,useRef,useEffect } from "react";
+import { useState,useRef } from "react";
 import InputComponent from "../components/Composition/InputComponent"; 
 import RadioLabelAndInput from "../components/Composition/RadioLabelAndInput";
 export default function RegisterPage() {
@@ -85,7 +85,6 @@ export default function RegisterPage() {
             justifyContent: "center",
           }
             }>
-              {/* //TODO High : Input에 대한 validation 및 submit 이벤트 추가 */}
             <InputComponent type='number' min='0' max='100' placeholder='나이를 입력해주세요' ref={ageInputRef}/>
             <div style={{
               display : 'grid',
@@ -117,7 +116,7 @@ export default function RegisterPage() {
                 (필수) 마이데이터 연동을 통해 계좌 정보 및 <br/>적용 내용을 연동 하는 것에 동의합니다.
                 </label>
             </div>
-            {/* //TODO 우선순위 : 하 accountList 상수화 색깔 상수화 필요성 */}
+            {/* //TODO 우선순위 : 중 axios 요청 추가*/}
             <FixedBottomButton onClick={submitEvent}  background="#FFCC00" color="white">
                 입력 완료
             </FixedBottomButton>

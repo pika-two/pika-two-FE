@@ -5,14 +5,10 @@ import LeftOnlyHeader from '../components/Composition/LeftOnlyHeader';
 import FixedBottomButton from '../components/ui/FixedBottomButton'
 import IncomeList from '../components/Composition/IncomeList';
 import { useState } from 'react';
-import { useEffect } from 'react';
 import Message from '../components/ui/message';
 export default function IncomeListPage () {
    const {goBack,push} = useInternalRouter();
-   const [incomes, setIncomes]  = useState([]);
-   useEffect(()=>{
-    setIncomes([0,0,0,0,0])
-   },[])
+   const [incomes, setIncomes]  = useState([0,0,0,0,0,0,0]);
   return (
     <div>
         <LeftOnlyHeader left={<BackIcon onClick={()=>goBack()}/>} title="급여내역 선택"/>
