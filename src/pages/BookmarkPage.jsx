@@ -3,19 +3,47 @@ import MyPageIcon from '../components/ui/icon/MyPageIcon'
 import BackIcon from "../components/ui/icon/BackIcon";
 import BookMarkList from '../components/Composition/BookMarkList'
 import { useInternalRouter } from "./routing"
+import { useState } from "react";
 export default function BookmarkPage() {
+    const dummyData = [ {
+      'fav_company_id': 1,
+       'company_name': '회사명1',
+       'company_id': 1,
+     },
+     {
+      'fav_company_id': 2,
+       'company_name': '회사명2',
+       'company_id': 2,
+     },
+     {
+      'fav_company_id': 3,
+       'company_name': '회사명3',
+       'company_id': 3,
+     },
+     {
+      'fav_company_id': 4,
+       'company_name': '회사명4',
+       'company_id': 4,
+     },{
+      'fav_company_id': 5,
+       'company_name': '회사명5',
+       'company_id': 5,
+     },
+     {
+      'fav_company_id': 6,
+       'company_name': '회사명6',
+       'company_id': 6,
+     },]
     const {goBack, push} = useInternalRouter();
+    const [bookmarks, setBookmarks] = useState(dummyData);
+    // TODO : fetch로 데이터 가져오기
   return (
     <div>
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="찜한 목록"></BothHeader>
         <div style = {{
           margin : "3vh 5vw"
         }}>
-              {/* //TODO middle : mounted 전에 해당 정보들에 대해 가져오기 */}
-              {/* //TODO middle : 삭제버튼 클릭시, 페이지에서 먼저 삭제 후 axios로 삭제 요청 보낼지 고민 */}
-              {/* //TODO middle : CompanyList에 대해 데이터 연계 필요성 및 이벤트 적용 */}
-              {/* //TODO low : 공고 클릭시 해당 회사 페이지로 이동 */}
-          <BookMarkList/>
+          <BookMarkList bookmarks={bookmarks}/>
         </div>
     
     </div>

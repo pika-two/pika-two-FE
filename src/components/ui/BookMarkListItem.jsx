@@ -1,13 +1,13 @@
 import ImageCardBoth from "./ImageCardBoth"
 import Bold from "./Bold"
 
-export default function BookMarkListItem({image,right}) {
+export default function BookMarkListItem({image,right,bookmark}) {
   return (
-    <ImageCardBoth image={image} content={<CompnyInfo/>} right={right}/>
+    <ImageCardBoth image={image} content={<CompnyInfo bookmark={bookmark}/>} right={right}/>
   )
 }
 
-const CompnyInfo = function({compnyinfo}){
+const CompnyInfo = function({bookmark}){
     return (
         <div
         style={{
@@ -17,8 +17,7 @@ const CompnyInfo = function({compnyinfo}){
             backgroundColor : "#fffff2",
             margin : "0 0 5px 10px",
         }}>
-            <Bold>KB국민은행</Bold>
-            <div style = {{fontFamily : "two", textAlign : "center", margin: " 0, vh"}}>blah</div>
+            <Bold>{bookmark.company_name}</Bold>
         </div>
     )
 }
