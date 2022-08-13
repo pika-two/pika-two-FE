@@ -1,4 +1,5 @@
 import Bold from "./Bold"
+import styled from 'styled-components'
 export default function IncomeListItem({income,selected,...rest}) {
   return (
     <Div
@@ -15,7 +16,7 @@ export default function IncomeListItem({income,selected,...rest}) {
         <Bold>{income.date}</Bold>
         <Bold>{income.memo}</Bold>
         <Bold>{income.amount}원</Bold>
-    </div>
+    </Div>
   )
 }
 
