@@ -24,7 +24,7 @@ function App() {
       <Route path="/" element={<IntroPage/>}></Route>
       <Route path="/registerPage" element={<RegisterPage/>}></Route>
       <Route path="/accountList" element= {<AccountListPage/>}></Route>
-      <Route path="/incomeList" element={<IncomeListPage/>}></Route>
+      <Route path="/accountList/:accountId" element={<IncomeListPage/>}></Route>
       <Route path="/incomeConnect"  element={<IncomeConnectPage/>} ></Route>
       <Route path="/mainPage" element={<MainPage/>}></Route>
       <Route path="/search/:keyword" element = {<SearchPage/>}></Route>
