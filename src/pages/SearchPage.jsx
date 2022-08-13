@@ -4,11 +4,28 @@ import { useInternalRouter } from "./routing"
 import BackIcon from '../components/ui/icon/BackIcon'
 import MyPageIcon from '../components/ui/icon/MyPageIcon'
 import CompanyList from '../components/Composition/CompanyList'
-import Input from "../components/ui/Input"
+import InputComponent from "../components/Composition/InputComponent"
+import SearchIcon from "../components/ui/icon/SearchIcon"
 import Blank from "../components/ui/Blank"
+import {useRef, useEffect} from 'react' 
 export default function SearchPage() {
     let { keyword } = useParams()
     let {goBack,push} = useInternalRouter();
+    const searchInputRef = useRef(null);
+    const searchEvent = function(){
+      const value = searchInputRef.current.value
+      if(value.trim().length){
+        push(`/search/${value}`)
+      }
+    }
+    const onKeyPress = function(event){
+      if(event.key === 'Enter'){
+        searchEvent();
+      }
+    }
+    useEffect(()=>{
+      searchInputRef.current.value = keyword;
+    },[])
   return (
     <div>
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="기업리스트"></BothHeader>
@@ -16,12 +33,11 @@ export default function SearchPage() {
           margin : "0 ",
           display: "flex",
           justifyContent: "center",
-          flexDirection: "column",
 
           background: "#FFCC00",
           }}>
-            {/* //TODO high : Main 페이지와 같은 로직 hook으로 만들수 있으면 고려 대상 */}
-          <Input />
+          <InputComponent onKeyPress={onKeyPress} ref={searchInputRef}/>
+          <SearchIcon onClick={searchEvent}/>
         </div>
         
         <div style = {{
