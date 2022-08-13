@@ -25,7 +25,7 @@ export default function SearchPage() {
     }
     useEffect(()=>{
       searchInputRef.current.value = keyword;
-    },[])
+    },[keyword])
   return (
     <div>
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="기업리스트"></BothHeader>
