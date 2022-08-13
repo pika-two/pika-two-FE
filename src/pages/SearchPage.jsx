@@ -25,6 +25,7 @@ export default function SearchPage() {
     }
     useEffect(()=>{
       searchInputRef.current.value = keyword;
+      searchInputRef.current.focus();
     },[keyword])
   return (
     <div>
