@@ -1,15 +1,19 @@
-import React from 'react'
 import MyPageCenterBox from '../components/Composition/MyPageCenterBox'
 import RightOnlyHeader from '../components/Composition/RightOnlyHeader'
-import Bold from '../components/ui/Bold'
-import Button from '../components/ui/Button'
-import FixedBottomButton from '../components/ui/FixedBottomButton'
-import HomeIcon from '../components/ui/icon/HomeIcon'
 import MyPageSalary from '../components/Composition/MyPageSalary'
+import FixedBottomButton from '../components/ui/FixedBottomButton'
+import Button from '../components/ui/Button'
+import HomeIcon from '../components/ui/icon/HomeIcon'
 import { useInternalRouter } from './routing'
 import starfriends from '../assets/starfriends.png'
+import { useState,useEffect } from 'react'
 export default function MyPage() {
   const {push} = useInternalRouter();
+  const [mySalary, setMySalary] = useState(0);
+  useEffect(()=>{
+    // TODO axios로 교체 예정
+    setMySalary(()=>6000);
+  },[])
   return (
     <div>
         <RightOnlyHeader title="마이페이지"   right={<HomeIcon onClick={()=>push('/mainPage')}/>}></RightOnlyHeader>
@@ -30,14 +34,13 @@ export default function MyPage() {
               fontSize : "20px",
               textAlign : "center"
             }}>2021년 춤추는 사자님의 급여:</p>
-            {/* //TODO low : mounted 전 axios로 연봉 정보 가져오기 */}
             <p style = {{
               fontFamily : "four",
               fontSize : "30px",
               textAlign : "center",
               background : "yellow",
               margin : " 0, 40px"
-            }}>6500만원 </p> 
+            }}>{mySalary}만원 </p> 
         </MyPageSalary>
         <div style = {{display: "flex", justifyContent: "center", margin: "10px"}}>  
             <img  
