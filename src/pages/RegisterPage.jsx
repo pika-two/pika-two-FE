@@ -6,22 +6,24 @@ import Blank from "../components/ui/Blank";
 import { useState,useRef } from "react";
 import InputComponent from "../components/Composition/InputComponent"; 
 import RadioLabelAndInput from "../components/Composition/RadioLabelAndInput";
+import registerService from "../apis/register";
 export default function RegisterPage() {
   const {push} = useInternalRouter();
   // 나이, 성별, 연봉, 입사년도;
   const [genders, setGenders] = useState(['남성', '여성']);
   const [selectGender, setSelectGender] = useState('');
   const [checkednotice, setCheckednotice] = useState(false);
-  const ageInputRef = useRef(null);
+  const birthyrInputRef = useRef(null);
   const emailInputRef = useRef(null);
   const joinYearInputRef = useRef(null);
+  const companyNameInputRef = useRef(null);
   const handleChangeGender = (event)=>{
     if (event.target.tagName === 'INPUT'){
       setSelectGender(()=>event.target.value);
     }
   }
-  const typeCheckAge = (value)=>{
-    if(value>=10 && value<100){
+  const typeCheckBirthDay = (value)=>{
+    if(value>=1950 && value<2022){
         return true
     } else {
       return false
@@ -42,14 +44,18 @@ export default function RegisterPage() {
       return false
     }
   }
-  const submitEvent = ()=>{
-    const age = ageInputRef.current.value;
+  const typeCheckCompanyName = (value)=>{
+    return value.trim().length
+  }
+  const submitEvent = async ()=>{
+    const birthyr = birthyrInputRef.current.value;
     const email = emailInputRef.current.value;
     const joinYear = joinYearInputRef.current.value;
-    if(!typeCheckAge(age)){
-      alert('나이를 입력해주세요')
-      ageInputRef.current.value = 0;
-      ageInputRef.current.focus()
+    const companyName = companyNameInputRef.current.value;
+    if(!typeCheckBirthDay(birthyr)){
+      alert('출생년도를 입력해주세요')
+      birthyrInputRef.current.value = 1990;
+      birthyrInputRef.current.focus()
       return
     }
     if(!typeCheckEmail(email)){
@@ -72,6 +78,25 @@ export default function RegisterPage() {
       alert('필수 동의사항에 동의버튼을 눌러주세요.')
       return
     }
+    if(!typeCheckCompanyName(companyName)){
+      alert('회사명을 제대로 입력해주세요')
+      companyNameInputRef.current.value = '';
+      companyNameInputRef.current.focus();
+      return
+    }
+    const en = {
+      '남성' : 'M',
+      '여성' : 'F'
+    }
+    const data = {
+      birth_yr : birthyr,
+      company_name : companyName,
+      gender : en[selectGender],
+      email,
+      work_start_at : joinYear
+    }
+    // TODO responseData에서 useId를 받아서 전역객체에 저장시켜야함
+    const {data : responseData ,status} = await registerService.post(data);
     push('/accountList')
   }
 
@@ -85,7 +110,7 @@ export default function RegisterPage() {
             justifyContent: "center",
           }
             }>
-            <InputComponent type='number' min='0' max='100' placeholder='나이를 입력해주세요' ref={ageInputRef}/>
+            <InputComponent type='number' min='1940' max='2010' placeholder='출생년도를 입력해주세요' ref={birthyrInputRef}/>
             <div style={{
               display : 'grid',
               alignItems : 'center',
@@ -102,6 +127,8 @@ export default function RegisterPage() {
               }
             </div>
             <Blank/>
+            <InputComponent placeholder="직장명을 입력해주세요"  ref={companyNameInputRef}/>
+            <Blank/>
             <InputComponent placeholder="직장이메일을 입력해주세요." type='email' ref={emailInputRef}/>
             <Blank/>
             <InputComponent placeholder="입사년도를 입력해주세요"   type='number' ref={joinYearInputRef}/>
@@ -116,7 +143,6 @@ export default function RegisterPage() {
                 (필수) 마이데이터 연동을 통해 계좌 정보 및 <br/>적용 내용을 연동 하는 것에 동의합니다.
                 </label>
             </div>
-            {/* //TODO 우선순위 : 중 axios 요청 추가*/}
             <FixedBottomButton onClick={submitEvent}  background="#FFCC00" color="white">
                 입력 완료
             </FixedBottomButton>
