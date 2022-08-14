@@ -10,6 +10,14 @@ import Blank from "../components/ui/Blank";
 
 export default function CompanyInfoPage() {
   const {goBack, push} = useInternalRouter();
+  const dummyData = {
+    'company_id': 1,
+    'company_name': '회사 이름 1',
+    'description': '회사 소개',
+    'type': '회사 유형',
+    'category': '회사 업종',
+    'is_certificated': true,
+    }
   return (
     <div>
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="기업정보"></BothHeader>
@@ -18,10 +26,10 @@ export default function CompanyInfoPage() {
         <Top02>공고</Top02>
         <p style={{border : '1px solid'}}></p>
 
-        {/* //TODO middle : 공고에 찜하는 버튼 추가 */}
+        {/* //TODO middle : 공고에 지원하는 버튼 추가 */}
         <div style = {{ margin: "3vh 5vw"
                 }}>
-        <CompanyListItem/></div>
+        <CompanyListItem company={dummyData}/></div>
 
         <Top02>연봉</Top02>
         {/* //TODO high : 챠트 라이브러리 찾고 적용 */}
