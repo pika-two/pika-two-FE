@@ -50,8 +50,6 @@ export default function MainPage() {
         }}>
         {/* //TODO middle : Badge를 클릭했을시 해당 항목 검색 기능 제공 */}
         <BadgeBox/>
-        <Blank/>
-        {/* //TODO low : 메인페이지 들어올시 mounted 전에 공고 리스트 불러오기 */}
         <Top02 color="#000">채용 진행 중인 공고</Top02>
         <JobPostList jobPosts={jobPosts} />
       </div>
