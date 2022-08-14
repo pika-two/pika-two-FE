@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { forwardRef } from "react";
 const InputStyled = styled.input`
 width : 90%;
 height : ${props => props.height?props.height:'48px'};
@@ -15,8 +15,10 @@ background : #fcfcf0;
     box-shadow:0 0 8px 0 dodgerBlue;
 }`
 
-export default function Input({...rest}) {
+const Input = forwardRef(function Input(props,ref) {
   return (
-    <InputStyled {...rest}/>
+    <InputStyled ref={ref} {...props}/>
   )
-}
+})
+
+export default Input

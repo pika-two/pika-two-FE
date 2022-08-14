@@ -73,7 +73,7 @@ export default function IncomeListPage () {
           <div style={{
             margin : "30px 0"
           }}>
-            {/* //TODO High : 선택된 데이터들을 저장해서 관리하는 로직 필요, axios 요청 보내기 위한 용도*/}
+            {/* //TODO High : axios만 남음*/}
             <IncomeList selectedIncomeNameList={selectedIncomeNameList} handleClickevent={handleChange} incomes ={incomes}></IncomeList>
           </div>
         </div>
