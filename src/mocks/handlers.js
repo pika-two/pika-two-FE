@@ -1,12 +1,13 @@
 import {rest} from 'msw'
 import baseURL from '../constants/BASE_URL'
-import { dummyAccountList } from '../constants/dummyData'
+import { dummyAccountList, dummyIncomeList } from '../constants/dummyData'
 
 export function handlers(){
 
     return [
         rest.post(baseURL+'api/user/signup',singup),
-        rest.get(baseURL+'api/mydata/:user_id/account',accountList)
+        rest.get(baseURL+'api/mydata/:user_id/account',accountList),
+        rest.get(baseURL+'api/mydata/:user_id/deposit',depositList),
     ]
 } 
 
@@ -37,7 +38,7 @@ const singup = async (req,res,ctx)=>{
 const accountList = async (req,res,ctx)=>{
     await timeout(2000);
     const user_id = req.params.user_id
-    if(user_id !== null){
+    if(!!user_id){
         return res(
             ctx.status(200),
             ctx.json({
@@ -49,7 +50,22 @@ const accountList = async (req,res,ctx)=>{
     }
     return res(ctx.status(400))
 }
-
+const depositList = async (req,res,ctx)=>{
+    await timeout(2000);
+    const user_id = req.params.user_id
+    if (!!user_id){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                status : 200,
+                data : dummyIncomeList,
+                message : 'message입니다.'
+            })
+        )
+    }
+    return res(ctx.status(400)
+    )
+}
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }

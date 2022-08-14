@@ -4,8 +4,9 @@ import { useInternalRouter } from "./routing";
 import LeftOnlyHeader from '../components/Composition/LeftOnlyHeader';
 import FixedBottomButton from '../components/ui/FixedBottomButton'
 import IncomeList from '../components/Composition/IncomeList';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Message from '../components/ui/message';
+import incomeService from '../apis/income';
 export default function IncomeListPage () {
    const {goBack,push} = useInternalRouter();
    const [incomes, setIncomes]  = useState([]);
@@ -13,6 +14,15 @@ export default function IncomeListPage () {
    const handleChange = function(event,name){
         setSelectedIncomeNameLIst(prev => prev.indexOf(name) === -1?[...prev,name]:[...prev].filter(item=>item !== name))
    }
+   useEffect(()=>{
+    const getIncome = async (user_id = 1)=>{
+      const {data,status}  = await incomeService.get(user_id);
+      const {data : responseData} = data;
+      console.log(responseData);
+      setIncomes(()=>responseData)
+    }
+    getIncome();
+   },[])
   return (
     <div>
         <LeftOnlyHeader left={<BackIcon onClick={()=>goBack()}/>} title="급여내역 선택"/>
