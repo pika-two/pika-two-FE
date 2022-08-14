@@ -96,7 +96,6 @@ export default function SearchPage() {
           margin : "0 5vw"
         }}>
           <Blank/>
-          {/* //TODO low : 회사 클릭시 해당 회사 상세 페이지로 이동 기능 추가 그러므로 CompanyList의 props로 상속 필요 */}
           <CompanyList companys={searchResult}/>
         </div>
     </div>
