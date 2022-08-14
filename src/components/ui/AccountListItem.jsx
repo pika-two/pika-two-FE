@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 export default function AccountListItem({account,selected,...rest}) {
-  const {account_id, account : account_name, bank_name, balance} = account;
+  const {account : account_name, bank_name, balance} = account;
   return (
         (
             <Div style={{

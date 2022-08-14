@@ -10,14 +10,13 @@ export default function AccountListPage() {
   const {push} = useInternalRouter();
   const [accountList, setAccountList] = useState([]);
   const [selectedAccountID, setSelectedAccount] = useState(-1);
-  const handleChange = function(event, id){
-        if(id == selectedAccountID){
+  const handleChange = function(event, index){
+        if(index == selectedAccountID){
             setSelectedAccount(-1);
         } else {
-            setSelectedAccount(id);
+            setSelectedAccount(index);
         }
   }
-  console.log(accountList);
   useEffect(()=>{
     const getAccount = async (user_id = 1)=>{
         const {data, status} = await accountService.get(user_id) 
