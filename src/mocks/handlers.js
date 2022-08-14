@@ -7,6 +7,7 @@ export function handlers(){
     return [
         rest.post(baseURL+'api/user/signup',singup),
         rest.get(baseURL+'api/mydata/:user_id/account',accountList),
+        rest.post(baseURL+'api/mydata/:user_id/account',accountRegister),
         rest.get(baseURL+'api/mydata/:user_id/deposit',depositList),
     ]
 } 
@@ -50,6 +51,23 @@ const accountList = async (req,res,ctx)=>{
     }
     return res(ctx.status(400))
 }
+
+const accountRegister = async (req,res,ctx) =>{
+    const data = req.body
+    console.log('accountRegister',data);
+    if('account' in data){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                status : 200,
+                data : [],
+                message : 'success'
+            })
+        )
+    }
+    return res(ctx.status(400))
+}
+
 const depositList = async (req,res,ctx)=>{
     await timeout(2000);
     const user_id = req.params.user_id

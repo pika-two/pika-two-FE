@@ -25,6 +25,15 @@ export default function AccountListPage() {
     }
     getAccount();
   },[])
+
+  const submitAccount = async (event,user_id = 1)=>{
+    const accountName = accountList[selectedAccountID].account
+    const {data,status} = await accountService.post(user_id,{
+        'account' : accountName
+    }).catch((e)=>alert('에러러'))
+    push(`/accountList/${selectedAccountID}`)
+    
+  }
   return (
     <div>
         <GeneralHeader title="계좌목록" />
@@ -42,7 +51,7 @@ export default function AccountListPage() {
         
         <FixedBottomButton style={{
             display : selectedAccountID === -1 ? 'none' : 'block'
-        }} onClick = {()=>{push(`/accountList/${selectedAccountID}`)}} background="#FFCC00" color="white">선택</FixedBottomButton>
+        }} onClick = {submitAccount} background="#FFCC00" color="white">선택</FixedBottomButton>
     </div>
   )
 }
