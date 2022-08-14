@@ -1,19 +1,14 @@
 import React from 'react'
 import CompanyListItem from '../ui/CompanyListItem'
 
-export default function CompanyList() {
+export default function CompanyList({companys}) {
   return (
     <div style={{
       display : 'grid',
       gridTemplateColumns : 'auto',
       gap : '1em'
     }}>
-        <CompanyListItem/>
-        <CompanyListItem/>
-        <CompanyListItem/>
-        <CompanyListItem/>
-        <CompanyListItem/>
-        <CompanyListItem/>
+        {companys.map(company=> <CompanyListItem key={company.company_id} company={company}/>)}
     </div>
   )
 }
