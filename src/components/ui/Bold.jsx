@@ -1,6 +1,5 @@
 import styled from "styled-components";
-const Bold = styled.p`
-
+const Bold = styled.div`
 white-space: pre-line;
 font-weight: bold;
 padding: 0 0px;
