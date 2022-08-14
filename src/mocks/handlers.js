@@ -1,6 +1,6 @@
 import {rest} from 'msw'
 import baseURL from '../constants/BASE_URL'
-import { dummyAccountList, dummyIncomeList } from '../constants/dummyData'
+import { dummyAccountList, dummyIncomeList, dummyJobposts } from '../constants/dummyData'
 
 export function handlers(){
 
@@ -10,7 +10,8 @@ export function handlers(){
         rest.post(baseURL+'api/mydata/:user_id/account',accountRegister),
         rest.get(baseURL+'api/mydata/:user_id/deposit',depositList),
         rest.post(baseURL+'api/mydata/:user_id/memos',memoRegister),
-        rest.get(baseURL +'api/mydata/:user_id/annual-salary/:year',annualSalary)
+        rest.get(baseURL +'api/mydata/:user_id/annual-salary/:year',annualSalary),
+        rest.get(baseURL+'api/jobpost',jobPosts)
     ]
 } 
 
@@ -117,11 +118,25 @@ const annualSalary = async (req, res, ctx) => {
                     year : 2022,
                     'company_name' : '국민은행',
                     'annual_salary' : 6000,
-                }
+                },
+                message : '연봉정보'
             })
         )
     }
 }
+
+const jobPosts = async (req, res, ctx) =>{
+    await timeout(2000);
+    return res(
+        ctx.status(200),
+        ctx.json({
+            status : 200,
+            data : dummyJobposts,
+            message : '공고리스트'
+        })
+    )
+}
+
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }

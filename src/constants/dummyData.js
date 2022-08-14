@@ -72,3 +72,56 @@ export const dummyIncomeList = [{
 },
 ]
 
+export const dummyJobposts = [{
+  'company_id' : 1,
+  'company_name' : '국민은행 1',
+  'post_id' : 1,
+  'post_title' : '2022년 상반기 공채',
+  'type' : '공채',
+  'start_dt' : '2022-07-01',
+  'end_dt' : '2022-07-03'
+},
+{
+  'company_id' : 2,
+  'company_name' : '국민은행 2',
+  'post_id' : 2,
+  'post_title' : '2022년 상반기 공채',
+  'type' : '공채',
+  'start_dt' : '2022-07-01',
+  'end_dt' : '2022-07-03'
+},
+{
+  'company_id' : 3,
+  'company_name' : '국민은행 3',
+  'post_id' : 3,
+  'post_title' : '2022년 상반기 공채',
+  'type' : '공채',
+  'start_dt' : '2022-07-01',
+  'end_dt' : '2022-07-03'
+},
+{
+  'company_id' : 4,
+  'company_name' : '국민은행 4',
+  'post_id' : 4,
+  'post_title' : '2022년 상반기 공채',
+  'type' : '공채',
+  'start_dt' : '2022-07-01',
+  'end_dt' : '2022-07-03'
+},{
+  'company_id' : 5,
+  'company_name' : '국민은행 5',
+  'post_id' : 5,
+  'post_title' : '2022년 상반기 공채',
+  'type' : '공채',
+  'start_dt' : '2022-07-01',
+  'end_dt' : '2022-07-03'
+},{
+  'company_id' : 6,
+  'company_name' : '국민은행 6',
+  'post_id' : 6,
+  'post_title' : '2022년 상반기 공채',
+  'type' : '공채',
+  'start_dt' : '2022-07-01',
+  'end_dt' : '2022-07-03'
+}]
+

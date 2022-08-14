@@ -5,64 +5,13 @@ import BadgeBox from '../components/Composition/BadgeBox'
 import { useInternalRouter } from "./routing";
 import Top02 from "../components/ui/Top/Top02";
 import JobPostList from "../components/Composition/JobPostList";
-import { useState,useRef } from "react";
+import { useState,useRef, useEffect } from "react";
 import InputComponent from "../components/Composition/InputComponent";
 import SearchIcon from "../components/ui/icon/SearchIcon";
+import companyService from "../apis/company";
 export default function MainPage() {
-  const dummpyData = [{
-    'company_id' : 1,
-    'company_name' : '국민은행 1',
-    'post_id' : 1,
-    'post_title' : '2022년 상반기 공채',
-    'type' : '공채',
-    'start_dt' : '2022-07-01',
-    'end_dt' : '2022-07-03'
-  },
-  {
-    'company_id' : 2,
-    'company_name' : '국민은행 2',
-    'post_id' : 2,
-    'post_title' : '2022년 상반기 공채',
-    'type' : '공채',
-    'start_dt' : '2022-07-01',
-    'end_dt' : '2022-07-03'
-  },
-  {
-    'company_id' : 3,
-    'company_name' : '국민은행 3',
-    'post_id' : 3,
-    'post_title' : '2022년 상반기 공채',
-    'type' : '공채',
-    'start_dt' : '2022-07-01',
-    'end_dt' : '2022-07-03'
-  },
-  {
-    'company_id' : 4,
-    'company_name' : '국민은행 4',
-    'post_id' : 4,
-    'post_title' : '2022년 상반기 공채',
-    'type' : '공채',
-    'start_dt' : '2022-07-01',
-    'end_dt' : '2022-07-03'
-  },{
-    'company_id' : 5,
-    'company_name' : '국민은행 5',
-    'post_id' : 5,
-    'post_title' : '2022년 상반기 공채',
-    'type' : '공채',
-    'start_dt' : '2022-07-01',
-    'end_dt' : '2022-07-03'
-  },{
-    'company_id' : 6,
-    'company_name' : '국민은행 6',
-    'post_id' : 6,
-    'post_title' : '2022년 상반기 공채',
-    'type' : '공채',
-    'start_dt' : '2022-07-01',
-    'end_dt' : '2022-07-03'
-  }]
   const {push} = useInternalRouter();
-  const [jobPosts,setJobPosts] = useState(dummpyData);
+  const [jobPosts,setJobPosts] = useState([]);
   const searchInputRef = useRef(null);
   const searchEvent = function(){
     const value = searchInputRef.current.value
@@ -75,6 +24,16 @@ export default function MainPage() {
       searchEvent();
     }
   }
+
+  useEffect(()=>{
+    // TODO HIGH : 공고리스트 조회는 백에 구현 안되어있으니 같이 해야한다.
+    const getJobpost = async () => {
+      const {data,status} = await companyService.getPost();
+      const {data : responseData} = data;
+      setJobPosts(()=>responseData);
+    }
+    getJobpost();
+  },[])
   return (
     <div>
       <RightOnlyHeader right={<MyPageIcon onClick={()=>push('/myPage')}/>} title="KB 돌아온 구직자"></RightOnlyHeader>
