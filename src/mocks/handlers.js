@@ -9,6 +9,7 @@ export function handlers(){
         rest.get(baseURL+'api/mydata/:user_id/account',accountList),
         rest.post(baseURL+'api/mydata/:user_id/account',accountRegister),
         rest.get(baseURL+'api/mydata/:user_id/deposit',depositList),
+        rest.post(baseURL+'api/mydata/:user_id/memos',memoRegister)
     ]
 } 
 
@@ -83,6 +84,23 @@ const depositList = async (req,res,ctx)=>{
     }
     return res(ctx.status(400)
     )
+}
+
+const memoRegister = async (req, res, ctx)=>{
+    await timeout(2000);
+    const user_id = req.params.user_id;
+    const data = req.body
+    if(user_id !== undefined && 'memos' in data){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                status : 200,
+                data : [],
+                message : '성공'
+            })
+        )
+    }
+    return res(ctx.status(400))
 }
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

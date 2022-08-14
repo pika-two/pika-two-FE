@@ -23,6 +23,15 @@ export default function IncomeListPage () {
     }
     getIncome();
    },[])
+
+   const handleSubmit = async (event,user_id = 1)=>{
+      const submitData = {
+        memos : selectedIncomeNameList
+      }
+      const {data, status} = await incomeService.post(user_id,submitData);
+      console.log(data)
+      push('/incomeConnect')
+   }
   return (
     <div>
         <LeftOnlyHeader left={<BackIcon onClick={()=>goBack()}/>} title="급여내역 선택"/>
@@ -37,13 +46,12 @@ export default function IncomeListPage () {
           <div style={{
             margin : "30px 0"
           }}>
-            {/* //TODO High : axios만 남음*/}
             <IncomeList selectedIncomeNameList={selectedIncomeNameList} handleClickevent={handleChange} incomes ={incomes}></IncomeList>
           </div>
         </div>
         <FixedBottomButton style={{
             display : selectedIncomeNameList.length ? 'block' : 'none'
-        }} onClick={()=>{push('/incomeConnect')}} background="#FFCC00">연동하기</FixedBottomButton>
+        }} onClick={handleSubmit} background="#FFCC00">연동하기</FixedBottomButton>
     </div>
   )
 }
