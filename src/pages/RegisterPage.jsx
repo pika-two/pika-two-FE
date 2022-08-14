@@ -96,7 +96,7 @@ export default function RegisterPage() {
       work_start_at : joinYear
     }
     // TODO responseData에서 useId를 받아서 전역객체에 저장시켜야함
-    const {data : responseData ,status} = await registerService.post(data);
+    const {data : responseData ,status} = await registerService.post(data).catch((e)=>alert('에러가 발생했습니다.'))
     push('/accountList')
   }
 
