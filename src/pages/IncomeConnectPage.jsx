@@ -1,13 +1,22 @@
 import CenterBox from "../components/Composition/CenterBox"
 import BackGroundCover from "../components/ui/BackGroundCover"
 import Button from "../components/ui/Button"
-import Top02 from "../components/ui/Top/Top02"
 import Boldtext from "../components/ui/Boldtext"
 import { useInternalRouter } from "./routing";
 import Message from "../components/ui/message"
-
+import { useEffect, useState } from "react";
+import incomeService from '../apis/income'
 export default function IncomeConnectPage() {
     const {push} = useInternalRouter();
+    const [salary, setSalary] = useState(0);
+  // TODO : put salary의 용도에 대해 물어보기
+    useEffect(()=>{
+      const currentSalary = async (user_id = 1, year = 2022)=>{
+        const {data,status} = await incomeService.getConnect(user_id,year);
+        setSalary(data.data.annual_salary);
+      }
+      currentSalary();
+    },[])
   return (
     //TODO low : 이 페이지가 바로 되는 것이 아닌 연동중이라는 표시를 위해 이 페이지 전에 loading 페이지 만들기
     <div>
@@ -23,8 +32,7 @@ export default function IncomeConnectPage() {
                 marginTop: "30px"
               }}>
               2022년 까지 받은 금액은?</Message>
-              {/* //TODO low : 사용자의 연봉 정보를 백에서 axios를 해 mount 전에 가져온다. */}
-            <Boldtext fontsize="30px" color="black">3287만원</Boldtext>
+            <Boldtext fontsize="30px" color="black">{salary}만원</Boldtext>
             <Button 
               onClick={()=>push('/mainPage')} 
               background="#FFCC00"

@@ -9,7 +9,8 @@ export function handlers(){
         rest.get(baseURL+'api/mydata/:user_id/account',accountList),
         rest.post(baseURL+'api/mydata/:user_id/account',accountRegister),
         rest.get(baseURL+'api/mydata/:user_id/deposit',depositList),
-        rest.post(baseURL+'api/mydata/:user_id/memos',memoRegister)
+        rest.post(baseURL+'api/mydata/:user_id/memos',memoRegister),
+        rest.get(baseURL +'api/mydata/:user_id/annual-salary/:year',annualSalary)
     ]
 } 
 
@@ -101,6 +102,25 @@ const memoRegister = async (req, res, ctx)=>{
         )
     }
     return res(ctx.status(400))
+}
+
+const annualSalary = async (req, res, ctx) => {
+    await timeout(2000);
+    const user_id = req.params.user_id;
+    const year = req.params.year
+    if(user_id !== undefined && year !== undefined){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                status : 200,
+                data : {
+                    year : 2022,
+                    'company_name' : '국민은행',
+                    'annual_salary' : 6000,
+                }
+            })
+        )
+    }
 }
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
