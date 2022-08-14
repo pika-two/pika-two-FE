@@ -1,12 +1,12 @@
 import {rest} from 'msw'
 import baseURL from '../constants/BASE_URL'
-
+import { dummyAccountList } from '../constants/dummyData'
 
 export function handlers(){
 
     return [
         rest.post(baseURL+'api/user/signup',singup),
-        rest.get('/user',null)
+        rest.get(baseURL+'api/mydata/:user_id/account',accountList)
     ]
 } 
 
@@ -20,7 +20,7 @@ const singup = async (req,res,ctx)=>{
         return res(
             ctx.status(403),
             ctx.json({
-                'code' : 400,
+                'code' : 403,
                 'message' : 'field 값이 부족합니다.'
             })
         )
@@ -32,6 +32,22 @@ const singup = async (req,res,ctx)=>{
             'user_id' : 1,
         })
     )
+}
+
+const accountList = async (req,res,ctx)=>{
+    await timeout(2000);
+    const user_id = req.params.user_id
+    if(user_id !== null){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                status : 200,
+                data : dummyAccountList,
+                message : 'message입니다.'
+            })
+        )
+    }
+    return res(ctx.status(400))
 }
 
 function timeout(ms) {
