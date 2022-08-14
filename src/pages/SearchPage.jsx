@@ -8,6 +8,7 @@ import InputComponent from "../components/Composition/InputComponent"
 import SearchIcon from "../components/ui/icon/SearchIcon"
 import Blank from "../components/ui/Blank"
 import {useRef, useEffect, useState} from 'react' 
+import companyService from "../apis/company"
 export default function SearchPage() {
     let { keyword } = useParams()
     let {goBack,push} = useInternalRouter();
@@ -25,58 +26,14 @@ export default function SearchPage() {
       }
     }
     useEffect(()=>{
-      const dummpyData = [  {
-        'company_id': 1,
-        'company_name': '회사 이름 1',
-        'description': '회사 소개',
-        'type': '회사 유형',
-        'category': '회사 업종',
-        'is_certificated': true,
-        },
-        {
-          'company_id': 2,
-          'company_name': '회사 이름 2',
-          'description': '회사 소개',
-          'type': '회사 유형',
-          'category': '회사 업종',
-          'is_certificated': false,
-        },
-        {
-          'company_id': 3,
-          'company_name': '회사 이름 3',
-          'description': '회사 소개',
-          'type': '회사 유형',
-          'category': '회사 업종',
-          'is_certificated': false,
-        },
-        {
-          'company_id': 4,
-          'company_name': '회사 이름 4',
-          'description': '회사 소개',
-          'type': '회사 유형',
-          'category': '회사 업종',
-          'is_certificated': false,
-        },
-        {
-          'company_id': 5,
-          'company_name': '회사 이름 5',
-          'description': '회사 소개',
-          'type': '회사 유형',
-          'category': '회사 업종',
-          'is_certificated': true,
-        },
-        {
-          'company_id': 6,
-          'company_name': '회사 이름 6',
-          'description': '회사 소개',
-          'type': '회사 유형',
-          'category': '회사 업종',
-          'is_certificated': false,
-        },
-    ]
-    setSearchResult(()=>dummpyData)
-      searchInputRef.current.value = keyword;
-      searchInputRef.current.focus();
+      const getSearch = async (keyword)=>{
+        const {data, status} = await companyService.getSearch({keyword})
+        const {data : responseData} = data;
+        setSearchResult(()=>responseData)
+        searchInputRef.current.value = keyword;
+        searchInputRef.current.focus();
+      }
+      getSearch(keyword);
     },[keyword])
   return (
     <div>

@@ -125,3 +125,52 @@ export const dummyJobposts = [{
   'end_dt' : '2022-07-03'
 }]
 
+export const dummySearchList =[  {
+  'company_id': 1,
+  'company_name': '회사 이름 1',
+  'description': '회사 소개',
+  'type': '회사 유형',
+  'category': '회사 업종',
+  'is_certificated': true,
+  },
+  {
+    'company_id': 2,
+    'company_name': '회사 이름 2',
+    'description': '회사 소개',
+    'type': '회사 유형',
+    'category': '회사 업종',
+    'is_certificated': false,
+  },
+  {
+    'company_id': 3,
+    'company_name': '회사 이름 3',
+    'description': '회사 소개',
+    'type': '회사 유형',
+    'category': '회사 업종',
+    'is_certificated': false,
+  },
+  {
+    'company_id': 4,
+    'company_name': '회사 이름 4',
+    'description': '회사 소개',
+    'type': '회사 유형',
+    'category': '회사 업종',
+    'is_certificated': false,
+  },
+  {
+    'company_id': 5,
+    'company_name': '회사 이름 5',
+    'description': '회사 소개',
+    'type': '회사 유형',
+    'category': '회사 업종',
+    'is_certificated': true,
+  },
+  {
+    'company_id': 6,
+    'company_name': '회사 이름 6',
+    'description': '회사 소개',
+    'type': '회사 유형',
+    'category': '회사 업종',
+    'is_certificated': false,
+  },
+]

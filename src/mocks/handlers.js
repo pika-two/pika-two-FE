@@ -1,6 +1,6 @@
 import {rest} from 'msw'
 import baseURL from '../constants/BASE_URL'
-import { dummyAccountList, dummyIncomeList, dummyJobposts } from '../constants/dummyData'
+import { dummyAccountList, dummyIncomeList, dummyJobposts, dummySearchList } from '../constants/dummyData'
 
 export function handlers(){
 
@@ -11,7 +11,8 @@ export function handlers(){
         rest.get(baseURL+'api/mydata/:user_id/deposit',depositList),
         rest.post(baseURL+'api/mydata/:user_id/memos',memoRegister),
         rest.get(baseURL +'api/mydata/:user_id/annual-salary/:year',annualSalary),
-        rest.get(baseURL+'api/jobpost',jobPosts)
+        rest.get(baseURL+'api/jobpost',jobPosts),
+        rest.get(baseURL + 'api/company',searchResult)
     ]
 } 
 
@@ -137,6 +138,19 @@ const jobPosts = async (req, res, ctx) =>{
     )
 }
 
+const searchResult = async (req,res,ctx) => {
+    await timeout(2000);
+    const keyword = req.url.searchParams.get('keyword')
+    console.log(keyword)
+    return res(
+        ctx.status(200),
+        ctx.json({
+            status : 200,
+            data : dummySearchList,
+            message : '검색 결과'
+        })
+    )
+}
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
