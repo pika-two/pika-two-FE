@@ -3,13 +3,13 @@ import Bold from "./Bold"
 import CertificatedIcon from "./icon/CertificatedIcon"
 import styled from "styled-components"
 
-export default function CompanyListItem({image,company,right}) {
+export default function CompanyListItem({image,company,right,onClick}) {
   return (
-    <ImageCard image={image} content={<CompnyInfo company={company}/>} right={right}/>
+    <ImageCard image={image} content={<CompnyInfo onClick={onClick} company={company}/>} right={right}/>
   )
 }
 
-const CompnyInfo = function({company}){
+const CompnyInfo = function({company,onClick}){
     return (
         <div
         style={{
@@ -18,7 +18,9 @@ const CompnyInfo = function({company}){
             justifyContent : "center",
             backgroundColor : "#F6F6F6",
             margin : "0 0 5px 10px",
-        }}>
+        }}
+        onClick={onClick}
+        >
             <Bold style={{
               display : 'grid',
               'gridTemplateColumns' : 'auto 45px'
