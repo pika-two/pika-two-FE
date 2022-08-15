@@ -16,7 +16,8 @@ export function handlers(){
         rest.get(baseURL+'api/user/:user_id/applied-list',getApplyList),
         rest.delete(baseURL + 'api/user/:user_id/applied-list',deleteApplyList),
         rest.get(baseURL+'api/user/:user_id/favor',getBookmarkList),
-        rest.delete(baseURL +'api/user/:user_id/favor',deleteBookmarkList)
+        rest.delete(baseURL +'api/user/:user_id/favor',deleteBookmarkList),
+        rest.post(baseURL + 'api/:company_id/comment',postComment),
     ]
 } 
 
@@ -208,6 +209,16 @@ const deleteBookmarkList = async (req,res,ctx)=> {
             })
         )
     }
+}
+
+const postComment = async (req, res, ctx) => {
+    await timeout(2000);
+    const {user_id, content} = req.body
+    const company_id = req.params.company_id
+    return res(ctx.status(200),
+    ctx.json({
+        code : 200
+    }))
 }
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
