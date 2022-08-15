@@ -10,7 +10,7 @@ export default function ApplyCompanyListPage() {
   const [applyCompanys,setApplyCompanys] = useState([]);
 
   const handleDeleteApplyCompany = async function(event,apply_id){
-      // TODO High : Delete 요청 후 성공하면 삭제
+      // TODO USER_ID
       if(confirm('정말 삭제하시겠습니까?')){
         const {status, data} = await userService.deleteApplyList(1,apply_id);
         if( status === 200){
@@ -20,7 +20,7 @@ export default function ApplyCompanyListPage() {
   }
   useEffect(()=>{
     const getApplyList = async function(){
-      //TODO userId에 대해 할 필요 있다.
+      //TODO USER_ID
       const {data,status } = await userService.getApplyList(1);
       const { data : responseData} = data;
       setApplyCompanys(()=>responseData);
@@ -30,7 +30,6 @@ export default function ApplyCompanyListPage() {
   return (
     <div>
               <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="지원 현황 보기"></BothHeader>
-              {/* //TODO middle : mounted 전에 해당 정보들에 대해 가져오기 */}
               <div style = {{ margin: "3vh 5vw"
                 }}>
                 <ApplyCompanyList applyCompanys={applyCompanys}  handleDeleteApplyCompany={handleDeleteApplyCompany}/>

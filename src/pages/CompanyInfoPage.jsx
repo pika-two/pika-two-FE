@@ -4,7 +4,6 @@ import BackIcon from '../components/ui/icon/BackIcon'
 import MyPageIcon from '../components/ui/icon/MyPageIcon'
 import Top02 from "../components/ui/Top/Top02";
 import CompanyListItem from "../components/ui/CompanyListItem";
-import ImageCard from "../components/ui/ImageCard";
 import ReviewList from "../components/Composition/ReviewList";
 import Blank from "../components/ui/Blank";
 

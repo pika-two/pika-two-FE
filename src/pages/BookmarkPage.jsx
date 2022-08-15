@@ -10,7 +10,7 @@ export default function BookmarkPage() {
     const [bookmarks, setBookmarks] = useState([]);
     const handleDelete = async function(event,fav_company_id){
         if(confirm('정말 지우시겠습니까?')){
-          // TODO : userId ...
+          // TODO : USER_ID
           const {data, status} = await userService.deleteBookmarkList(1,fav_company_id);
           if(status === 200){
             setBookmarks(prev=>prev.filter(item=>item.fav_company_id !== fav_company_id));
@@ -19,7 +19,7 @@ export default function BookmarkPage() {
     }
     useEffect(()=>{
       const getBookMark = async function(){
-        // TODO userId 넣기
+        // TODO USER_ID
         const {data, status} = await userService.getBookmarkList(1);
         const {data : responseData} = data;
         setBookmarks(()=>responseData);

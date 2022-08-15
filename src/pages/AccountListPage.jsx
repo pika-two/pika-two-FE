@@ -6,7 +6,6 @@ import { useInternalRouter } from "./routing";
 import Message from "../components/ui/message";
 import accountService from '../apis/account'
 export default function AccountListPage() {
-    //TODO : low 통신 이후 삭제해야할 리스트
   const {push} = useInternalRouter();
   const [accountList, setAccountList] = useState([]);
   const [selectedAccountID, setSelectedAccount] = useState(-1);
@@ -18,6 +17,7 @@ export default function AccountListPage() {
         }
   }
   useEffect(()=>{
+    // TODO : USER_ID
     const getAccount = async (user_id = 1)=>{
         const {data, status} = await accountService.get(user_id) 
         const {data : responseData} = data
@@ -27,6 +27,7 @@ export default function AccountListPage() {
   },[])
 
   const submitAccount = async (event,user_id = 1)=>{
+    // TODO : USER_ID
     const accountName = accountList[selectedAccountID].account
     const {data,status} = await accountService.post(user_id,{
         'account' : accountName
