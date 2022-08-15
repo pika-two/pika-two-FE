@@ -1,6 +1,6 @@
 import {rest} from 'msw'
 import baseURL from '../constants/BASE_URL'
-import { dummyAccountList, dummyIncomeList, dummyJobposts, dummySearchList } from '../constants/dummyData'
+import { dummyAccountList, dummyIncomeList, dummyJobposts, dummySearchList, dummyApplyCompanyList } from '../constants/dummyData'
 
 export function handlers(){
 
@@ -12,7 +12,9 @@ export function handlers(){
         rest.post(baseURL+'api/mydata/:user_id/memos',memoRegister),
         rest.get(baseURL +'api/mydata/:user_id/annual-salary/:year',annualSalary),
         rest.get(baseURL+'api/jobpost',jobPosts),
-        rest.get(baseURL + 'api/company',searchResult)
+        rest.get(baseURL + 'api/company',searchResult),
+        rest.get(baseURL+'api/user/:user_id/applied-list',getApplyList),
+        rest.delete(baseURL + 'api/user/:user_id/applied-list',deleteApplyList)
     ]
 } 
 
@@ -58,7 +60,6 @@ const accountList = async (req,res,ctx)=>{
 
 const accountRegister = async (req,res,ctx) =>{
     const data = req.body
-    console.log('accountRegister',data);
     if('account' in data){
         return res(
             ctx.status(200),
@@ -150,6 +151,34 @@ const searchResult = async (req,res,ctx) => {
             message : '검색 결과'
         })
     )
+}
+
+const getApplyList = async (req,res,ctx) => {
+    await timeout(2000);
+    const userId = req.params.user_id
+    if(!!userId){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                status : 200,
+                data : dummyApplyCompanyList,
+                messgae : '지원현황'
+            })
+        )
+    }
+}
+
+const deleteApplyList = async (req,res,ctx)=> {
+    await timeout(2000);
+    const {apply_id } = req.body
+    if (!!apply_id){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                code : 200,
+            })
+        )
+    }
 }
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

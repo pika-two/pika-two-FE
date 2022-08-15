@@ -6,7 +6,7 @@ import Blank from "../components/ui/Blank";
 import { useState,useRef } from "react";
 import InputComponent from "../components/Composition/InputComponent"; 
 import RadioLabelAndInput from "../components/Composition/RadioLabelAndInput";
-import registerService from "../apis/register";
+import userService from "../apis/user";
 export default function RegisterPage() {
   const {push} = useInternalRouter();
   // 나이, 성별, 연봉, 입사년도;
@@ -96,7 +96,7 @@ export default function RegisterPage() {
       work_start_at : joinYear
     }
     // TODO responseData에서 useId를 받아서 전역객체에 저장시켜야함
-    const {data : responseData ,status} = await registerService.post(data).catch((e)=>alert('에러가 발생했습니다.'))
+    const {data : responseData ,status} = await userService.post(data).catch((e)=>alert('에러가 발생했습니다.'))
     push('/accountList')
   }
 

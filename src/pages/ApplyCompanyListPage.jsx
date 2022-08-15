@@ -3,62 +3,30 @@ import MyPageIcon from '../components/ui/icon/MyPageIcon'
 import BackIcon from "../components/ui/icon/BackIcon";
 import { useInternalRouter } from "./routing"
 import ApplyCompanyList from '../components/Composition/ApplyCompanyList'
-import { useState } from "react";
-
+import { useState,useEffect } from "react";
+import userService from "../apis/user";
 export default function ApplyCompanyListPage() {
-  const dummyData = [{
-    'apply_id': 1,
-    'post_id': 0,
-     'post_title': '2022년 상반기 공채 1',
-     'start_dt' : '0000-01-01',
-     'end_dt' : '9999-12-31',
-     'type': '공채',
-     'company_id': 0,
-     'company_name': '국민은행',
-     'status': '진행중',
-   },
-   {
-    'apply_id': 2,
-    'post_id': 0,
-     'post_title': '2022년 상반기 공채 2',
-     'start_dt' : '0000-01-01',
-     'end_dt' : '9999-12-31',
-     'type': '공채',
-     'company_id': 0,
-     'company_name': '국민은행',
-     'status': '합격',
-   },
-   {
-    'apply_id': 3,
-    'post_id': 0,
-     'post_title': '2022년 상반기 공채 3',
-     'start_dt' : '0000-01-01',
-     'end_dt' : '9999-12-31',
-     'type': '공채',
-     'company_id': 0,
-     'company_name': '국민은행 3',
-     'status': '불합격',
-   },
-   {
-    'apply_id': 4,
-    'post_id': 0,
-     'post_title': '2022년 상반기 공채 4',
-     'start_dt' : '0000-01-01',
-     'end_dt' : '9999-12-31',
-     'type': '공채',
-     'company_id': 0,
-     'company_name': '국민은행 4',
-     'status': '지원 전',
-   },]
   const {goBack, push} = useInternalRouter();
-  const [applyCompanys,setApplyCompanys] = useState(dummyData);
+  const [applyCompanys,setApplyCompanys] = useState([]);
 
-  const handleDeleteApplyCompany = function(event,apply_id){
+  const handleDeleteApplyCompany = async function(event,apply_id){
       // TODO High : Delete 요청 후 성공하면 삭제
       if(confirm('정말 삭제하시겠습니까?')){
-        setApplyCompanys((prev)=>prev.filter(item=> item.apply_id !== apply_id))
+        const {status, data} = await userService.deleteApplyList(1,apply_id);
+        if( status === 200){
+          setApplyCompanys((prev)=>prev.filter(item=> item.apply_id !== apply_id))
+        }
       }
   }
+  useEffect(()=>{
+    const getApplyList = async function(){
+      //TODO userId에 대해 할 필요 있다.
+      const {data,status } = await userService.getApplyList(1);
+      const { data : responseData} = data;
+      setApplyCompanys(()=>responseData);
+    }
+    getApplyList();
+  },[])
   return (
     <div>
               <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="지원 현황 보기"></BothHeader>
