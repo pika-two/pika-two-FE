@@ -18,6 +18,13 @@ const userService = {
     },
     async getBookmarkList(userId){
         return await customAxios.get(baseURL+ `api/user/${userId}/favor`)
+    },
+    async deleteBookmarkList(userId,fav_company_id){
+        return await customAxios.delete(baseURL + `api/user/${userId}/favor`,{
+            data : {
+                fav_company_id
+            }
+        })
     }
 }
 

@@ -16,6 +16,7 @@ export function handlers(){
         rest.get(baseURL+'api/user/:user_id/applied-list',getApplyList),
         rest.delete(baseURL + 'api/user/:user_id/applied-list',deleteApplyList),
         rest.get(baseURL+'api/user/:user_id/favor',getBookmarkList),
+        rest.delete(baseURL +'api/user/:user_id/favor',deleteBookmarkList)
     ]
 } 
 
@@ -191,6 +192,19 @@ const getBookmarkList = async (req,res,ctx) =>{
             ctx.json({
                 code : 200,
                 data : dummyBookmarkList
+            })
+        )
+    }
+}
+
+const deleteBookmarkList = async (req,res,ctx)=> {
+    await timeout(2000);
+    const {fav_company_id } = req.body
+    if (!!fav_company_id){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                code : 200,
             })
         )
     }
