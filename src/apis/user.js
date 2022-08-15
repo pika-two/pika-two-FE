@@ -15,6 +15,9 @@ const userService = {
                 apply_id
             }
         })
+    },
+    async getBookmarkList(userId){
+        return await customAxios.get(baseURL+ `api/user/${userId}/favor`)
     }
 }
 

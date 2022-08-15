@@ -220,3 +220,34 @@ export const dummyApplyCompanyList = [{
    'company_name': '국민은행 4',
    'status': '지원 전',
  },]
+
+
+ export const dummyBookmarkList =  [ {
+  'fav_company_id': 1,
+   'company_name': '회사명1',
+   'company_id': 1,
+ },
+ {
+  'fav_company_id': 2,
+   'company_name': '회사명2',
+   'company_id': 2,
+ },
+ {
+  'fav_company_id': 3,
+   'company_name': '회사명3',
+   'company_id': 3,
+ },
+ {
+  'fav_company_id': 4,
+   'company_name': '회사명4',
+   'company_id': 4,
+ },{
+  'fav_company_id': 5,
+   'company_name': '회사명5',
+   'company_id': 5,
+ },
+ {
+  'fav_company_id': 6,
+   'company_name': '회사명6',
+   'company_id': 6,
+ },]

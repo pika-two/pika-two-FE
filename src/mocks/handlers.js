@@ -1,6 +1,6 @@
 import {rest} from 'msw'
 import baseURL from '../constants/BASE_URL'
-import { dummyAccountList, dummyIncomeList, dummyJobposts, dummySearchList, dummyApplyCompanyList } from '../constants/dummyData'
+import { dummyAccountList, dummyIncomeList, dummyJobposts, dummySearchList, dummyApplyCompanyList, dummyBookmarkList } from '../constants/dummyData'
 
 export function handlers(){
 
@@ -14,7 +14,8 @@ export function handlers(){
         rest.get(baseURL+'api/jobpost',jobPosts),
         rest.get(baseURL + 'api/company',searchResult),
         rest.get(baseURL+'api/user/:user_id/applied-list',getApplyList),
-        rest.delete(baseURL + 'api/user/:user_id/applied-list',deleteApplyList)
+        rest.delete(baseURL + 'api/user/:user_id/applied-list',deleteApplyList),
+        rest.get(baseURL+'api/user/:user_id/favor',getBookmarkList),
     ]
 } 
 
@@ -176,6 +177,20 @@ const deleteApplyList = async (req,res,ctx)=> {
             ctx.status(200),
             ctx.json({
                 code : 200,
+            })
+        )
+    }
+}
+
+const getBookmarkList = async (req,res,ctx) =>{
+    await timeout(2000);
+    const user_id = req.params.user_id;
+    if(!!user_id){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                code : 200,
+                data : dummyBookmarkList
             })
         )
     }
