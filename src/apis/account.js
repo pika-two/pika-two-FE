@@ -1,9 +1,10 @@
 import baseURL from "../constants/BASE_URL";
 import customAxios from "./customAxios";
-
+import timeout from "../utils/timeout";
 
 const accountService = {
     async get(user_id){
+        await timeout(1000)
         const {data, status} = await customAxios.get(baseURL+`api/mydata/${user_id}/account`)
         return data.data
     },
