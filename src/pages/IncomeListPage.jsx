@@ -9,23 +9,15 @@ import Message from '../components/ui/message';
 import incomeService from '../apis/income';
 import { useRecoilValue } from 'recoil';
 import { userInfoStore } from '../shared/store';
+import useIncome from '../hooks/useIncome';
 export default function IncomeListPage () {
    const {goBack,push} = useInternalRouter();
    const userInfo = useRecoilValue(userInfoStore);
-   const [incomes, setIncomes]  = useState([]);
    const [selectedIncomeNameList, setSelectedIncomeNameLIst] = useState([]);
    const handleChange = function(event,name){
         setSelectedIncomeNameLIst(prev => prev.indexOf(name) === -1?[...prev,name]:[...prev].filter(item=>item !== name))
    }
-   useEffect(()=>{
-    const getIncome = async (user_id = 1)=>{
-      const {data,status}  = await incomeService.get(user_id);
-      const {data : responseData} = data;
-      setIncomes(()=>responseData)
-    }
-    getIncome(userInfo.user_id);
-   },[])
-
+   const {incomeData : incomes,isLoading,isError} = useIncome(userInfo.user_id);
    const handleSubmit = async (event)=>{
       const submitData = {
         memos : selectedIncomeNameList
@@ -47,7 +39,7 @@ export default function IncomeListPage () {
           <div style={{
             margin : "30px 0"
           }}>
-            <IncomeList selectedIncomeNameList={selectedIncomeNameList} handleClickevent={handleChange} incomes ={incomes}></IncomeList>
+            {isLoading?<div>로딩중</div>:<IncomeList selectedIncomeNameList={selectedIncomeNameList} handleClickevent={handleChange} incomes ={incomes}></IncomeList>}
           </div>
         </div>
         <FixedBottomButton style={{
