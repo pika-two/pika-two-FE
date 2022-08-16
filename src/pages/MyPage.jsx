@@ -8,14 +8,16 @@ import { useInternalRouter } from './routing'
 import starfriends from '../assets/starfriends.png'
 import { useState,useEffect } from 'react'
 import userService from '../apis/user'
+import { useRecoilValue } from 'recoil'
+import {userInfoStore} from '../shared/store'
 export default function MyPage() {
   const {push} = useInternalRouter();
-  const [mySalary, setMySalary] = useState(0)
-  const [userName , setUserName] = useState('')
+  const [mySalary, setMySalary] = useState(0);
+  const [userName , setUserName] = useState('');
+  const userInfo = useRecoilValue(userInfoStore);
   useEffect(()=>{
     const getMyUserInfo = async function(){
-      // TODO USERID
-      const {data, status} = await userService.getMyUserInfo(1);
+      const {data, status} = await userService.getMyUserInfo(userInfo.user_id);
       const {data: response_data} = data
       const {nickname, prev_wage} = response_data;
       setMySalary(()=>parseInt(prev_wage/10000))
