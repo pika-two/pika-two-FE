@@ -4,7 +4,7 @@ import customAxios from "./customAxios";
 
 const companyService = {
     async getPost(){
-        return await customAxios.get(baseURL+'api/jobpost')
+        return await customAxios.get(baseURL+'api/mainpage')
     },
     async getSearch({keyword,type}){
         return await customAxios.get(baseURL+'api/company',{
