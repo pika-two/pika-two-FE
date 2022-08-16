@@ -97,8 +97,7 @@ export default function RegisterPage() {
       email,
       work_start_dt : joinYear
     }
-    const {data : responseData ,status} = await userService.post(data).catch((e)=>alert('에러가 발생했습니다.'))
-    const {data : getUserInfo} = responseData
+    const getUserInfo = await userService.post(data).catch((e)=>alert('에러가 발생했습니다.'))
     setUserInfo(getUserInfo)
     push('/accountList')
   }
