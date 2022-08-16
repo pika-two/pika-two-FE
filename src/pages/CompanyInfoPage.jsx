@@ -54,8 +54,6 @@ export default function CompanyInfoPage() {
         <Top02>{company_name}</Top02>
         <Top02>공고</Top02>
         <p style={{border : '1px solid'}}></p>
-
-        {/* //TODO middle : 공고에 지원하기*/}
         <div style = {{ margin: "3vh 5vw"
                 }}>
         
@@ -69,7 +67,6 @@ export default function CompanyInfoPage() {
         height : '80vw',
         margin : '0 auto 30px auto',
         backgroundColor : '#FFC'}}>챠트 들어갈 곳</div>
-        {/* //TODO low : axios로 해당 기업리뷰 가져오기 */}
         <Top02> 리뷰 </Top02>
         <ReviewList companyReviews={companyReviews}/>
     </div>
