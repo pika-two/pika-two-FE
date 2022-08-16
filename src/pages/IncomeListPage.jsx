@@ -37,7 +37,7 @@ export default function IncomeListPage () {
           margin : "40px 30px"
         }}>
           <Message>
-            최근 3개월간 입금내역 중<br/>
+            최근 6개월간 입금내역 중<br/>
             급여로 추정되는 내역입니다.<br/>
             급여에 해당되는 내역을 선택해주세요.
           </Message>

@@ -32,7 +32,8 @@ export default function SearchPage() {
       const getSearch = async (keyword,type)=>{
         const {data, status} = await companyService.getSearch({keyword,type})
         const {data : responseData} = data;
-        setSearchResult(()=>responseData)
+        const {company_list} = responseData
+        setSearchResult(()=>company_list)
         searchInputRef.current.value = keyword;
         searchInputRef.current.focus();
       }

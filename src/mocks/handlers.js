@@ -151,7 +151,9 @@ const searchResult = async (req,res,ctx) => {
         ctx.status(200),
         ctx.json({
             status : 200,
-            data : dummySearchList,
+            data : {
+                company_list : dummySearchList
+            },
             message : '검색 결과'
         })
     )
