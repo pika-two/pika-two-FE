@@ -1,12 +1,12 @@
 import Button from './Button'
 import Bold from './Bold'
 import datetimeConvert from '../../utils/datetimeConvert'
-export default function CompanyJobPostListItem({companyJobPost,isApplyed}) {
+export default function CompanyJobPostListItem({companyJobPost,isApplyed,onClick}) {
   return (
     <div style={{
         display : 'grid',
         'gridTemplateColumns' : 'auto 60px'
-    }}><CompanyJob companyJobPost={companyJobPost}/><Button background={isApplyed?'lightgray':'#FC0'} disabled={isApplyed} >지원하기</Button></div>
+    }}><CompanyJob companyJobPost={companyJobPost}/><Button onClick={(e)=>onClick(e,companyJobPost.post_id)} background={isApplyed?'lightgray':'#FC0'} disabled={isApplyed} >지원하기</Button></div>
   )
 }
 
