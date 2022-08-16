@@ -25,6 +25,9 @@ const userService = {
                 fav_company_id
             }
         })
+    },
+    async getMyUserInfo(userId){
+        return await customAxios.get(baseURL + `api/user/mypage/${userId}`)
     }
 }
 

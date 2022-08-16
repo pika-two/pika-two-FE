@@ -19,14 +19,15 @@ export function handlers(){
         rest.delete(baseURL +'api/user/:user_id/favor',deleteBookmarkList),
         rest.post(baseURL + 'api/:company_id/comment',postComment),
         rest.get(baseURL +'api/company/:company_id',getCompanyInfo ),
-        rest.get(baseURL + 'api/:company_id/comment',getReviews)
+        rest.get(baseURL + 'api/:company_id/comment',getReviews),
+        rest.get(baseURL + 'api/user/mypage/:user_id',getMyUserInfo)
     ]
 } 
 
 const singup = async (req,res,ctx)=>{
     await timeout(2000);
     const data = req.body
-    const keysArray = ['birth_yr', 'company_name', 'gender', 'email', 'work_start_at']
+    const keysArray = ['birth_yr', 'company_name', 'gender', 'email', 'work_start_dt']
     const dataKeys = Object.keys(data);
     const isKeyhave = keysArray.filter(key => dataKeys.indexOf(key) !== -1);
     if (isKeyhave.length !== keysArray.length){
@@ -247,6 +248,26 @@ const getReviews = async (req, res, ctx) => {
             ctx.json({
                 code : 200,
                 data : dummyReviewList
+            })
+        )
+    }
+}
+
+const getMyUserInfo = async (req, res, ctx) => {
+    const user_id = req.params.user_id
+    if(!!user_id){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                code : 200,
+                data : {
+                    'id': 0,
+                    'ninkname' : '춤추는 사자',
+                    'company_name' : '현직장',
+                    'work_start_dt' : YYYY,
+                    'cur_wage': 100,
+                    'prev_wage': 100,
+                }
             })
         )
     }
