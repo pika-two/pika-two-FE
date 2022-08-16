@@ -9,7 +9,7 @@ export default function CompanyList({companys}) {
       gridTemplateColumns : 'auto',
       gap : '1em'
     }}>
-        {companys.map(company=> <CompanyListItem key={company.company_id} onClick={()=>push(`/company/${company.company_id}`)} company={company}/>)}
+        {companys?.map(company=> <CompanyListItem key={company.company_id} onClick={()=>push(`/company/${company.company_id}`)} company={company}/>)}
     </div>
   )
 }

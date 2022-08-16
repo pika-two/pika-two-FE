@@ -27,7 +27,7 @@ function App() {
       <Route path="/accountList/:accountId" element={<IncomeListPage/>}></Route>
       <Route path="/incomeConnect"  element={<IncomeConnectPage/>} ></Route>
       <Route path="/mainPage" element={<MainPage/>}></Route>
-      <Route path="/search/:keyword" element = {<SearchPage/>}></Route>
+      <Route path="/search" element = {<SearchPage/>}></Route>
       <Route path="/company/:id" element={<CompanyInfoPage/>}></Route>
       <Route path="/myPage" element={<MyPage/>}></Route>
       <Route path="/reviewPage" element={<ReviewPage/>}></Route>

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import BothHeader from "../components/Composition/BothHeader"
 import { useInternalRouter } from "./routing"
 import BackIcon from '../components/ui/icon/BackIcon'
@@ -8,15 +8,19 @@ import InputComponent from "../components/Composition/InputComponent"
 import SearchIcon from "../components/ui/icon/SearchIcon"
 import Blank from "../components/ui/Blank"
 import {useRef, useEffect, useState} from 'react' 
+import companyService from "../apis/company"
 export default function SearchPage() {
-    let { keyword } = useParams()
+  //TODO high : type으로 검색해야하니 주소를 바꿔야한다., 무한 스크롤은 다음날 물어보자.
+    let [searchParams, setSearchParams]= useSearchParams()
+    let keyword = searchParams.get('keyword')??'';
+    let type = searchParams.get('type')??'';
     let {goBack,push} = useInternalRouter();
     const searchInputRef = useRef(null);
     const [searchResult, setSearchResult] = useState([]);
     const searchEvent = function(){
       const value = searchInputRef.current.value
       if(value.trim().length){
-        push(`/search/${value}`)
+        push(`/search?keyword=${value}`)
       }
     }
     const onKeyPress = function(event){
@@ -25,59 +29,15 @@ export default function SearchPage() {
       }
     }
     useEffect(()=>{
-      const dummpyData = [  {
-        'company_id': 1,
-        'company_name': '회사 이름 1',
-        'description': '회사 소개',
-        'type': '회사 유형',
-        'category': '회사 업종',
-        'is_certificated': true,
-        },
-        {
-          'company_id': 2,
-          'company_name': '회사 이름 2',
-          'description': '회사 소개',
-          'type': '회사 유형',
-          'category': '회사 업종',
-          'is_certificated': false,
-        },
-        {
-          'company_id': 3,
-          'company_name': '회사 이름 3',
-          'description': '회사 소개',
-          'type': '회사 유형',
-          'category': '회사 업종',
-          'is_certificated': false,
-        },
-        {
-          'company_id': 4,
-          'company_name': '회사 이름 4',
-          'description': '회사 소개',
-          'type': '회사 유형',
-          'category': '회사 업종',
-          'is_certificated': false,
-        },
-        {
-          'company_id': 5,
-          'company_name': '회사 이름 5',
-          'description': '회사 소개',
-          'type': '회사 유형',
-          'category': '회사 업종',
-          'is_certificated': true,
-        },
-        {
-          'company_id': 6,
-          'company_name': '회사 이름 6',
-          'description': '회사 소개',
-          'type': '회사 유형',
-          'category': '회사 업종',
-          'is_certificated': false,
-        },
-    ]
-    setSearchResult(()=>dummpyData)
-      searchInputRef.current.value = keyword;
-      searchInputRef.current.focus();
-    },[keyword])
+      const getSearch = async (keyword,type)=>{
+        const {data, status} = await companyService.getSearch({keyword,type})
+        const {data : responseData} = data;
+        setSearchResult(()=>responseData)
+        searchInputRef.current.value = keyword;
+        searchInputRef.current.focus();
+      }
+      getSearch(keyword,type);
+    },[keyword,type])
   return (
     <div>
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="기업리스트"></BothHeader>

@@ -5,29 +5,25 @@ import Message from '../ui/message'
 import Boldtext from '../ui/Boldtext'
 import Bold from '../ui/Bold'
 
-export default function ReviewList() {
+export default function ReviewList({companyReviews}) {
   return (
     <Stack>
-        <Review/>
-        <Review/>
-        <Review/>
-        <Review/>
-        <Review/>
+        {companyReviews?.map((companyReview)=> <Review key={companyReview.comment_id} companyReview={companyReview}/>)}
     </Stack>
   )
 }
 
 
-const Review = function(){
+const Review = function({companyReview}){
     return (
         <div style={{
             border : '2px solid',
         }}>
             <Bold>
-                작성자
+                {companyReview.nickname}
             </Bold>
             <Message>
-                내용
+                {companyReview.content}
             </Message>
         </div>
     )

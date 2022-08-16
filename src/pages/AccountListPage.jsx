@@ -1,52 +1,39 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import GeneralHeader from "../components/Composition/GeneralHeader";
 import FixedBottomButton from "../components/ui/FixedBottomButton";
 import AccountsList from "../components/Composition/AccountsList";
 import { useInternalRouter } from "./routing";
 import Message from "../components/ui/message";
-
+import accountService from '../apis/account'
 export default function AccountListPage() {
-    //TODO : low 통신 이후 삭제해야할 리스트
-    const dummyData = [{
-        'account_id' : 1,
-        'bank_name' : '국민은행1',
-        'account': 'KB국민ONE통장',
-        'balance' : 1000000,
-      },
-      {
-        'account_id' : 2,
-        'bank_name' : '국민은행2',
-        'account': 'KB국민ONE통장',
-        'balance' : 2000000,
-      },
-      {
-        'account_id' : 3,
-        'bank_name' : '국민은행3',
-        'account': 'KB국민ONE통장',
-        'balance' : 3000000,
-      },
-      {
-        'account_id' : 4,
-        'bank_name' : '국민은행4',
-        'account': 'KB국민ONE통장',
-        'balance' : 4000000,
-      },
-      {
-        'account_id' : 5,
-        'bank_name' : '국민은행5',
-        'account': 'KB국민ONE통장',
-        'balance' : 5000000,
-      },
-    ]
   const {push} = useInternalRouter();
-  const [accountList, setAccountList] = useState(dummyData);
+  const [accountList, setAccountList] = useState([]);
   const [selectedAccountID, setSelectedAccount] = useState(-1);
-  const handleChange = function(event, id){
-        if(id == selectedAccountID){
+  const handleChange = function(event, index){
+        if(index == selectedAccountID){
             setSelectedAccount(-1);
         } else {
-            setSelectedAccount(id);
+            setSelectedAccount(index);
         }
+  }
+  useEffect(()=>{
+    // TODO : USER_ID
+    const getAccount = async (user_id = 1)=>{
+        const {data, status} = await accountService.get(user_id) 
+        const {data : responseData} = data
+        setAccountList(()=>responseData);
+    }
+    getAccount();
+  },[])
+
+  const submitAccount = async (event,user_id = 1)=>{
+    // TODO : USER_ID
+    const accountName = accountList[selectedAccountID].account
+    const {data,status} = await accountService.post(user_id,{
+        'account' : accountName
+    }).catch((e)=>alert('에러러'))
+    push(`/accountList/${selectedAccountID}`)
+    
   }
   return (
     <div>
@@ -59,13 +46,13 @@ export default function AccountListPage() {
         </div>
 
         <div>
-            {/* //TODO Middle : account 목록을 불러오는 요청 후 렌더링 되게 해야한다. */}
+            {/* //TODO Loading 필요하다. */}
             <AccountsList selected={selectedAccountID}  handleClickevent={handleChange} accounts={accountList}></AccountsList>
         </div>
         
         <FixedBottomButton style={{
             display : selectedAccountID === -1 ? 'none' : 'block'
-        }} onClick = {()=>{push(`/accountList/${selectedAccountID}`)}} background="#FFCC00" color="white">선택</FixedBottomButton>
+        }} onClick = {submitAccount} background="#FFCC00" color="white">선택</FixedBottomButton>
     </div>
   )
 }

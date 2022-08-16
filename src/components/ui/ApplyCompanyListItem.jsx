@@ -1,6 +1,6 @@
 import ImageCardBoth from "./ImageCardBoth"
 import Bold from "./Bold"
-
+import datetimeConvert from "../../utils/datetimeConvert"
 export default function ApplyCompanyListItem({applyCompanpy,image,right,onClick}) {
   return (
     <ImageCardBoth image={image} content={<CompnyInfo onClick={onClick} applyCompanpy={applyCompanpy}/>} right={right}/>
@@ -21,7 +21,7 @@ const CompnyInfo = function({applyCompanpy,onClick}){
         >
             <Bold>{applyCompanpy.company_name}  </Bold>
             <div style = {{fontFamily : "two", textAlign : "center", margin: " 0, vh"}}>{applyCompanpy.post_title}{applyCompanpy.status}<br></br>
-            {applyCompanpy.start_dt}- {applyCompanpy.end_dt}</div>
+            {datetimeConvert(applyCompanpy.start_dt)}- {datetimeConvert(applyCompanpy.end_dt)}</div>
         </div>
     )
 }
