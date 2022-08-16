@@ -13,7 +13,9 @@ const companyService = {
                 type : type?type:''
             }
         })
-
+    },
+    async getInfo(company_id){
+        return await customAxios.get(baseURL +`/api/company/${company_id}`)
     }
 }
 

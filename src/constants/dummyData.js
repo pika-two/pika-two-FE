@@ -251,3 +251,48 @@ export const dummyApplyCompanyList = [{
    'company_name': '회사명6',
    'company_id': 6,
  },]
+
+
+ export const dummyCompanyInfo = {
+  "company_name" : "회사이름",
+  "job_posts": [
+    {
+      'post_id': 0,
+      'post_title': '2022년 상반기 공채',
+      'type': '공채',
+      'company_name': '국민은행',
+    },
+    {
+      'post_id': 0,
+      'post_title': '공채이름',
+      'start_dt' : 0000-01-01,
+      'end_dt' : '9999-12-31',
+      'type': '수시',
+      'company_id': 0,
+      'company_name': '국민은행',
+    },
+  ],
+  'wages': [
+    {
+      'profession': '직무',
+      'average_wage': 1,
+      'min_wage': 0,
+      'max_wage': 2,
+      'year': 1
+    },
+    {
+      'profession': '직무',
+      'average_wage': 1,
+      'min_wage': 3,
+      'max_wage': 4,
+      'year': 2
+    },
+    {
+      'profession': '직무',
+      'average_wage': 1,
+      'min_wage': 5,
+      'max_wage': 6,
+      'year': 3
+    },
+  ]
+}

@@ -1,6 +1,6 @@
 import {rest} from 'msw'
 import baseURL from '../constants/BASE_URL'
-import { dummyAccountList, dummyIncomeList, dummyJobposts, dummySearchList, dummyApplyCompanyList, dummyBookmarkList } from '../constants/dummyData'
+import { dummyAccountList, dummyIncomeList, dummyJobposts, dummySearchList, dummyApplyCompanyList, dummyBookmarkList, dummyCompanyInfo } from '../constants/dummyData'
 
 export function handlers(){
 
@@ -18,6 +18,7 @@ export function handlers(){
         rest.get(baseURL+'api/user/:user_id/favor',getBookmarkList),
         rest.delete(baseURL +'api/user/:user_id/favor',deleteBookmarkList),
         rest.post(baseURL + 'api/:company_id/comment',postComment),
+        rest.get(baseURL +'api/company/:company_id',getCompanyInfo )
     ]
 } 
 
@@ -220,6 +221,21 @@ const postComment = async (req, res, ctx) => {
         code : 200
     }))
 }
+
+const getCompanyInfo = async (req, res, ctx)=>{
+    await timeout(2000);
+    const company_id = req.params.company_id
+    if(!!company_id){
+        return res(
+            ctx.status(200),
+            ctx.json({
+                code : 200,
+                data : dummyCompanyInfo
+            })
+        )
+    }
+}
+
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
