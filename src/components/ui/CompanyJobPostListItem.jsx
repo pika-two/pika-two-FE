@@ -11,6 +11,12 @@ export default function CompanyJobPostListItem({companyJobPost,isApplyed}) {
 
 
 const CompanyJob = function({companyJobPost}){
+    const convert = (str)=>{
+        let date = new Date(str)
+        let mnth = ("0" + (date.getMonth() + 1)).slice(-2)
+        let day = ("0" + date.getDate()).slice(-2)
+        return [date.getFullYear(), mnth, day].join("-")
+      }
     return (
         <div
         style={{
@@ -22,7 +28,7 @@ const CompanyJob = function({companyJobPost}){
         }}
         >
             <Bold>{companyJobPost.post_title}  </Bold>
-            <div style = {{fontFamily : "two", textAlign : "center", margin: " 0, vh"}}><Bold>{companyJobPost.type}</Bold> {companyJobPost.start_dt}- {companyJobPost.end_dt}</div>
+            <div style = {{fontFamily : "two", textAlign : "center", margin: " 0, vh"}}><Bold>{companyJobPost.type}</Bold> {convert(companyJobPost.start_dt)}- {convert(companyJobPost.end_dt)}</div>
         </div>
     )
 }
