@@ -2,8 +2,10 @@ import baseURL from "../constants/BASE_URL";
 import customAxios from "./customAxios";
 
 const userService = {
-    async post(data){
-        return await customAxios.post(baseURL+'api/user/signup',data)
+    async post(payload){
+        const {data, status} = await customAxios.post(baseURL+'api/user/signup',payload);
+        const {data : getUserInfo} = data;
+        return getUserInfo
     },
 
     async getApplyList(userId){
