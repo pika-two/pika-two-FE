@@ -1,7 +1,7 @@
 import {rest} from 'msw'
 import baseURL from '../constants/BASE_URL'
 import { dummyAccountList, dummyIncomeList, dummyJobposts, dummySearchList, dummyApplyCompanyList, dummyBookmarkList, dummyCompanyInfo, dummyReviewList } from '../constants/dummyData'
-
+import timeout from '../utils/timeout'
 export function handlers(){
 
     return [
@@ -272,7 +272,3 @@ const getMyUserInfo = async (req, res, ctx) => {
         )
     }
 }
-
-function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
