@@ -5,10 +5,14 @@ import AccountsList from "../components/Composition/AccountsList";
 import { useInternalRouter } from "./routing";
 import Message from "../components/ui/message";
 import accountService from '../apis/account'
+import { useRecoilValue } from "recoil";
+import { userInfoStore } from "../shared/store";
 export default function AccountListPage() {
   const {push} = useInternalRouter();
   const [accountList, setAccountList] = useState([]);
   const [selectedAccountID, setSelectedAccount] = useState(-1);
+  const userInfo = useRecoilValue(userInfoStore);
+  console.log(userInfo);
   const handleChange = function(event, index){
         if(index == selectedAccountID){
             setSelectedAccount(-1);
@@ -17,19 +21,17 @@ export default function AccountListPage() {
         }
   }
   useEffect(()=>{
-    // TODO : USER_ID
-    const getAccount = async (user_id = 1)=>{
+    const getAccount = async (user_id)=>{
         const {data, status} = await accountService.get(user_id) 
         const {data : responseData} = data
         setAccountList(()=>responseData);
     }
-    getAccount();
+    getAccount(userInfo.user_id);
   },[])
 
-  const submitAccount = async (event,user_id = 1)=>{
-    // TODO : USER_ID
+  const submitAccount = async (event)=>{
     const accountName = accountList[selectedAccountID].account
-    const {data,status} = await accountService.post(user_id,{
+    const {data,status} = await accountService.post(userInfo.user_id,{
         'account' : accountName
     }).catch((e)=>alert('에러러'))
     push(`/accountList/${selectedAccountID}`)
