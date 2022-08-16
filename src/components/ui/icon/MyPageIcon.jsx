@@ -6,7 +6,7 @@ export default function BackIcon({onClick}) {
       marginRight: "20px"
     }}>
         <img  style={{
-            marginTop : "14px", 
+            marginTop : "9px", 
         }} width= "32px" height="32px" src={UserImage} alt="" />
     </div>
   )

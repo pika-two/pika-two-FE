@@ -5,7 +5,9 @@ export default function CompanyJobPostListItem({companyJobPost,isApplyed}) {
   return (
     <div style={{
         display : 'grid',
-        'gridTemplateColumns' : 'auto 60px'
+        'gridTemplateColumns' : 'auto 130px',
+        alignContent: "center",
+        justifyContent: "space-evenly"
     }}><CompanyJob companyJobPost={companyJobPost}/><Button background={isApplyed?'lightgray':'#FC0'} disabled={isApplyed} >지원하기</Button></div>
   )
 }
@@ -20,6 +22,7 @@ const CompanyJob = function({companyJobPost}){
             justifyContent : "center",
             backgroundColor : "#F6F6F6",
             margin : "0 0 5px 10px",
+            width: "100%"
         }}
         >
             <Bold>{companyJobPost.post_title}  </Bold>
