@@ -9,10 +9,16 @@ const userService = {
     async getApplyList(userId){
         return await customAxios.get(baseURL+`api/user/${userId}/applied-posts`)
     },
+    async postApply(userId,data){
+        return await customAxios.post(baseURL + `api/user/${userId}/applied-posts`,data)
+    },
     async deleteApplyList(userId,apply_id){
+        const payload = {apply_id : apply_id}
         return await customAxios.delete(baseURL + `api/user/${userId}/applied-posts`,{
-            data : {
-                apply_id
+            data : payload
+        },{
+            headers : {
+                'Content-Type': 'application/json; charset=utf-8'
             }
         })
     },
