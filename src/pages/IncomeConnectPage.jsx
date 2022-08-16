@@ -6,9 +6,12 @@ import { useInternalRouter } from "./routing";
 import Message from "../components/ui/message"
 import { useEffect, useState } from "react";
 import incomeService from '../apis/income'
+import { useRecoilValue } from "recoil";
+import { userInfoStore } from "../shared/store";
 export default function IncomeConnectPage() {
     const {push} = useInternalRouter();
     const [salary, setSalary] = useState(0);
+    const userInfo = useRecoilValue(userInfoStore);
   // TODO : put salary의 용도에 대해 물어보기
     useEffect(()=>{
       // TODO : USER_ID
@@ -16,7 +19,7 @@ export default function IncomeConnectPage() {
         const {data,status} = await incomeService.getConnect(user_id,year);
         setSalary(()=>parseInt(data.data.annual_salary/10000));
       }
-      currentSalary();
+      currentSalary(userInfo.user_id);
     },[])
   return (
     //TODO low : 이 페이지가 바로 되는 것이 아닌 연동중이라는 표시를 위해 이 페이지 전에 loading 페이지 만들기
