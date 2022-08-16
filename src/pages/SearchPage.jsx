@@ -10,7 +10,6 @@ import Blank from "../components/ui/Blank"
 import {useRef, useEffect, useState} from 'react' 
 import companyService from "../apis/company"
 export default function SearchPage() {
-  //TODO high : type으로 검색해야하니 주소를 바꿔야한다., 무한 스크롤은 다음날 물어보자.
     let [searchParams, setSearchParams]= useSearchParams()
     let keyword = searchParams.get('keyword')??'';
     let type = searchParams.get('type')??'';
