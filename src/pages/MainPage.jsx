@@ -1,5 +1,4 @@
 import RightOnlyHeader from "../components/Composition/RightOnlyHeader"
-import Blank from "../components/ui/Blank";
 import MyPageIcon from '../components/ui/icon/MyPageIcon'
 import BadgeBox from '../components/Composition/BadgeBox'
 import { useInternalRouter } from "./routing";
@@ -28,7 +27,6 @@ export default function MainPage() {
     push(`/search?type=${type}`)
   }
   useEffect(()=>{
-    // TODO HIGH : 공고리스트 조회는 백에 구현 안되어있으니 같이 해야한다.
     const getJobpost = async () => {
       const {data,status} = await companyService.getPost();
       const {data : responseData} = data;
@@ -50,7 +48,6 @@ export default function MainPage() {
       <div style={ {
         margin : "10px 5vw"
         }}>
-        {/* //TODO middle : Badge를 클릭했을시 해당 항목 검색 기능 제공 */}
         <BadgeBox onClick={onClickBadge}/>
         <Top02 color="#000">채용 진행 중인 공고</Top02>
         <JobPostList jobPosts={jobPosts} />

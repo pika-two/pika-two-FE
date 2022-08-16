@@ -12,9 +12,7 @@ export default function IncomeConnectPage() {
     const {push} = useInternalRouter();
     const [salary, setSalary] = useState(0);
     const userInfo = useRecoilValue(userInfoStore);
-  // TODO : put salary의 용도에 대해 물어보기
     useEffect(()=>{
-      // TODO : USER_ID
       const currentSalary = async (user_id = 1, year = 2022)=>{
         const {data,status} = await incomeService.getConnect(user_id,year);
         setSalary(()=>parseInt(data.data.annual_salary/10000));
