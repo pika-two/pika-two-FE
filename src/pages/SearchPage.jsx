@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import BothHeader from "../components/Composition/BothHeader"
 import { useInternalRouter } from "./routing"
 import BackIcon from '../components/ui/icon/BackIcon'
@@ -11,14 +11,16 @@ import {useRef, useEffect, useState} from 'react'
 import companyService from "../apis/company"
 export default function SearchPage() {
   //TODO high : type으로 검색해야하니 주소를 바꿔야한다., 무한 스크롤은 다음날 물어보자.
-    let { keyword } = useParams()
+    let [searchParams, setSearchParams]= useSearchParams()
+    let keyword = searchParams.get('keyword')??'';
+    let type = searchParams.get('type')??'';
     let {goBack,push} = useInternalRouter();
     const searchInputRef = useRef(null);
     const [searchResult, setSearchResult] = useState([]);
     const searchEvent = function(){
       const value = searchInputRef.current.value
       if(value.trim().length){
-        push(`/search/${value}`)
+        push(`/search?keyword=${value}`)
       }
     }
     const onKeyPress = function(event){
@@ -26,16 +28,17 @@ export default function SearchPage() {
         searchEvent();
       }
     }
+    console.log('므아아아')
     useEffect(()=>{
-      const getSearch = async (keyword)=>{
-        const {data, status} = await companyService.getSearch({keyword})
+      const getSearch = async (keyword,type)=>{
+        const {data, status} = await companyService.getSearch({keyword,type})
         const {data : responseData} = data;
         setSearchResult(()=>responseData)
         searchInputRef.current.value = keyword;
         searchInputRef.current.focus();
       }
-      getSearch(keyword);
-    },[keyword])
+      getSearch(keyword,type);
+    },[keyword,type])
   return (
     <div>
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="기업리스트"></BothHeader>

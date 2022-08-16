@@ -16,7 +16,7 @@ export default function MainPage() {
   const searchEvent = function(){
     const value = searchInputRef.current.value
     if(value.trim().length){
-      push(`/search/${value}`)
+      push(`/search?keyword=${value}`)
     }
   }
   const onKeyPress = function(event){
