@@ -45,7 +45,7 @@ export default function CompanyInfoPage() {
         <Top02>공고</Top02>
         <p style={{border : '1px solid'}}></p>
 
-        {/* //TODO middle : 공고에 지원하는 버튼 추가 */}
+        {/* //TODO middle : 공고에 지원하기*/}
         <div style = {{ margin: "3vh 5vw"
                 }}>
         
