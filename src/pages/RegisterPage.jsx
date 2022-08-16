@@ -114,7 +114,8 @@ export default function RegisterPage() {
             <div style={{
               display : 'grid',
               alignItems : 'center',
-              gridTemplateColumns : 'auto 80px 80px'
+              gridTemplateColumns : '50px auto auto',
+              marginTop : '20px'
             }} onClick={handleChangeGender}>
               <div style={{
                 textAlign : 'center'
@@ -130,7 +131,7 @@ export default function RegisterPage() {
             <InputComponent placeholder="직장명을 입력해주세요"  ref={companyNameInputRef}/>
             <Blank/>
             <InputComponent placeholder="직장이메일을 입력해주세요." type='email' ref={emailInputRef}/>
-            <Blank/>
+        
             <InputComponent placeholder="입사년도를 입력해주세요"   type='number' ref={joinYearInputRef}/>
             <div style={{
             margin : '16px 0',
