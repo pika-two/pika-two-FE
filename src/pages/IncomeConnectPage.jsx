@@ -14,7 +14,7 @@ export default function IncomeConnectPage() {
       // TODO : USER_ID
       const currentSalary = async (user_id = 1, year = 2022)=>{
         const {data,status} = await incomeService.getConnect(user_id,year);
-        setSalary(data.data.annual_salary);
+        setSalary(()=>parseInt(data.data.annual_salary/10000));
       }
       currentSalary();
     },[])

@@ -28,7 +28,6 @@ export default function SearchPage() {
         searchEvent();
       }
     }
-    console.log('므아아아')
     useEffect(()=>{
       const getSearch = async (keyword,type)=>{
         const {data, status} = await companyService.getSearch({keyword,type})

@@ -93,7 +93,7 @@ export default function RegisterPage() {
       company_name : companyName,
       gender : en[selectGender],
       email,
-      work_start_at : joinYear
+      work_start_dt : joinYear
     }
     // TODO : 최상급!!!!! responseData에서 userId를 받아서 전역객체에 저장시켜야함
     const {data : responseData ,status} = await userService.post(data).catch((e)=>alert('에러가 발생했습니다.'))
