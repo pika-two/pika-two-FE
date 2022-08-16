@@ -4,12 +4,11 @@ import customAxios from "./customAxios";
 
 const accountService = {
     async get(user_id){
-        return await customAxios.get(baseURL+`api/mydata/${user_id}/account`)
+        const {data, status} = await customAxios.get(baseURL+`api/mydata/${user_id}/account`)
+        return data.data
     },
     async post(user_id,payload){
-        const {data, status} = await customAxios.post(baseURL+`api/mydata/${user_id}/account`,payload);
-        const {data : getUserInfo} = data;
-        return getUserInfo
+        return await customAxios.post(baseURL+`api/mydata/${user_id}/account`,payload);
     }
 }
 
