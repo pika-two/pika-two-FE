@@ -8,7 +8,7 @@ const InputComponent =  forwardRef(function InputComponent(props, ref) {
 
 
 const InputStyled = styled.input`
-width : 100%;
+width : 85%;
 height : ${props => props.height?props.height:'48px'};
 border : none;
 border-bottom: 1px solid #FC0;
