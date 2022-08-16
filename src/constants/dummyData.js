@@ -257,15 +257,18 @@ export const dummyApplyCompanyList = [{
   "company_name" : "회사이름",
   "job_posts": [
     {
-      'post_id': 0,
-      'post_title': '2022년 상반기 공채',
+      'post_id': 1,
+      'post_title': '공채이름 1',
+      'start_dt' : '0000-01-01',
+      'end_dt' : '9999-12-31',
       'type': '공채',
+      'company_id': 0,
       'company_name': '국민은행',
     },
     {
-      'post_id': 0,
-      'post_title': '공채이름',
-      'start_dt' : 0000-01-01,
+      'post_id': 2,
+      'post_title': '공채이름 2',
+      'start_dt' : '0000-01-01',
       'end_dt' : '9999-12-31',
       'type': '수시',
       'company_id': 0,
@@ -296,3 +299,16 @@ export const dummyApplyCompanyList = [{
     },
   ]
 }
+
+export const dummyReviewList = [
+  {
+    'comment_id' : 1,
+    'nickname': '볼안빨간 사춘기',
+    'content': '이거슨리뷰1',
+  },
+  {
+    'comment_id':2,
+    'nickname': '볼빨간 사춘기',
+    'content': '이거슨리뷰2'
+  }
+]

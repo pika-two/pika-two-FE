@@ -15,7 +15,7 @@ const companyService = {
         })
     },
     async getInfo(company_id){
-        return await customAxios.get(baseURL +`/api/company/${company_id}`)
+        return await customAxios.get(baseURL +`api/company/${company_id}`)
     }
 }
 

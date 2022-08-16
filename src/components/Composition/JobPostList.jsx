@@ -10,7 +10,7 @@ export default function JobPostList({jobPosts}) {
         justifyContent: "space-evenly",
         overflowX: "auto"
     }}>
-        {jobPosts.map( jobPost =><JobPostListItem key={jobPost.post_id} onClick={()=>{push(`/company/${jobPost.company_id}`)
+        {jobPosts?.map( jobPost =><JobPostListItem key={jobPost.post_id} onClick={()=>{push(`/company/${jobPost.company_id}`)
       }} jobPost={jobPost}/>)}
     </div>
   )

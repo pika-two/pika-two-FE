@@ -9,6 +9,9 @@ const commentService = {
             content
         })
     },
+    async getReview(company_id){
+        return await customAxios.get(baseURL + `api/${company_id}/comment`)
+    }
 }
 
 export default commentService

@@ -18,7 +18,6 @@ export default function IncomeListPage () {
     const getIncome = async (user_id = 1)=>{
       const {data,status}  = await incomeService.get(user_id);
       const {data : responseData} = data;
-      console.log(responseData);
       setIncomes(()=>responseData)
     }
     getIncome();
@@ -29,7 +28,6 @@ export default function IncomeListPage () {
         memos : selectedIncomeNameList
       }
       const {data, status} = await incomeService.post(user_id,submitData);
-      console.log(data)
       push('/incomeConnect')
    }
   return (

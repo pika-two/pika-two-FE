@@ -1,4 +1,4 @@
-import styled ,{ css } from "styled-components";
+import styled from "styled-components";
 
 
 export default function Button({ disabled, children, color, background = '#FFFFFF',...rest }) {
@@ -17,7 +17,7 @@ export default function Button({ disabled, children, color, background = '#FFFFF
 const StyledButton = styled.button`
   margin: 0 auto;
   border: none;
-  cursor: pointer;
+  cursor : ${props => props.disabled?'default':'pointer'};
   width:90%;
   font-family: "four";
   font-size: 1.3rem;
