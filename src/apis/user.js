@@ -9,20 +9,15 @@ const userService = {
     },
 
     async getApplyList(userId){
-        return await customAxios.get(baseURL+`api/user/${userId}/applied-posts`)
+        const {data, status} = await customAxios.get(baseURL+`api/user/${userId}/applied-posts`)
+        const { data : responseData} = data;
+        return responseData
     },
     async postApply(userId,data){
         return await customAxios.post(baseURL + `api/user/${userId}/applied-posts`,data)
     },
     async deleteApplyList(userId,apply_id){
-        const payload = {apply_id : apply_id}
-        return await customAxios.delete(baseURL + `api/user/${userId}/applied-posts`,{
-            data : payload
-        },{
-            headers : {
-                'Content-Type': 'application/json; charset=utf-8'
-            }
-        })
+        return await customAxios.delete(baseURL + `api/user/${userId}/applied-posts/${apply_id}`)
     },
     async getBookmarkList(userId){
         return await customAxios.get(baseURL+ `api/user/${userId}/favor`)
