@@ -59,6 +59,7 @@ export default function MyPage() {
             <img  
             
             width= "90%" height="auto" src={starfriends} alt="" />
+            
         </div>
         <div 
         style = {{

@@ -7,9 +7,15 @@ import Bold from '../ui/Bold'
 
 export default function ReviewList({companyReviews}) {
   return (
-    <Stack>
-        {companyReviews?.map((companyReview)=> <Review key={companyReview.comment_id} companyReview={companyReview}/>)}
-    </Stack>
+    <div 
+    style = {{
+
+        alignItems: 'center'
+    }}>
+        <Stack>
+            {companyReviews?.map((companyReview)=> <Review key={companyReview.comment_id} companyReview={companyReview}/>)}
+        </Stack>
+    </div>
   )
 }
 
@@ -17,7 +23,14 @@ export default function ReviewList({companyReviews}) {
 const Review = function({companyReview}){
     return (
         <div style={{
-            border : '2px solid',
+            width: "80%",
+            border : '1px solid',
+            borderRadius: '20px',
+            display: "flex", 
+            flexDirection: "column",
+            justifyContent: "center",
+            marginBottom: "10px",
+            alignItems: "center"
         }}>
             <Bold>
                 {companyReview.nickname}

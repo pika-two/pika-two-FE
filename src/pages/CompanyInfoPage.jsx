@@ -15,6 +15,8 @@ import { useRecoilState } from "recoil";
 import { userInfoStore } from "../shared/store";
 import userService from "../apis/user";
 import useCompanyInfo from "../hooks/useCompanyInfo";
+import Bold from "../components/ui/Bold";
+import CenterBox from "../components/Composition/CenterBox";
 export default function CompanyInfoPage() {
   const {goBack, push} = useInternalRouter();
   const {id : company_id } =  useParams();
@@ -53,30 +55,42 @@ export default function CompanyInfoPage() {
   return (
     <div>
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="기업정보"></BothHeader>
-        <Blank/>
-        <div style={{
-          display : 'grid',
-          'gridTemplateColumns' : 'auto 80px'
-        }}>
-          <Top02>{isCompanyLoading?'':getCompanyInfo?.company_name}</Top02>
-          {isCompanyLoading?'':isBookmark()?<RedHeartIcon onClick={handleBookmarkClick}/>:<WhiteHeartIcon onClick={handleBookmarkClick}/>}
-        </div>
-        <Top02>공고</Top02>
-        <p style={{border : '1px solid'}}></p>
+
+        <p style = {{border: "10px solid lightyellow", margin : "0"}}></p>
+        
+        <h2 style = {{
+          textAlign: "center",
+          fontFamily: "four"
+        }}>{isCompanyLoading?'':getCompanyInfo?.company_name} 채용 공고</h2>
+         {isCompanyLoading?'':isBookmark()?<RedHeartIcon onClick={handleBookmarkClick}/>:<WhiteHeartIcon onClick={handleBookmarkClick}/>}
+
+        {/* //TODO middle : 공고에 지원하는 버튼 추가 */}
         <div style = {{ margin: "3vh 5vw"
                 }}>
         
         </div>
-        <CompanyJobPostList userPostIdList={userApplyList} onClick={handleApplyJobPost} companyJobPosts={isCompanyLoading?[]:getCompanyInfo.job_posts} />
-        <Top02>연봉</Top02>
+<CompanyJobPostList userPostIdList={userApplyList} onClick={handleApplyJobPost} companyJobPosts={isCompanyLoading?[]:getCompanyInfo.job_posts} />
+        <p style = {{border: "20px solid lightyellow"}}></p>
+        <h2 style = {{
+          textAlign: "center",
+          fontFamily: "four",
+          marginTop: "30px"
+        }}>연봉 정보</h2>
+
         {/* //TODO high : 챠트 라이브러리 찾고 적용 */}
         {/* //TODO high : 챠트 만들어진 후 챠드 막대 클릭시 연봉정보(SalaryList) 페이지로 이동 */}
         <div style={{
         width : '80vw',
         height : '80vw',
         margin : '0 auto 30px auto',
-        backgroundColor : '#FFC'}}>챠트 들어갈 곳</div>
-        <Top02> 리뷰 </Top02>
+        backgroundColor : 'white', border: "1px solid black"}}>챠트 들어갈 곳</div>
+        
+        <p style = {{border: "20px solid lightyellow"}}></p>
+        <h2 style = {{
+          textAlign: "center",
+          fontFamily: "four",
+          marginTop: "30px"
+        }}>기업 리뷰</h2>
         <ReviewList companyReviews={companyReviews}/>
     </div>
   )
