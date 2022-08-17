@@ -22,10 +22,11 @@ export default function AccountListPage() {
         }
   }
   const {accountData, isLoading, isError} = useAccount(userInfo.user_id);
+  console.log(accountData)
   useEffect(()=>{
+    if(isLoading)return
     setAccountList(()=>accountData)
-  },[accountData])
-
+  },[isLoading])
   const submitAccount = async (event)=>{
     const accountName = accountList[selectedAccountID].account
     const {data,status} = await accountService.post(userInfo.user_id,{
