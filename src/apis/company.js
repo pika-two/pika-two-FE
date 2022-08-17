@@ -9,12 +9,15 @@ const companyService = {
         return responseData
     },
     async getSearch({keyword,type}){
-        return await customAxios.get(baseURL+'api/company',{
+        const {data, status} = await customAxios.get(baseURL+'api/company',{
             params : {
                 keyword : keyword?keyword:'',
                 type : type?type:''
             }
         })
+        const {data : responseData} = data;
+        const {company_list} = responseData
+        return company_list
     },
     async getInfo(company_id){
         const {data, status} = await customAxios.get(baseURL +`api/company/${company_id}`)
