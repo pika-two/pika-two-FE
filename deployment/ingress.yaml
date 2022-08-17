@@ -13,6 +13,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: pikatwo-fe
+            name: pikatwo-fe-svc
             port:
               number: 80
