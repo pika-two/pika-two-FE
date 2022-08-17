@@ -9,6 +9,7 @@ import { useRecoilValue } from "recoil";
 import { userInfoStore } from "../shared/store";
 import useAccount from "../hooks/useAccount";
 import Bold from "../components/ui/Bold";
+import Loading from "../components/ui/Loading";
 export default function AccountListPage() {
   const {push} = useInternalRouter();
   const [accountList, setAccountList] = useState([]);
@@ -47,7 +48,7 @@ export default function AccountListPage() {
 
         <div>
             {/* //TODO 스피너로 넣기 */}
-            {isLoading?<div>로딩중</div>:accountList.length?<AccountsList selected={selectedAccountID}  handleClickevent={handleChange} accounts={accountList}></AccountsList>:<Bold>연결할 계좌가 없습니다.</Bold>}
+            {isLoading?<Loading/>:accountList.length?<AccountsList selected={selectedAccountID}  handleClickevent={handleChange} accounts={accountList}></AccountsList>:<Bold>연결할 계좌가 없습니다.</Bold>}
         </div>
         
         <FixedBottomButton style={{

@@ -7,12 +7,24 @@ import Message from "../components/ui/message"
 import { useRecoilValue } from "recoil";
 import { userInfoStore } from "../shared/store";
 import useIncomeConnect from "../hooks/useIncomeConnect";
+import Loading from "../components/ui/Loading";
 export default function IncomeConnectPage() {
     const {push} = useInternalRouter();
     const userInfo = useRecoilValue(userInfoStore);
     const {annual_salary , isLoading, isError} = useIncomeConnect(userInfo.user_id,2022);
   return (
-    //TODO low : 이 페이지가 바로 되는 것이 아닌 연동중이라는 표시를 위해 이 페이지 전에 loading 페이지 만들기
+    //TODO low : 이 페이지가 바로 되는 것이 아닌 연동중이라는 표시를 위해 이 페이지 전에 loading 페이지 만들기'
+    isLoading?
+    <div style={{
+      display : 'flex',
+      'flexDirection' : 'column',
+      'justifyContent' : 'center',
+      'height' : '100vh'
+    }}>
+      <Loading/>
+      <BackGroundCover backgroundColor='#FC0'/>
+    </div>
+    :
     <div>
         <CenterBox>
             <Boldtext fontsize="20px" color="black"
