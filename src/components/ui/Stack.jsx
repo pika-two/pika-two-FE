@@ -6,6 +6,8 @@ export default function Stack({children,...rest}) {
       style={{
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}
       {...rest}
     >

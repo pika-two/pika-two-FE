@@ -41,11 +41,17 @@ export default function MainPage() {
       <RightOnlyHeader right={<MyPageIcon onClick={()=>push('/myPage')}/>} title="KB 돌아온 구직자"></RightOnlyHeader>
       <div style={{
           display: "flex",
+          width: "100%",
+          height: "8vh",
           justifyContent: "center",
+          marginBottom: "25px",
           background: "#FFCC00",
+          position: "relative",
         }}>
           <InputComponent onKeyPress={onKeyPress} ref={searchInputRef}/>
-          <SearchIcon onClick={searchEvent}/>
+          <div style = {{position: "absolute" , marginLeft: "290px", marginTop: "14px"}}>
+            <SearchIcon onClick={searchEvent}/>
+          </div>
         </div>
       <div style={ {
         margin : "10px 5vw"
