@@ -25,6 +25,15 @@ const companyService = {
         const {data, status} = await customAxios.get(baseURL +`api/company/${company_id}`)
         const {data : response_data} = data;
         return response_data
+    },
+    async getCompanyWage(company_id,year){
+        const {data, status} = await customAxios.get(baseURL + `api/company/${company_id}/wage`,{
+            params : {
+                year : year??1
+            }
+        })
+        const {data : response_data} = data;
+        return response_data
     }
 }
 

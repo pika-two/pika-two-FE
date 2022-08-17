@@ -15,7 +15,6 @@ import { useRecoilState } from "recoil";
 import { userInfoStore } from "../shared/store";
 import userService from "../apis/user";
 import useCompanyInfo from "../hooks/useCompanyInfo";
-// TODO high : 찜하기 버튼, 삭제 버튼?
 export default function CompanyInfoPage() {
   const {goBack, push} = useInternalRouter();
   const {id : company_id } =  useParams();

@@ -10,7 +10,6 @@ import { userInfoStore } from "../shared/store";
 import useApplyCompany from "../hooks/useApplyCompany";
 export default function ApplyCompanyListPage() {
   const {goBack, push} = useInternalRouter();
-  //TODO high : 리렌더링 확인 필요성
   const [userInfo,setUserInfo] = useRecoilState(userInfoStore)
   const [applyCompanys, setApplyCompanys] = useState([]);
   const handleDeleteApplyCompany = async function(event,apply_id){
