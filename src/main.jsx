@@ -12,9 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RecoilRoot>
       <BrowserRouter>
-       <SWRConfig value={{dedupingInterval : 10000,        
-       revalidateOnFocus: false,
-        revalidateOnReconnect: false,}}> 
+       <SWRConfig value={{revalidateOnMount: true,}}> 
         <App />
        </SWRConfig>
       </BrowserRouter>
