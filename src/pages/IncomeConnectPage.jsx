@@ -4,21 +4,13 @@ import Button from "../components/ui/Button"
 import Boldtext from "../components/ui/Boldtext"
 import { useInternalRouter } from "./routing";
 import Message from "../components/ui/message"
-import { useEffect, useState } from "react";
-import incomeService from '../apis/income'
 import { useRecoilValue } from "recoil";
 import { userInfoStore } from "../shared/store";
+import useIncomeConnect from "../hooks/useIncomeConnect";
 export default function IncomeConnectPage() {
     const {push} = useInternalRouter();
-    const [salary, setSalary] = useState(0);
     const userInfo = useRecoilValue(userInfoStore);
-    useEffect(()=>{
-      const currentSalary = async (user_id = 1, year = 2022)=>{
-        const {data,status} = await incomeService.getConnect(user_id,year);
-        setSalary(()=>parseInt(data.data.annual_salary/10000));
-      }
-      currentSalary(userInfo.user_id);
-    },[])
+    const {annual_salary , isLoading, isError} = useIncomeConnect(userInfo.user_id,2022);
   return (
     //TODO low : 이 페이지가 바로 되는 것이 아닌 연동중이라는 표시를 위해 이 페이지 전에 loading 페이지 만들기
     <div>
@@ -34,7 +26,7 @@ export default function IncomeConnectPage() {
                 marginTop: "30px"
               }}>
               2022년 까지 받은 금액은?</Message>
-            <Boldtext fontsize="30px" color="black">{salary}만원</Boldtext>
+            <Boldtext fontsize="30px" color="black">{isLoading?'0':parseInt(annual_salary/10000)}만원</Boldtext>
             <Button 
               onClick={()=>push('/mainPage')} 
               background="#FFCC00"

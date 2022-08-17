@@ -12,7 +12,8 @@ const incomeService = {
         return await customAxios.post(baseURL+`api/mydata/${user_id}/memos`,data)
     },
     async getConnect(user_id,year){
-        return await customAxios.get(baseURL+`api/mydata/${user_id}/annual-salary/${year}`)
+        const {data , status} = await customAxios.get(baseURL+`api/mydata/${user_id}/annual-salary/${year}`)
+        return data.data.annual_salary
     },
 }
 
