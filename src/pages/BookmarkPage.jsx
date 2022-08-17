@@ -25,7 +25,7 @@ export default function BookmarkPage() {
     useEffect(()=>{
       if(isLoading)return
       setBookmarks(()=>bookmarkData);
-    },[isLoading])
+    },[isLoading,bookmarkData])
   return (
     <div>
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="찜한 목록"></BothHeader>
