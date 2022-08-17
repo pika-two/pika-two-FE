@@ -13,6 +13,8 @@ export default function SearchPage() {
     let [searchParams, setSearchParams]= useSearchParams()
     let keyword = searchParams.get('keyword')??'';
     let type = searchParams.get('type')??'';
+    let category = searchParams.get('category')??'';
+    let is_certificated = searchParams.get('is_certificated')??0;
     let {goBack,push} = useInternalRouter();
     const searchInputRef = useRef(null);
     const searchEvent = function(){
@@ -26,7 +28,7 @@ export default function SearchPage() {
         searchEvent();
       }
     }
-    const {searchData, isLoading, isError} = useSearch({keyword,type})
+    const {searchData, isLoading, isError} = useSearch({keyword,type,is_certificated,category})
     useEffect(()=>{
       if(isLoading)return
       searchInputRef.current.value = keyword;

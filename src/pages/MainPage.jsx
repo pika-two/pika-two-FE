@@ -23,8 +23,8 @@ export default function MainPage() {
       searchEvent();
     }
   }
-  const onClickBadge = function(event,type){
-    push(`/search?type=${type}`)
+  const onClickBadge = function(event,key,value){
+    push(`/search?${key}=${value}`)
   }
   const {jobPostData, isLoading, isError} = useJobPosts()
   return (
