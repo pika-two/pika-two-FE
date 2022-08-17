@@ -33,23 +33,23 @@ export default function CompanyInfoPage() {
     },[])
   const isBookmark = ()=>{
     console.log(getCompanyInfo)
-    return userInfo.favor_company_list.indexOf(company_id) !== -1
+    return userInfo.favor_company_list.indexOf(parseInt(company_id)) !== -1
   }
   const handleBookmarkClick = async ()=>{
     const state = isBookmark();
     if(state && confirm('찜을 해제하시겠습니까?')){
       const data = await userService.postBookmark(userInfo.user_id,company_id);
-      setUserInfo({...userInfo,favor_company_list : userInfo.favor_company_list.filter(item => item !== company_id)})
+      setUserInfo({...userInfo,favor_company_list : userInfo.favor_company_list.filter(item => parseInt(item) !== parseInt(company_id))})
     } else if (!state && confirm('찜을 하시겠습니까?')){
        const data = await userService.postBookmark(userInfo.user_id,company_id);
-       setUserInfo({...userInfo,favor_company_list : [...userInfo.favor_company_list,company_id]})
+       setUserInfo({...userInfo,favor_company_list : [...userInfo.favor_company_list,parseInt(company_id)]})
     }
   }
   const {getCompanyInfo, isLoading :isCompanyLoading, isError : isCompanyError} = useCompanyInfo(company_id);
   const handleApplyJobPost = async (e, post_id)=>{
     const {data , status} = await userService.postApply(userInfo.user_id,{post_id})
     if (status === 200) {
-      setUserInfo({...userInfo, applied_list :[...userInfo.applied_list,post_id]})
+      setUserInfo({...userInfo, applied_list :[...userInfo.applied_list,parseInt(post_id)]})
     }
   }
   return (

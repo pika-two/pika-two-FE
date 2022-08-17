@@ -208,7 +208,7 @@ export default function CalenderPage() {
                 
             />
             </div>
-            <iframe src="https://giphy.com/embed/SkJRWt1Mo9CSlgrHcE" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/kbfinancialgroup-transparent-kb-SkJRWt1Mo9CSlgrHcE"></a></p></div>
+            <iframe src="https://giphy.com/embed/SkJRWt1Mo9CSlgrHcE" width="200" height="200" frameBorder="0" className="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/kbfinancialgroup-transparent-kb-SkJRWt1Mo9CSlgrHcE"></a></p></div>
         
     )
 }

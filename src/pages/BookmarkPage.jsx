@@ -17,7 +17,7 @@ export default function BookmarkPage() {
           const {data, status} = await userService.deleteBookmarkList(userInfo.user_id,fav_company_id);
           if(status === 200){
             setBookmarks(prev=>prev.filter(item=>item.fav_company_id !== fav_company_id));
-            setUserInfo({...userInfo, favor_company_list : userInfo.favor_company_list.filter(item=>item.fav_company_id !== fav_company_id)})
+            setUserInfo({...userInfo, favor_company_list : userInfo.favor_company_list.filter(item=>parseInt(item.fav_company_id) !== parseInt(fav_company_id))})
           }
         }
     }
