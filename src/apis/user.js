@@ -24,12 +24,15 @@ const userService = {
         const {data : responseData} = data;
         return responseData
     },
-    async deleteBookmarkList(userId,fav_company_id){
-        return await customAxios.delete(baseURL + `api/user/${userId}/favor`,{
-            data : {
-                fav_company_id
-            }
+    async postBookmark(user_id,company_id){
+        const {data, status} = await customAxios.post(baseURL +`/api/user/${user_id}/favor`,{
+            company_id
         })
+        const {data : response_data} = data
+        return response_data
+    },
+    async deleteBookmarkList(userId,fav_company_id){
+        return await customAxios.delete(baseURL + `api/user/${userId}/favor/${fav_company_id}`)
     },
     async getMyUserInfo(userId){
         const {data, status} = await customAxios.get(baseURL + `api/user/mypage/${userId}`)
