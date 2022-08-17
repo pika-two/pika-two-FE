@@ -8,12 +8,12 @@ const companyService = {
         const { data : responseData} = data
         return responseData
     },
-    async getSearch({keyword,type,is_certificated,category}){
+    async getSearch({keyword,type,is_certified,category}){
         const {data, status} = await customAxios.get(baseURL+'api/company',{
             params : {
                 keyword : keyword??'',
                 type : type??'',
-                is_certificated : is_certificated??0,
+                is_certified : is_certified??0,
                 category : category??''
             }
         })
