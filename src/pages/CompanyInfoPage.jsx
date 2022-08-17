@@ -1,60 +1,75 @@
 import BothHeader from "../components/Composition/BothHeader"
 import { useInternalRouter } from "./routing"
 import BackIcon from '../components/ui/icon/BackIcon'
+import WhiteHeartIcon from '../components/ui/icon/WhiteHeartIcon'
+import RedHeartIcon from '../components/ui/icon/RedHeartIcon'
 import MyPageIcon from '../components/ui/icon/MyPageIcon'
 import Top02 from "../components/ui/Top/Top02";
 import ReviewList from "../components/Composition/ReviewList";
 import Blank from "../components/ui/Blank";
-import companyService from '../apis/company'
 import { useParams } from "react-router-dom";;
 import { useState, useEffect } from "react";
 import CompanyJobPostList from "../components/Composition/CompanyJobPostList";
 import commentService from "../apis/comment";
+import { useRecoilState } from "recoil";
+import { userInfoStore } from "../shared/store";
+import userService from "../apis/user";
+import useCompanyInfo from "../hooks/useCompanyInfo";
 import Bold from "../components/ui/Bold";
 import CenterBox from "../components/Composition/CenterBox";
-
 export default function CompanyInfoPage() {
   const {goBack, push} = useInternalRouter();
-  const {id : company_id } =  useParams()
-  const [companyJobPosts, setCompanyJobPosts] = useState([]);
-  const [company_name , setCompanyName] = useState('');
-  const [wages , setWages] = useState([]);
-  // TODO : dummy 전체에서 관리해야하는거 Recoil
-  const [dummyUserApplyList, setDummyUserApplyList] = useState([1]);
+  const {id : company_id } =  useParams();
+  const [userInfo, setUserInfo] = useRecoilState(userInfoStore);
+  const userApplyList = userInfo.applied_list
   const [companyReviews, setCompanyReviews] = useState([]);
   useEffect(()=>{
-    const getApply = async ()=>{
-       const {data, code} = await companyService.getInfo(company_id);
-       const {data : response_data} = data;
-       const {company_name : responseName , job_posts, wages : responseWage} = response_data;
-       setCompanyJobPosts(()=>job_posts);
-       setCompanyName(()=> responseName);
-       setWages(()=>responseWage);
-      }
       const getReview = async ()=>{
-        const {data, code} = await commentService.getReview(company_id);
+        const {data, status} = await commentService.getReview(company_id);
         const {data : response_data} = data;
         setCompanyReviews(()=>response_data);
       }
-      getApply();
       getReview();
     },[])
+  const isBookmark = ()=>{
+    console.log(getCompanyInfo)
+    return userInfo.favor_company_list.indexOf(company_id) !== -1
+  }
+  const handleBookmarkClick = async ()=>{
+    const state = isBookmark();
+    if(state && confirm('찜을 해제하시겠습니까?')){
+      const data = await userService.postBookmark(userInfo.user_id,company_id);
+      setUserInfo({...userInfo,favor_company_list : userInfo.favor_company_list.filter(item => item !== company_id)})
+    } else if (!state && confirm('찜을 하시겠습니까?')){
+       const data = await userService.postBookmark(userInfo.user_id,company_id);
+       setUserInfo({...userInfo,favor_company_list : [...userInfo.favor_company_list,company_id]})
+    }
+  }
+  const {getCompanyInfo, isLoading :isCompanyLoading, isError : isCompanyError} = useCompanyInfo(company_id);
+  const handleApplyJobPost = async (e, post_id)=>{
+    const {data , status} = await userService.postApply(userInfo.user_id,{post_id})
+    if (status === 200) {
+      setUserInfo({...userInfo, applied_list :[...userInfo.applied_list,post_id]})
+    }
+  }
   return (
     <div>
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="기업정보"></BothHeader>
+
         <p style = {{border: "10px solid lightyellow", margin : "0"}}></p>
         
         <h2 style = {{
           textAlign: "center",
           fontFamily: "four"
-        }}>{company_name} 채용 공고</h2>
+        }}>{isCompanyLoading?'':getCompanyInfo?.company_name} 채용 공고</h2>
+         {isCompanyLoading?'':isBookmark()?<RedHeartIcon onClick={handleBookmarkClick}/>:<WhiteHeartIcon onClick={handleBookmarkClick}/>}
 
         {/* //TODO middle : 공고에 지원하는 버튼 추가 */}
         <div style = {{ margin: "3vh 5vw"
                 }}>
         
         </div>
-        <CompanyJobPostList userPostIdList={dummyUserApplyList} companyJobPosts={companyJobPosts} />
+<CompanyJobPostList userPostIdList={userApplyList} onClick={handleApplyJobPost} companyJobPosts={isCompanyLoading?[]:getCompanyInfo.job_posts} />
         <p style = {{border: "20px solid lightyellow"}}></p>
         <h2 style = {{
           textAlign: "center",
@@ -71,7 +86,6 @@ export default function CompanyInfoPage() {
         backgroundColor : 'white', border: "1px solid black"}}>챠트 들어갈 곳</div>
         
         <p style = {{border: "20px solid lightyellow"}}></p>
-        {/* //TODO low : axios로 해당 기업리뷰 가져오기 */}
         <h2 style = {{
           textAlign: "center",
           fontFamily: "four",

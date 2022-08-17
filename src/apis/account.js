@@ -1,13 +1,15 @@
 import baseURL from "../constants/BASE_URL";
 import customAxios from "./customAxios";
-
+import timeout from "../utils/timeout";
 
 const accountService = {
     async get(user_id){
-        return await customAxios.get(baseURL+`api/mydata/${user_id}/account`)
+        await timeout(1000)
+        const {data, status} = await customAxios.get(baseURL+`api/mydata/${user_id}/account`)
+        return data.data
     },
-    async post(user_id,data){
-        return await customAxios.post(baseURL+`api/mydata/${user_id}/account`,data)
+    async post(user_id,payload){
+        return await customAxios.post(baseURL+`api/mydata/${user_id}/account`,payload);
     }
 }
 

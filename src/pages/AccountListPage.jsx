@@ -5,10 +5,15 @@ import AccountsList from "../components/Composition/AccountsList";
 import { useInternalRouter } from "./routing";
 import Message from "../components/ui/message";
 import accountService from '../apis/account'
+import { useRecoilValue } from "recoil";
+import { userInfoStore } from "../shared/store";
+import useAccount from "../hooks/useAccount";
+import Bold from "../components/ui/Bold";
 export default function AccountListPage() {
   const {push} = useInternalRouter();
   const [accountList, setAccountList] = useState([]);
   const [selectedAccountID, setSelectedAccount] = useState(-1);
+  const userInfo = useRecoilValue(userInfoStore);
   const handleChange = function(event, index){
         if(index == selectedAccountID){
             setSelectedAccount(-1);
@@ -16,22 +21,17 @@ export default function AccountListPage() {
             setSelectedAccount(index);
         }
   }
+  const {accountData, isLoading, isError} = useAccount(userInfo.user_id);
+  console.log(accountData)
   useEffect(()=>{
-    // TODO : USER_ID
-    const getAccount = async (user_id = 1)=>{
-        const {data, status} = await accountService.get(user_id) 
-        const {data : responseData} = data
-        setAccountList(()=>responseData);
-    }
-    getAccount();
-  },[])
-
-  const submitAccount = async (event,user_id = 1)=>{
-    // TODO : USER_ID
+    if(isLoading)return
+    setAccountList(()=>accountData)
+  },[isLoading,accountData])
+  const submitAccount = async (event)=>{
     const accountName = accountList[selectedAccountID].account
-    const {data,status} = await accountService.post(user_id,{
+    const {data,status} = await accountService.post(userInfo.user_id,{
         'account' : accountName
-    }).catch((e)=>alert('에러러'))
+    })
     push(`/accountList/${selectedAccountID}`)
     
   }
@@ -46,8 +46,8 @@ export default function AccountListPage() {
         </div>
 
         <div>
-            {/* //TODO Loading 필요하다. */}
-            <AccountsList selected={selectedAccountID}  handleClickevent={handleChange} accounts={accountList}></AccountsList>
+            {/* //TODO 스피너로 넣기 */}
+            {isLoading?<div>로딩중</div>:accountList.length?<AccountsList selected={selectedAccountID}  handleClickevent={handleChange} accounts={accountList}></AccountsList>:<Bold>연결할 계좌가 없습니다.</Bold>}
         </div>
         
         <FixedBottomButton style={{

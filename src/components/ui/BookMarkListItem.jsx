@@ -19,7 +19,7 @@ const CompnyInfo = function({bookmark, onClick}){
         }}
         onClick={onClick}
         >
-            <Bold>{bookmark.company_name}</Bold>
+            <Bold>{bookmark.name}</Bold>
         </div>
     )
 }

@@ -6,13 +6,18 @@ import Top02 from '../components/ui/Top/Top02';
 import Bold from '../components/ui/Bold';
 import DotList from '../components/ui/DotList';
 import Stack from '../components/ui/Stack';
-import Blank from '../components/ui/Blank';
 
+import { useParams } from 'react-router-dom';
+import useWage from '../hooks/useWage';
+import Blank from '../components/ui/Blank';
 export default function SalaryListPage() {
     const {goBack} = useInternalRouter();
+    const {id : company_id, year} = useParams();
+    const {wageInfo, isLoading, isError} = useWage(company_id,year)
   return (
     <div>
         <LeftOnlyHeader left={<BackIcon onClick={()=>goBack()}/>} title="연봉정보"/>
+
         <Blank/>
         <div
         style = {{
@@ -35,16 +40,9 @@ export default function SalaryListPage() {
           margin: "10px"
         }}>
           <Stack>
-            {/* //TODO middle : 백에 요청하여 연봉정보 가져오기 */}
-              <DotList middle={"춤추는 사자"} amount={3000}></DotList>
-              <DotList middle={"춤추는 사자"} amount={3000}></DotList>
-              <DotList middle={"춤추는 사자"} amount={3000}></DotList>
-              <DotList middle={"춤추는 사자"} amount={3000}></DotList>
-              <DotList middle={"춤추는 사자"} amount={3000}></DotList>
-              <DotList middle={"춤추는 사자"} amount={3000}></DotList>
+              {isLoading?'':wageInfo.map((item,index) => <DotList key={index} middle={item.nickname} amount={parseInt(item.wage/10000)}></DotList>)}
           </Stack>
         </div>
-        
     </div>
   )
 }

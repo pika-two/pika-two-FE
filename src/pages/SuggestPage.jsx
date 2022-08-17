@@ -6,6 +6,7 @@ import SuggestList from "../components/Composition/SuggestList";
 
 export default function SuggestPage() {
   const {goBack, push} = useInternalRouter();
+  //TODO High : 백 연결 -> High 
   return (
     <div>
               <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="금융상품 추천"></BothHeader>

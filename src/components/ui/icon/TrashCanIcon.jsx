@@ -1,5 +1,5 @@
 import TrashCan from '../../../assets/trash-can.png'
-export default function HomeIcon({onClick}) {
+export default function TrashCanIcon({onClick}) {
   return (
     <div onClick={onClick} style={{
       zIndex : 1,

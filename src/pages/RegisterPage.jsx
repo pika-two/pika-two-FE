@@ -7,9 +7,11 @@ import { useState,useRef } from "react";
 import InputComponent from "../components/Composition/InputComponent"; 
 import RadioLabelAndInput from "../components/Composition/RadioLabelAndInput";
 import userService from "../apis/user";
+import { useSetRecoilState } from "recoil";
+import { userInfoStore } from "../shared/store";
 export default function RegisterPage() {
   const {push} = useInternalRouter();
-  // 나이, 성별, 연봉, 입사년도;
+  const setUserInfo = useSetRecoilState(userInfoStore);
   const [genders, setGenders] = useState(['남성', '여성']);
   const [selectGender, setSelectGender] = useState('');
   const [checkednotice, setCheckednotice] = useState(false);
@@ -95,8 +97,8 @@ export default function RegisterPage() {
       email,
       work_start_dt : joinYear
     }
-    // TODO : 최상급!!!!! responseData에서 userId를 받아서 전역객체에 저장시켜야함
-    const {data : responseData ,status} = await userService.post(data).catch((e)=>alert('에러가 발생했습니다.'))
+    const getUserInfo = await userService.post(data).catch((e)=>alert('에러가 발생했습니다.'))
+    setUserInfo(getUserInfo)
     push('/accountList')
   }
 

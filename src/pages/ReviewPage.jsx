@@ -6,22 +6,23 @@ import FixedBottomButton from '../components/ui/FixedBottomButton'
 import Input from '../components/ui/Input';
 import {useRef}  from 'react'
 import  commentService from '../apis/comment'
+import { useRecoilValue } from 'recoil';
+import { userInfoStore } from '../shared/store';
 export default function ReviewPage() {
    
    const {goBack,push} = useInternalRouter();
    const reviewInputRef = useRef(null);
+   const userInfo = useRecoilValue(userInfoStore)
    const submitReview = async function(){
     const value = reviewInputRef.current.value
         if(value.trim().length){
-            // TODO USER_ID, COMPANY_ID
-            const {data,status} = await commentService.postReivew(1,1,value)
+            const {data,status} = await commentService.postReivew(userInfo.user_id,userInfo.cur_company_id,value)
             if(status !== 200){
                 alert('잘못된 정보가 있습니다.')
                 return
             }
             if(confirm('리뷰 페이지로 가시겠습니까?')){
-                //TODO 회사 id로 연결하기 
-                push('/company/1')
+                push(`/company/${userInfo.cur_company_id}`)
             }
         }
    }

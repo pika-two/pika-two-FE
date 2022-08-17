@@ -7,18 +7,31 @@ import HomeIcon from '../components/ui/icon/HomeIcon'
 import { useInternalRouter } from './routing'
 import starfriends from '../assets/starfriends.png'
 import { useState,useEffect } from 'react'
+import { useRecoilValue } from 'recoil'
+import {userInfoStore} from '../shared/store'
+import useUserInfo from '../hooks/useUserInfo'
 export default function MyPage() {
   const {push} = useInternalRouter();
   const [mySalary, setMySalary] = useState(0);
+  const [userName , setUserName] = useState('');
+  const userInfo = useRecoilValue(userInfoStore);
   useEffect(()=>{
-    // TODO axios로 교체 예정
-    setMySalary(()=>6000);
+    const getMyUserInfo = async function(){
+
+    }
+    getMyUserInfo();
   },[])
+  const {userInfoData, isLoading, isError} = useUserInfo(userInfo.user_id);
+  useEffect(()=>{
+    if(isLoading)return
+    const {prev_wage, nickname} = userInfoData;
+    setMySalary(()=>parseInt(prev_wage/10000))
+    setUserName(()=>nickname);
+  },[isLoading,userInfoData])
   return (
     <div>
         <RightOnlyHeader title="마이페이지"   right={<HomeIcon onClick={()=>push('/mainPage')}/>}></RightOnlyHeader>
         <MyPageCenterBox>
-          {/* //TODO high : calendar 라이브러리 탐색 후 연동 필요성 */}
             <Button onClick={()=>push('/calender')}>일정관리 보기</Button>
             <Button onClick={()=>push('/applyCompanyList')} >지원현황 보기</Button>
             <Button onClick={()=>push('/bookmark')}>찜한 기업 보기</Button>
@@ -33,7 +46,7 @@ export default function MyPage() {
               fontFamily : "one",
               fontSize : "20px",
               textAlign : "center"
-            }}>2021년 춤추는 사자님의 급여:</p>
+            }}>{userName}님의 급여:</p>
             <p style = {{
               fontFamily : "four",
               fontSize : "30px",

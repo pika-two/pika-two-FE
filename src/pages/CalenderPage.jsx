@@ -130,8 +130,6 @@ export default function CalenderPage() {
 
       }
 
-      console.log('???')
-
     
     return(
         <div>
