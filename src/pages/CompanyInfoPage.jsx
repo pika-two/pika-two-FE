@@ -64,7 +64,6 @@ export default function CompanyInfoPage() {
         }}>{isCompanyLoading?'':getCompanyInfo?.company_name} 채용 공고</h2>
          {isCompanyLoading?'':isBookmark()?<RedHeartIcon onClick={handleBookmarkClick}/>:<WhiteHeartIcon onClick={handleBookmarkClick}/>}
 
-        {/* //TODO middle : 공고에 지원하는 버튼 추가 */}
         <div style = {{ margin: "3vh 5vw"
                 }}>
         
