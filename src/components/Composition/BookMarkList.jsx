@@ -1,5 +1,5 @@
 import React from 'react'
-import TrashCanIcon from '../ui/icon/TrachCanIcon'
+import TrashCanIcon from '../ui/icon/TrashCanIcon'
 import BookMarkListItem from '../ui/BookMarkListItem'
 import { useInternalRouter } from '../../pages/routing'
 export default function BookMarkList({bookmarks,handleDelete}) {

@@ -1,4 +1,4 @@
-import TrashCanIcon from '../ui/icon/TrachCanIcon'
+import TrashCanIcon from '../ui/icon/TrashCanIcon'
 import CompanyJobPostListItem from '../ui/CompanyJobPostListItem'
 export default function CompanyJobPostList({companyJobPosts, userPostIdList = [],onClick}) {
   return (

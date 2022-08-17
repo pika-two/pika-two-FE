@@ -1,4 +1,4 @@
-import TrashCanIcon from '../ui/icon/TrachCanIcon'
+import TrashCanIcon from '../ui/icon/TrashCanIcon'
 import ApplyCompanyListItem from '../ui/ApplyCompanyListItem'
 import {useInternalRouter} from '../../pages/routing';
 export default function ApplyCompanyList({applyCompanys, handleDeleteApplyCompany}) {
