@@ -7,9 +7,9 @@ import HomeIcon from '../components/ui/icon/HomeIcon'
 import { useInternalRouter } from './routing'
 import starfriends from '../assets/starfriends.png'
 import { useState,useEffect } from 'react'
-import userService from '../apis/user'
 import { useRecoilValue } from 'recoil'
 import {userInfoStore} from '../shared/store'
+import useUserInfo from '../hooks/useUserInfo'
 export default function MyPage() {
   const {push} = useInternalRouter();
   const [mySalary, setMySalary] = useState(0);
@@ -17,14 +17,17 @@ export default function MyPage() {
   const userInfo = useRecoilValue(userInfoStore);
   useEffect(()=>{
     const getMyUserInfo = async function(){
-      const {data, status} = await userService.getMyUserInfo(userInfo.user_id);
-      const {data: response_data} = data
-      const {nickname, prev_wage} = response_data;
-      setMySalary(()=>parseInt(prev_wage/10000))
-      setUserName(()=>nickname);
+
     }
     getMyUserInfo();
   },[])
+  const {userInfoData, isLoading, isError} = useUserInfo(userInfo.user_id);
+  useEffect(()=>{
+    if(isLoading)return
+    const {prev_wage, nickname} = userInfoData;
+    setMySalary(()=>parseInt(prev_wage/10000))
+    setUserName(()=>nickname);
+  },[isLoading,userInfoData])
   return (
     <div>
         <RightOnlyHeader title="마이페이지"   right={<HomeIcon onClick={()=>push('/mainPage')}/>}></RightOnlyHeader>
@@ -43,7 +46,7 @@ export default function MyPage() {
               fontFamily : "one",
               fontSize : "20px",
               textAlign : "center"
-            }}>2021년 {userName}님의 급여:</p>
+            }}>{userName}님의 급여:</p>
             <p style = {{
               fontFamily : "four",
               fontSize : "30px",

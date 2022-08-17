@@ -32,7 +32,9 @@ const userService = {
         })
     },
     async getMyUserInfo(userId){
-        return await customAxios.get(baseURL + `api/user/mypage/${userId}`)
+        const {data, status} = await customAxios.get(baseURL + `api/user/mypage/${userId}`)
+        const {data: response_data} = data
+        return response_data
     }
 }
 
