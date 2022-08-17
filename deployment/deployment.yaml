@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pikatwo-fe
+  labels:
+    app: pikatwo-fe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pikatwo-fe
+  template:
+    metadata:
+      labels:
+        app: pikatwo-fe
+    spec:
+      containers:
+      - name: pikatwo-fe
+        image: daisyjeon/pikatwo-fe:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        # env:
+        # - name: SERVLET_CONTEXT_PATH
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: pikatwo-fe-config
+        #       key: SERVLET_CONTEXT_PATH
