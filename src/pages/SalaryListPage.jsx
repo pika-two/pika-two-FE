@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import LeftOnlyHeader from '../components/Composition/LeftOnlyHeader'
 import BackIcon from '../components/ui/icon/BackIcon'
 import { useInternalRouter } from "./routing";
@@ -13,8 +13,12 @@ import Blank from '../components/ui/Blank';
 export default function SalaryListPage() {
     const {goBack} = useInternalRouter();
     const {id : company_id, year} = useParams();
-    const {wageInfo, isLoading, isError} = useWage(company_id,year)
-  return (
+    const {companyWageInfo, isLoading, isError} = useWage(company_id,year);
+    useEffect(()=>{
+      if(isLoading)return
+    },[isLoading,companyWageInfo])
+    const {company_name, wages : wageInfo} = companyWageInfo??{'company_name' : '',wages : []};
+    return (
     <div>
         <LeftOnlyHeader left={<BackIcon onClick={()=>goBack()}/>} title="연봉정보"/>
 
@@ -32,15 +36,15 @@ export default function SalaryListPage() {
           padding: "10px",
           marginTop: "30px"
         }}
-        >현직자 1년차 실수령 연봉</div>
+        >현직자 {year}년차 실수령 연봉</div>
         <Blank/>
-        <Top02>기업명 : 국민은행 </Top02>
+        <Top02>기업명 : {company_name} </Top02>
         <div
         style = {{
           margin: "10px"
         }}>
           <Stack>
-              {isLoading?'':wageInfo.map((item,index) => <DotList key={index} middle={item.nickname} amount={parseInt(item.wage/10000)}></DotList>)}
+              {isLoading?'':wageInfo.length === 0?'':wageInfo.map((item,index) => <DotList key={index} middle={item.nickname} amount={parseInt(item.wage/10000)}></DotList>)}
           </Stack>
         </div>
     </div>
