@@ -7,6 +7,7 @@ import Input from '../components/ui/Input';
 import {useRef}  from 'react'
 import  commentService from '../apis/comment'
 import { useRecoilValue } from 'recoil';
+import { userInfoStore } from '../shared/store';
 export default function ReviewPage() {
    
    const {goBack,push} = useInternalRouter();
