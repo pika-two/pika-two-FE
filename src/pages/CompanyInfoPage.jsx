@@ -15,8 +15,7 @@ import { useRecoilState } from "recoil";
 import { userInfoStore } from "../shared/store";
 import userService from "../apis/user";
 import useCompanyInfo from "../hooks/useCompanyInfo";
-import Bold from "../components/ui/Bold";
-import CenterBox from "../components/Composition/CenterBox";
+import ChartComponent from "../components/Composition/ChartComponent"
 export default function CompanyInfoPage() {
   const {goBack, push} = useInternalRouter();
   const {id : company_id } =  useParams();
@@ -31,12 +30,9 @@ export default function CompanyInfoPage() {
       }
       getReview();
     },[])
-  const isBookmark = ()=>{
-    console.log(getCompanyInfo)
-    return userInfo.favor_company_list.indexOf(parseInt(company_id)) !== -1
-  }
+  const isBookmark = userInfo?.favor_company_list.indexOf(parseInt(company_id)) !== -1
   const handleBookmarkClick = async ()=>{
-    const state = isBookmark();
+    const state = isBookmark;
     if(state && confirm('찜을 해제하시겠습니까?')){
       const data = await userService.postBookmark(userInfo.user_id,company_id);
       setUserInfo({...userInfo,favor_company_list : userInfo.favor_company_list.filter(item => parseInt(item) !== parseInt(company_id))})
@@ -62,7 +58,7 @@ export default function CompanyInfoPage() {
           textAlign: "center",
           fontFamily: "four"
         }}>{isCompanyLoading?'':getCompanyInfo?.company_name} 채용 공고</h2>
-         {isCompanyLoading?'':isBookmark()?<RedHeartIcon onClick={handleBookmarkClick}/>:<WhiteHeartIcon onClick={handleBookmarkClick}/>}
+         {isCompanyLoading?'':isBookmark?<RedHeartIcon onClick={handleBookmarkClick}/>:<WhiteHeartIcon onClick={handleBookmarkClick}/>}
 
         <div style = {{ margin: "3vh 5vw"
                 }}>
@@ -76,13 +72,11 @@ export default function CompanyInfoPage() {
           marginTop: "30px"
         }}>연봉 정보</h2>
 
-        {/* //TODO high : 챠트 라이브러리 찾고 적용 */}
-        {/* //TODO high : 챠트 만들어진 후 챠드 막대 클릭시 연봉정보(SalaryList) 페이지로 이동 */}
         <div style={{
         width : '80vw',
         height : '80vw',
         margin : '0 auto 30px auto',
-        backgroundColor : 'white', border: "1px solid black"}}>챠트 들어갈 곳</div>
+        backgroundColor : 'white'}}><ChartComponent company_id={company_id}  wages={isCompanyLoading?[]:getCompanyInfo.wages}/></div>
         
         <p style = {{border: "20px solid lightyellow"}}></p>
         <h2 style = {{

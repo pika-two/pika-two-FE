@@ -1,4 +1,5 @@
 import baseURL from "../constants/BASE_URL";
+import timeout from "../utils/timeout";
 import customAxios from "./customAxios";
 
 

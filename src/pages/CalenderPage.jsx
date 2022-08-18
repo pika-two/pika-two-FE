@@ -80,7 +80,7 @@ export default function CalenderPage() {
         setSelectedDateRangeText(moment(value).format('YYYY-MM'))
     },[])
     const onAfterRenderEvent = (event) => {
-        console.log(event.title);
+        
       };
 
       const getInstance = function(){
@@ -90,15 +90,12 @@ export default function CalenderPage() {
 
         const button = event.target
         const actionName = (button.getAttribute('data-action') ?? 'month').replace('move-', '');
-        console.log(getInstance())
         getInstance()[actionName]();
         const calInstance = getInstance();
         const viewName = calInstance.getViewName();
-        console.log(calInstance);
     const calDate = calInstance.getDate();
     const rangeStart = calInstance.getDateRangeStart();
     const rangeEnd = calInstance.getDateRangeEnd();
-        console.log(calDate,rangeStart,rangeEnd)
     let year = calDate.getFullYear();
     let month = calDate.getMonth() + 1;
     let date = calDate.getDate();
@@ -208,7 +205,7 @@ export default function CalenderPage() {
                 
             />
             </div>
-            <iframe src="https://giphy.com/embed/SkJRWt1Mo9CSlgrHcE" width="200" height="200" frameBorder="0" className="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/kbfinancialgroup-transparent-kb-SkJRWt1Mo9CSlgrHcE"></a></p></div>
+            <iframe src="https://giphy.com/embed/SkJRWt1Mo9CSlgrHcE" width="200" height="200" frameBorder="0" className="giphy-embed" allowFullScreen></iframe><p></p></div>
         
     )
 }
