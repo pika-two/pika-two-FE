@@ -3,10 +3,9 @@ import LeftOnlyHeader from '../components/Composition/LeftOnlyHeader'
 import BackIcon from '../components/ui/icon/BackIcon'
 import { useInternalRouter } from "./routing";
 import Top02 from '../components/ui/Top/Top02';
-import Bold from '../components/ui/Bold';
 import DotList from '../components/ui/DotList';
 import Stack from '../components/ui/Stack';
-
+// TODO 정렬
 import { useParams } from 'react-router-dom';
 import useWage from '../hooks/useWage';
 import Blank from '../components/ui/Blank';
