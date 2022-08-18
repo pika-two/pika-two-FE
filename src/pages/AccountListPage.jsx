@@ -49,9 +49,7 @@ export default function AccountListPage() {
             {isLoading?<Loading/>:accountList.length?<AccountsList selected={selectedAccountID}  handleClickevent={handleChange} accounts={accountList}></AccountsList>:<Bold>연결할 계좌가 없습니다.</Bold>}
         </div>
         
-        <FixedBottomButton style={{
-            display : selectedAccountID === -1 ? 'none' : 'block'
-        }} onClick = {submitAccount} background="#FFCC00" color="white">선택</FixedBottomButton>
+        <FixedBottomButton disabled = {selectedAccountID === -1} onClick = {submitAccount} background={selectedAccountID === -1?'lightgray':'#FFCC00'} color="white">선택</FixedBottomButton>
     </div>
   )
 }

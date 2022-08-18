@@ -43,9 +43,7 @@ export default function IncomeListPage () {
             {isLoading?<div>로딩중</div>:<IncomeList selectedIncomeNameList={selectedIncomeNameList} handleClickevent={handleChange} incomes ={incomes}></IncomeList>}
           </div>
         </div>
-        <FixedBottomButton style={{
-            display : selectedIncomeNameList.length ? 'block' : 'none'
-        }} onClick={handleSubmit} background="#FFCC00">연동하기</FixedBottomButton>
+        <FixedBottomButton disabled = {!selectedIncomeNameList.length} background={!selectedIncomeNameList.length?'lightgray':'#FFCC00'}  onClick={handleSubmit}>연동하기</FixedBottomButton>
     </div>
   )
 }
