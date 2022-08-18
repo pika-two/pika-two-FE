@@ -48,7 +48,7 @@ export default function MainPage() {
         margin : "10px 5vw"
         }}>
         <BadgeBox onClick={onClickBadge}/>
-        <Top02 color="#000">채용 진행 중인 공고</Top02>
+        <Top02 color="#000">채용 진행 중인 기업</Top02>
         {isLoading?<div>로딩중</div>:<JobPostList jobPosts={jobPostData} />}
         
       </div>
