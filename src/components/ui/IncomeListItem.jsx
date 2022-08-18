@@ -1,5 +1,6 @@
 import Bold from "./Bold"
 import styled from 'styled-components'
+import numberToBank from "../../utils/numberToBank";
 export default function IncomeListItem({income,selected,...rest}) {
   return (
     <Div
@@ -15,7 +16,7 @@ export default function IncomeListItem({income,selected,...rest}) {
 
         <Bold>{income.date}</Bold>
         <Bold>{income.memo}</Bold>
-        <Bold>{income.amount}원</Bold>
+        <Bold>{numberToBank.format(income.amount)}원</Bold>
     </Div>
   )
 }
