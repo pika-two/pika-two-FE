@@ -43,7 +43,7 @@ export default function IncomeConnectPage() {
               onClick={()=>push('/mainPage')} 
               background="#FFCC00"
               style={{
-                marginTop: "30px"
+                marginTop: "1vh"
               }}>
               연동 완료하기</Button>
         </CenterBox>

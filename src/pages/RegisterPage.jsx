@@ -116,12 +116,12 @@ export default function RegisterPage() {
             <div style={{
               display : 'grid',
               alignItems : 'center',
-              gridTemplateColumns : '50px auto auto',
+              gridTemplateColumns : 'auto auto',
               marginTop : '20px'
             }} onClick={handleChangeGender}>
-              <div style={{
+              {/* <div style={{
                 textAlign : 'center'
-              }}>성별</div>
+              }}>성별</div>  */}
               {
                   genders.map((name, index) => 
                   <RadioLabelAndInput key={index} label={name} checked = {selectGender ===name} name='성별'></RadioLabelAndInput>

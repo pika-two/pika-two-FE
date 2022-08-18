@@ -1,5 +1,6 @@
 
 import styled from "styled-components";
+import bankbook from "../../assets/bankbook.png"
 
 export default function AccountListItem({account,selected,...rest}) {
   const {account : account_name, bank_name, balance} = account;
@@ -12,7 +13,7 @@ export default function AccountListItem({account,selected,...rest}) {
                 background : selected?'#FC0':'white'
             }} {...rest}>
         
-                <img width={80} height = {80} src="https://play-lh.googleusercontent.com/K1rBzVJjq9qtSxC2vkWIsp3GPtPOCwLPf1aCJ0tL0TvWdNcAKQKhYwjPMY90XJwyW-E" alt=""
+                <img width={80} height = {80} src={bankbook} alt=""
                 style={{
                     margin : "30px 20px 20px 0px",
                 }}/>

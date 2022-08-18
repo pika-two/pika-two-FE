@@ -17,23 +17,22 @@ const CompnyInfo = function({company,onClick}){
             flexDirection : "column",
             justifyContent : "center",
             backgroundColor : "#F6F6F6",
-            margin : "0 0 5px 10px",
+            margin : "0 0 5px 20px",
+            border: "2px solid black"
         }}
         onClick={onClick}
         >
-            <Bold style={{
+            <div style={{
               display : 'grid',
-              'gridTemplateColumns' : 'auto 45px'
-            }}>{company.company_name}{company.is_certificated?<CertificatedIcon/>:''}</Bold>
+              'gridTemplateColumns' : 'auto 45px', textAlign: "center", fontSize: "20px", marginTop: "13px", marginBottom: "-18px"
+            }}>{company.company_name}{company.is_certificated?<CertificatedIcon/>:''}</div>
             <div style = {{
+              marginLeft:"10px",
               display : 'flex',
               fontFamily : "two", 
               margin: " 0, vh"}}>
                 <CompanyDesciprtion>
                   {company.type}
-                </CompanyDesciprtion>
-                <CompanyDesciprtion>
-                  {company.description}
                 </CompanyDesciprtion>
                 <CompanyDesciprtion>
                   {company.category}

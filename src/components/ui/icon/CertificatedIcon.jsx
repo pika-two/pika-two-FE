@@ -6,7 +6,7 @@ export default function CertificatedIcon({onClick}) {
     }}>
         <img  style={{
             marginTop : "10px"
-        }} width= "12px" height="12px" src={Certificated} alt="" />
+        }} width= "20px" height="20px" src={Certificated} alt="" />
     </div>
   )
 }
