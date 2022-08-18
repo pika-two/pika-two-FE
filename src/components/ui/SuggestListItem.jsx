@@ -16,7 +16,7 @@ const SuggestInfo = function({suggest}){
             display : "flex",
             flexDirection : "column",
             justifyContent : "center",
-            backgroundColor : "#F6F6F6",
+            border: "2px solid black",
             margin : "0 0 5px 10px",
         }}>
             <Bold>{suggest.bank_name} {suggest.product_name}</Bold>
