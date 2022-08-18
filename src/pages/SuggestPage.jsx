@@ -6,18 +6,25 @@ import SuggestList from "../components/Composition/SuggestList";
 import useSuggest from "../hooks/useSuggest";
 import { useRecoilValue } from "recoil";
 import { userInfoStore } from "../shared/store";
+import Loading from '../components/ui/Loading'
 export default function SuggestPage() {
   const {goBack, push} = useInternalRouter();
   const userInfo = useRecoilValue(userInfoStore);
   const {suggestData, isLoading, isError} = useSuggest(userInfo.user_id);
-  //TODO : 반복문 필요
+  console.log(suggestData);
   return (
     <div>
               <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="금융상품 추천"></BothHeader>
-              <div style = {{ margin: "3vh 5vw"
-                }}>
-                    <SuggestList/>
-                </div>
+              
+              {isLoading?
+              <Loading/>:              
+              <div 
+              style = {{ 
+                margin: "3vh 5vw"
+               }}>
+                    <SuggestList suggests = {suggestData}/>
+              </div>}
+
 
     </div>
   )
