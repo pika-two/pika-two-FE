@@ -68,13 +68,18 @@ export default function CompanyInfoPage() {
         <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="기업정보"></BothHeader>
 
         <p style = {{border: "10px solid lightyellow", margin : "0"}}></p>
-        
+        <div
+        style={{
+          display:"grid",
+          gridTemplateColumns: "0.5fr 2fr 0.5fr"
+        }}>
+          <div></div>
         <h2 style = {{
           textAlign: "center",
           fontFamily: "four"
         }}>{isCompanyLoading?'':getCompanyInfo?.company_name} 채용 공고</h2>
          {isCompanyLoading?'':isBookmark?<RedHeartIcon onClick={openBookmarkModal}/>:<WhiteHeartIcon onClick={openBookmarkModal}/>}
-
+        </div>
         <div style = {{ margin: "3vh 5vw"
                 }}>
         
