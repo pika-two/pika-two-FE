@@ -10,7 +10,9 @@ const commentService = {
         })
     },
     async getReview(company_id){
-        return await customAxios.get(baseURL + `api/${company_id}/comment`)
+        const {data,status} = await customAxios.get(baseURL + `api/${company_id}/comment`)
+        const {data : response_data} = data;
+        return response_data
     }
 }
 
