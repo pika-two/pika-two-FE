@@ -9,9 +9,14 @@ import RadioLabelAndInput from "../components/Composition/RadioLabelAndInput";
 import userService from "../apis/user";
 import { useSetRecoilState } from "recoil";
 import { userInfoStore } from "../shared/store";
+import Modal from "../components/Composition/Modal";
+import Button from "../components/ui/Button";
+import Bold from "../components/ui/Bold";
 export default function RegisterPage() {
   const {push} = useInternalRouter();
   const setUserInfo = useSetRecoilState(userInfoStore);
+  const [isOpen, setIsOpen] = useState(false);
+  const [alertText, setAlertText] = useState('');
   const [genders, setGenders] = useState(['남성', '여성']);
   const [selectGender, setSelectGender] = useState('');
   const [checkednotice, setCheckednotice] = useState(false);
@@ -23,6 +28,10 @@ export default function RegisterPage() {
     if (event.target.tagName === 'INPUT'){
       setSelectGender(()=>event.target.value);
     }
+  }
+  const closeModal = ()=>{
+    setIsOpen(()=>false)
+    setAlertText(()=>'')
   }
   const typeCheckBirthDay = (value)=>{
     if(value>=1950 && value<2022){
@@ -55,33 +64,39 @@ export default function RegisterPage() {
     const joinYear = joinYearInputRef.current.value;
     const companyName = companyNameInputRef.current.value;
     if(!typeCheckBirthDay(birthyr)){
-      alert('출생년도를 입력해주세요')
+      setIsOpen(()=>true)
+      setAlertText(()=>'출생년도를 입력해주세요')
       birthyrInputRef.current.value = 1990;
       birthyrInputRef.current.focus()
       return
     }
     if(!typeCheckEmail(email)){
-      alert('제대로 된 이메일을 입력해주세요')
+      setIsOpen(()=>true)
+      setAlertText(()=>'제대로 된 이메일을 입력해주세요')
       emailInputRef.current.value = '';
       emailInputRef.current.focus();
       return
     }
     if(!typeCheckJoinYear(joinYear)){
-      alert('입사년도를 입력해주세요')
+      setIsOpen(()=>true);
+      setAlertText(()=>'입사년도를 입력해주세요')
       joinYearInputRef.current.value = 0;
       joinYearInputRef.current.focus();
       return
     }
     if(!selectGender){
-      alert('성별을 선택해주세요.')
+      setIsOpen(()=>true);
+      setAlertText(()=>'성별을 선택해주세요.')
       return
     }
     if(!checkednotice){
-      alert('필수 동의사항에 동의버튼을 눌러주세요.')
+      setIsOpen(()=>true);
+      setAlertText(()=>'필수 동의사항에 동의버튼을 눌러주세요.')
       return
     }
     if(!typeCheckCompanyName(companyName)){
-      alert('회사명을 제대로 입력해주세요')
+      setIsOpen(()=>true)
+      setAlertText(()=>'회사명을 제대로 입력해주세요')
       companyNameInputRef.current.value = '';
       companyNameInputRef.current.focus();
       return
@@ -149,6 +164,10 @@ export default function RegisterPage() {
             <FixedBottomButton onClick={submitEvent}  background="#FFCC00" color="white">
                 입력 완료
             </FixedBottomButton>
+            <Modal isOpen={isOpen} height='20vh' background='#ff8585'>
+                <Bold style={{marginTop : '20px'}}>{alertText}</Bold>
+                <Button style={{marginTop : '60px'}} onClick={closeModal}>닫기</Button>
+            </Modal>
         </div>
     </div>
   )

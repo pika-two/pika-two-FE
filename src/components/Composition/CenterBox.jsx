@@ -1,4 +1,4 @@
-export default function CenterBox({children,zIndex,height}) {
+export default function CenterBox({children,zIndex,height,background}) {
   return (
     <div style={{
         position: 'absolute',
@@ -6,7 +6,7 @@ export default function CenterBox({children,zIndex,height}) {
         height : height?height:'40vh',
         width : '70vw',
         left : '15vw',
-        backgroundColor : 'white',
+        backgroundColor : background?background:'white',
         borderRadius : "15px 15px",
         display : "flex",
         flexDirection : "column",
