@@ -1,13 +1,13 @@
-import ImageCard from "./ImageCard"
 import Bold from "./Bold"
+import ImageRightCard from "./ImageRightCard"
 
-export default function SuggestListItem({image,right}) {
+export default function SuggestListItem({suggest,image,onClick}) {
   return (
-    <ImageCard image={image} content={<SuggestInfo/>} right={right}/>
+    <ImageRightCard onClick={onClick} image={image}  content={<SuggestInfo suggest={suggest}/>}/>
   )
 }
 
-const SuggestInfo = function(){
+const SuggestInfo = function({suggest}){
     return (
         <div
         style={{
@@ -17,8 +17,8 @@ const SuggestInfo = function(){
             backgroundColor : "#F6F6F6",
             margin : "0 0 5px 10px",
         }}>
-            <Bold>KB국민은행 마이핏카드</Bold>
-            <div style = {{fontFamily : "two", textAlign : "center", margin: " 0, vh"}}>blah</div>
+            <Bold>{suggest.bank_name} {suggest.product_name}</Bold>
+            <div style = {{fontFamily : "two", textAlign : "center", margin: " 0, vh"}}>{suggest.description}</div>
         </div>
     )
 }

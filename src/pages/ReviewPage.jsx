@@ -4,12 +4,17 @@ import { useInternalRouter } from "./routing";
 import LeftOnlyHeader from '../components/Composition/LeftOnlyHeader';
 import FixedBottomButton from '../components/ui/FixedBottomButton'
 import Input from '../components/ui/Input';
-import {useRef}  from 'react'
+import {useRef,useState}  from 'react'
 import  commentService from '../apis/comment'
 import { useRecoilValue } from 'recoil';
 import { userInfoStore } from '../shared/store';
+import Modal from '../components/Composition/Modal';
+import Bold from '../components/ui/Bold'
+import CloseIcon from '../components/ui/icon/CloseIcon';
+import Button from '../components/ui/Button';
 export default function ReviewPage() {
-   
+   const [isOpen, setIsOpen] = useState(false);
+   const [endWrite,setEndWrite] = useState(false) 
    const {goBack,push} = useInternalRouter();
    const reviewInputRef = useRef(null);
    const userInfo = useRecoilValue(userInfoStore)
@@ -21,10 +26,15 @@ export default function ReviewPage() {
                 alert('잘못된 정보가 있습니다.')
                 return
             }
-            if(confirm('리뷰 페이지로 가시겠습니까?')){
-                push(`/company/${userInfo.cur_company_id}`)
-            }
+            setEndWrite(()=>true)
         }
+   }
+   const openModal = ()=>{
+    setIsOpen(()=>true)
+   }
+   const closeModal = ()=>{
+    setIsOpen(()=>false)
+    setEndWrite(()=>false)
    }
    return(
     <div>
@@ -37,8 +47,28 @@ export default function ReviewPage() {
             <Input ref={reviewInputRef} height="50vh" 
             background = "#fffcab"/> 
         </div>
-        <FixedBottomButton onClick={submitReview} background="#FFCC00">리뷰 제출하기</FixedBottomButton>
-    
+        <FixedBottomButton onClick={openModal} background="#FFCC00">리뷰 제출하기</FixedBottomButton>
+        
+        
+        <Modal isOpen={isOpen} height="20vh">
+            <div style={{
+                display : 'grid',
+                'gridTemplateColumns' : 'auto 20px'
+            }}>{endWrite?<Bold>리뷰 작성 성공</Bold>:<Bold>리뷰를 작성하시겠습니까?</Bold>}<CloseIcon onClick={closeModal} />
+            </div>
+            <div style={{
+                display : 'grid',
+                'gridTemplateColumns' : endWrite?'auto':'auto auto',
+                'margin' : '5vh'
+            }}>
+                {endWrite?<Button onClick={closeModal}>닫기</Button>:
+                <>
+                    <Button onClick={submitReview} background='#FC0'>YES</Button> <Button onClick={closeModal} background='lightgray'>NO</Button>
+                </>
+            }
+            </div>
+
+        </Modal>
     </div>
    )
 

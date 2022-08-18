@@ -13,7 +13,7 @@ export default function IncomeConnectPage() {
     const userInfo = useRecoilValue(userInfoStore);
     const {annual_salary , isLoading, isError} = useIncomeConnect(userInfo.user_id,2022);
   return (
-    //TODO low : 이 페이지가 바로 되는 것이 아닌 연동중이라는 표시를 위해 이 페이지 전에 loading 페이지 만들기'
+
     isLoading?
     <div style={{
       display : 'flex',
@@ -37,7 +37,7 @@ export default function IncomeConnectPage() {
               style={{
                 marginTop: "30px"
               }}>
-              2022년 까지 받은 금액은?</Message>
+              2022년 올해 받은 금액은?</Message>
             <Boldtext fontsize="30px" color="black">{isLoading?'0':parseInt(annual_salary/10000)}만원</Boldtext>
             <Button 
               onClick={()=>push('/mainPage')} 

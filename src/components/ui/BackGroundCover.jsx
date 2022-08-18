@@ -9,6 +9,7 @@ margin: 0 auto;
 width: 100%;
 height: 100%;
 background-color: ${props => props.backgroundColor?props.backgroundColor:'#FFF'};
-z-index : -1;
+z-index : ${props => props.zIndex?props.zIndex:-1};
+opacity : ${props => props.opacity?props.opacity:1}
 `
 export default BackGroundCover

@@ -1,21 +1,15 @@
-import React from 'react'
-import CompanyListItem from '../ui/CompanyListItem'
 import SuggestListItem from '../ui/SuggestListItem'
-
-export default function SuggestList() {
+export default function SuggestList({suggests = []}) {
+  const onClick = (e,url)=>{
+    window.open(url)
+  }
   return (
     <div style={{
       display : 'grid',
       gridTemplateColumns : 'auto',
       gap : '1em'
     }}>
-        <SuggestListItem/>
-        <SuggestListItem/>
-        <SuggestListItem/>
-        <SuggestListItem/>
-        <SuggestListItem/>
-        <SuggestListItem/>
-        <SuggestListItem/>
+        {suggests.map(suggest => <SuggestListItem  onClick={(e)=>onClick(e,suggest.url)} key={suggest.code} suggest={suggest}/>)}
     </div>
   )
 }
