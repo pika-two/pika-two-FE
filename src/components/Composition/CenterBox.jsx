@@ -1,9 +1,9 @@
-export default function CenterBox({children}) {
+export default function CenterBox({children,zIndex,height}) {
   return (
     <div style={{
         position: 'absolute',
         top : '30vh',
-        height : '40vh',
+        height : height?height:'40vh',
         width : '70vw',
         left : '15vw',
         backgroundColor : 'white',
@@ -12,7 +12,9 @@ export default function CenterBox({children}) {
         flexDirection : "column",
         border : "2px solid #000000",
         boxShadow: "10px 10px black ",
-    }}
+        zIndex : zIndex,
+    }
+  }
     >{children}</div>
   )
 }
