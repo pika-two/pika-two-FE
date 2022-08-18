@@ -7,12 +7,12 @@ import IncomeList from '../components/Composition/IncomeList';
 import { useState,useEffect } from 'react';
 import Message from '../components/ui/message';
 import incomeService from '../apis/income';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { userInfoStore } from '../shared/store';
 import useIncome from '../hooks/useIncome';
 export default function IncomeListPage () {
    const {goBack,push} = useInternalRouter();
-   const userInfo = useRecoilValue(userInfoStore);
+   const [userInfo,setUserInfo] = useRecoilState(userInfoStore);
    const [selectedIncomeNameList, setSelectedIncomeNameLIst] = useState([]);
    const handleChange = function(event,name){
         setSelectedIncomeNameLIst(prev => prev.indexOf(name) === -1?[...prev,name]:[...prev].filter(item=>item !== name))
@@ -23,6 +23,7 @@ export default function IncomeListPage () {
         memos : selectedIncomeNameList
       }
       const {data, status} = await incomeService.post(userInfo.user_id,submitData);
+      setUserInfo({...userInfo,isaccountConnect : true})
       push('/incomeConnect')
    }
   return (

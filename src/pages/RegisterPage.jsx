@@ -113,7 +113,7 @@ export default function RegisterPage() {
       work_start_dt : joinYear
     }
     const getUserInfo = await userService.post(data).catch((e)=>alert('에러가 발생했습니다.'))
-    setUserInfo(getUserInfo)
+    setUserInfo({...getUserInfo,isaccountConnect : false})
     push('/accountList')
   }
 

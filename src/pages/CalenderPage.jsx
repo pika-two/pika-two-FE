@@ -130,7 +130,6 @@ export default function CalenderPage() {
 
       }
 
-    console.log(eventData);
     return(
         <div>
             <LeftOnlyHeader left={<BackIcon onClick={()=>goBack()}/>} title="지원 기업 채용 일정"/>

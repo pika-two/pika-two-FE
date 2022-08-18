@@ -8,7 +8,6 @@ import ReviewList from "../components/Composition/ReviewList";
 import { useParams } from "react-router-dom";;
 import { useState, useEffect } from "react";
 import CompanyJobPostList from "../components/Composition/CompanyJobPostList";
-import commentService from "../apis/comment";
 import { useRecoilState } from "recoil";
 import { userInfoStore } from "../shared/store";
 import userService from "../apis/user";
@@ -18,6 +17,7 @@ import Modal from "../components/Composition/Modal"
 import Bold from "../components/ui/Bold"
 import CloseIcon from "../components/ui/icon/CloseIcon"
 import Button from "../components/ui/Button"
+import useComment from "../hooks/useComment"
 export default function CompanyInfoPage() {
   const {goBack, push} = useInternalRouter();
   const {id : company_id } =  useParams();
@@ -27,14 +27,8 @@ export default function CompanyInfoPage() {
   const userApplyList = userInfo.applied_list
   const [companyReviews, setCompanyReviews] = useState([]);
   const [submitId,setSubmitId] = useState(-1);
-  useEffect(()=>{
-      const getReview = async ()=>{
-        const {data, status} = await commentService.getReview(company_id);
-        const {data : response_data} = data;
-        setCompanyReviews(()=>response_data);
-      }
-      getReview();
-    },[])
+  const {getCommentInfo, isLoading : isCommentLoading, isError} = useComment(company_id);
+  const {getCompanyInfo, isLoading :isCompanyLoading, isError : isCompanyError} = useCompanyInfo(company_id);
   const isBookmark = userInfo?.favor_company_list.indexOf(parseInt(company_id)) !== -1
   const handleBookmarkClick = async ()=>{
     const state = isBookmark;
@@ -47,10 +41,8 @@ export default function CompanyInfoPage() {
     }
     setIsBookmarkOpen(()=>false);
   }
-  const {getCompanyInfo, isLoading :isCompanyLoading, isError : isCompanyError} = useCompanyInfo(company_id);
   
   const handleApplyJobPost = async (e)=>{
-    console.log(submitId)
     const {data , status} = await userService.postApply(userInfo.user_id,{post_id : submitId})
     if (status === 200) {
       setUserInfo({...userInfo, applied_list :[...userInfo.applied_list,parseInt(submitId)]})
@@ -107,7 +99,7 @@ export default function CompanyInfoPage() {
           fontFamily: "four",
           marginTop: "30px"
         }}>기업 리뷰</h2>
-        <ReviewList companyReviews={companyReviews}/>
+        <ReviewList companyReviews={getCommentInfo}/>
 
 
         <Modal isOpen={isBookmarkOpen} height="20vh">

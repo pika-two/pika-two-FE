@@ -23,7 +23,6 @@ export default function AccountListPage() {
         }
   }
   const {accountData, isLoading, isError} = useAccount(userInfo.user_id);
-  console.log(accountData)
   useEffect(()=>{
     if(isLoading)return
     setAccountList(()=>accountData)
