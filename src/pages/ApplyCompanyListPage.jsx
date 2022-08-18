@@ -5,7 +5,7 @@ import { useInternalRouter } from "./routing"
 import ApplyCompanyList from '../components/Composition/ApplyCompanyList'
 import { useState,useEffect } from "react";
 import userService from "../apis/user";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { userInfoStore } from "../shared/store";
 import useApplyCompany from "../hooks/useApplyCompany";
 export default function ApplyCompanyListPage() {
