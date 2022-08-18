@@ -17,6 +17,7 @@ import SuggestPage from './pages/SuggestPage';
 import SalaryListPage from './pages/SalaryListPage';
 import CalenderPage from './pages/CalenderPage';
 import ErrorPage from './pages/ErrorPage';
+import {PrivateRoute} from './pages/routing'
 function App() {
   return (
   <GlobalPortal.Provider>
@@ -24,19 +25,22 @@ function App() {
     <Routes>
       <Route path="/" element={<IntroPage/>}></Route>
       <Route path="/registerPage" element={<RegisterPage/>}></Route>
-      <Route path="/accountList" element= {<AccountListPage/>}></Route>
-      <Route path="/accountList/:accountId" element={<IncomeListPage/>}></Route>
-      <Route path="/incomeConnect"  element={<IncomeConnectPage/>} ></Route>
-      <Route path="/mainPage" element={<MainPage/>}></Route>
-      <Route path="/search" element = {<SearchPage/>}></Route>
-      <Route path="/company/:id" element={<CompanyInfoPage/>}></Route>
-      <Route path="/myPage" element={<MyPage/>}></Route>
-      <Route path="/reviewPage" element={<ReviewPage/>}></Route>
-      <Route path="/bookmark" element={<BookmarkPage/>}></Route>
-      <Route path="/applyCompanyList" element={<ApplyCompanyListPage/>}></Route>
-      <Route path="/suggestList" element={<SuggestPage/>}></Route>
-      <Route path="/company/:id/salary/:year" element={<SalaryListPage/>}></Route>
-      <Route path="/calender" element={<CalenderPage/>}></Route>
+        <Route path="/accountList" element= {<AccountListPage/>}></Route>
+        <Route path="/accountList/:accountId" element={<IncomeListPage/>}></Route>
+      <Route exact element={<PrivateRoute/>}>
+        <Route path="/incomeConnect"  element={<IncomeConnectPage/>} ></Route>
+        <Route path="/mainPage" element={<MainPage/>}></Route>
+        <Route path="/search" element = {<SearchPage/>}></Route>
+        <Route path="/company/:id" element={<CompanyInfoPage/>}></Route>
+        <Route path="/myPage" element={<MyPage/>}></Route>
+        <Route path="/reviewPage" element={<ReviewPage/>}></Route>
+        <Route path="/bookmark" element={<BookmarkPage/>}></Route>
+        <Route path="/applyCompanyList" element={<ApplyCompanyListPage/>}></Route>
+        <Route path="/suggestList" element={<SuggestPage/>}></Route>
+        <Route path="/company/:id/salary/:year" element={<SalaryListPage/>}></Route>
+        <Route path="/calender" element={<CalenderPage/>}></Route>
+
+      </Route>
       <Route path="*" element={<ErrorPage/>}></Route>
     </Routes>
   </Layout>
