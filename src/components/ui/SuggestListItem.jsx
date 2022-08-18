@@ -1,9 +1,9 @@
 import Bold from "./Bold"
 import ImageRightCard from "./ImageRightCard"
 
-export default function SuggestListItem({suggest,image}) {
+export default function SuggestListItem({suggest,image,onClick}) {
   return (
-    <ImageRightCard image={image}  content={<SuggestInfo suggest={suggest}/>}/>
+    <ImageRightCard onClick={onClick} image={image}  content={<SuggestInfo suggest={suggest}/>}/>
   )
 }
 
