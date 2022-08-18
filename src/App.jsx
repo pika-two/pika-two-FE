@@ -16,6 +16,7 @@ import ApplyCompanyListPage from './pages/ApplyCompanyListPage';
 import SuggestPage from './pages/SuggestPage';
 import SalaryListPage from './pages/SalaryListPage';
 import CalenderPage from './pages/CalenderPage';
+import ErrorPage from './pages/ErrorPage';
 function App() {
   return (
   <GlobalPortal.Provider>
@@ -36,6 +37,7 @@ function App() {
       <Route path="/suggestList" element={<SuggestPage/>}></Route>
       <Route path="/company/:id/salary/:year" element={<SalaryListPage/>}></Route>
       <Route path="/calender" element={<CalenderPage/>}></Route>
+      <Route path="*" element={<ErrorPage/>}></Route>
     </Routes>
   </Layout>
   

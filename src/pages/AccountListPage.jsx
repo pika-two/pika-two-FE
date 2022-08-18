@@ -47,7 +47,6 @@ export default function AccountListPage() {
         </div>
 
         <div>
-            {/* //TODO 스피너로 넣기 */}
             {isLoading?<Loading/>:accountList.length?<AccountsList selected={selectedAccountID}  handleClickevent={handleChange} accounts={accountList}></AccountsList>:<Bold>연결할 계좌가 없습니다.</Bold>}
         </div>
         
