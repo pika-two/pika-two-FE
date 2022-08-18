@@ -11,7 +11,6 @@ export default function SuggestPage() {
   const {goBack, push} = useInternalRouter();
   const userInfo = useRecoilValue(userInfoStore);
   const {suggestData, isLoading, isError} = useSuggest(userInfo.user_id);
-  console.log(suggestData);
   return (
     <div>
               <BothHeader left={<BackIcon onClick={()=>goBack()}/>}  right={<MyPageIcon onClick={()=>push('/myPage')}  />}  title="금융상품 추천"></BothHeader>

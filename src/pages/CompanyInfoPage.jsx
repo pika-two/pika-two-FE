@@ -50,7 +50,6 @@ export default function CompanyInfoPage() {
   const {getCompanyInfo, isLoading :isCompanyLoading, isError : isCompanyError} = useCompanyInfo(company_id);
   
   const handleApplyJobPost = async (e)=>{
-    console.log(submitId)
     const {data , status} = await userService.postApply(userInfo.user_id,{post_id : submitId})
     if (status === 200) {
       setUserInfo({...userInfo, applied_list :[...userInfo.applied_list,parseInt(submitId)]})
