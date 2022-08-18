@@ -7,7 +7,8 @@ export default function DotList({middle,amount}) {
     gridTemplateColumns : '40px auto 100px',
     margin:'10px',
     fontFamily: 'three',
-    textAlign: 'center'
+    textAlign: 'center', 
+    width: "90%"
 
     }}>
       <Dot/>

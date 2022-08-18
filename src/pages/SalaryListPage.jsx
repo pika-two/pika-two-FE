@@ -33,7 +33,7 @@ export default function SalaryListPage() {
           margin: "auto",
           fontSize: "20px",
           padding: "10px",
-          marginTop: "30px"
+          marginTop: "10px"
         }}
         >현직자 {year}년차 실수령 연봉</div>
         <Blank/>
