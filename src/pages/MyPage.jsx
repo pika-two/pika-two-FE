@@ -10,6 +10,7 @@ import { useState,useEffect } from 'react'
 import { useRecoilValue } from 'recoil'
 import {userInfoStore} from '../shared/store'
 import useUserInfo from '../hooks/useUserInfo'
+import numberToBank from '../utils/numberToBank'
 export default function MyPage() {
   const {push} = useInternalRouter();
   const [mySalary, setMySalary] = useState(0);
@@ -53,7 +54,7 @@ export default function MyPage() {
               textAlign : "center",
               background : "yellow",
               margin : " 0, 40px"
-            }}>{mySalary}만원 </p> 
+            }}>{numberToBank.format(mySalary)??''}만원 </p> 
         </MyPageSalary>
         <div style = {{display: "flex", justifyContent: "center", margin: "10px"}}>  
             <img  

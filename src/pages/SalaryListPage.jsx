@@ -9,6 +9,7 @@ import Stack from '../components/ui/Stack';
 import { useParams } from 'react-router-dom';
 import useWage from '../hooks/useWage';
 import Blank from '../components/ui/Blank';
+import numberToBank from '../utils/numberToBank';
 export default function SalaryListPage() {
     const {goBack} = useInternalRouter();
     const {id : company_id, year} = useParams();
@@ -43,7 +44,7 @@ export default function SalaryListPage() {
           margin: "10px"
         }}>
           <Stack>
-              {isLoading?'':wageInfo.length === 0?'':wageInfo.map((item,index) => <DotList key={index} middle={item.nickname} amount={parseInt(item.wage/10000)}></DotList>)}
+              {isLoading?'':wageInfo.length === 0?'':wageInfo.map((item,index) => <DotList key={index} middle={item.nickname} amount={numberToBank.format( parseInt(item.wage/10000))}></DotList>)}
           </Stack>
         </div>
     </div>

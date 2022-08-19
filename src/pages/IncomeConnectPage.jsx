@@ -8,6 +8,7 @@ import { useRecoilValue } from "recoil";
 import { userInfoStore } from "../shared/store";
 import useIncomeConnect from "../hooks/useIncomeConnect";
 import Loading from "../components/ui/Loading";
+import numberToBank from "../utils/numberToBank";
 export default function IncomeConnectPage() {
     const {push} = useInternalRouter();
     const userInfo = useRecoilValue(userInfoStore);
@@ -38,7 +39,7 @@ export default function IncomeConnectPage() {
                 marginTop: "30px"
               }}>
               2022년 올해 받은 금액은?</Message>
-            <Boldtext fontsize="30px" color="black">{isLoading?'0':parseInt(annual_salary/10000)}만원</Boldtext>
+            <Boldtext fontsize="30px" color="black">{isLoading?'0':numberToBank.format( parseInt(annual_salary/10000) )}만원</Boldtext>
             <Button 
               onClick={()=>push('/mainPage')} 
               background="#FFCC00"

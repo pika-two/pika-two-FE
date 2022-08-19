@@ -8,6 +8,7 @@ import { useRef } from "react";
 import InputComponent from "../components/Composition/InputComponent";
 import SearchIcon from "../components/ui/icon/SearchIcon";
 import useJobPosts from '../hooks/useJobPosts'
+import Loading from "../components/ui/Loading";
 
 export default function MainPage() {
   const {push} = useInternalRouter();
@@ -49,7 +50,7 @@ export default function MainPage() {
         }}>
         <BadgeBox onClick={onClickBadge}/>
         <Top02 color="#000">채용 진행 중인 기업</Top02>
-        {isLoading?<div>로딩중</div>:<JobPostList jobPosts={jobPostData} />}
+        {isLoading?<div><Loading></Loading></div>:<JobPostList jobPosts={jobPostData} />}
         
       </div>
         

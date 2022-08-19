@@ -1,7 +1,7 @@
 
 import styled from "styled-components";
 import bankbook from "../../assets/bankbook.png"
-
+import numberToBank from "../../utils/numberToBank";
 export default function AccountListItem({account,selected,...rest}) {
   const {account : account_name, bank_name, balance} = account;
   return (
@@ -27,7 +27,7 @@ export default function AccountListItem({account,selected,...rest}) {
                         <Title>{bank_name}</Title>
                     </div>
                     <div><Smallfont>{account_name}</Smallfont></div>
-                    <div><Amount>{balance}원</Amount></div>
+                    <div><Amount>{numberToBank.format(balance)}원</Amount></div>
                 </div>
             </Div>
 
