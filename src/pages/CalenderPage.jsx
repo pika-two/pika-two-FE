@@ -14,6 +14,7 @@ import { useRecoilValue } from 'recoil';
 import { userInfoStore } from '../shared/store';
 import datetimeConvert from "../utils/datetimeConvert"
 import invertColor from '../utils/oppositeColorGenerator';
+import Loading from '../components/ui/Loading';
 const start = new Date();
 const end = new Date(new Date().setMinutes(start.getMinutes() + 30));
 const calendars = [
@@ -134,7 +135,7 @@ export default function CalenderPage() {
         <div>
             <LeftOnlyHeader left={<BackIcon onClick={()=>goBack()}/>} title="지원 기업 채용 일정"/>
             {
-              isLoading?<div>Loading 중</div>:
+              isLoading?<Loading></Loading>:
 
               <>
                    <div

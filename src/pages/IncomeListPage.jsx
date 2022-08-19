@@ -10,6 +10,7 @@ import incomeService from '../apis/income';
 import { useRecoilState } from 'recoil';
 import { userInfoStore } from '../shared/store';
 import useIncome from '../hooks/useIncome';
+import Loading from '../components/ui/Loading';
 export default function IncomeListPage () {
    const {goBack,push} = useInternalRouter();
    const [userInfo,setUserInfo] = useRecoilState(userInfoStore);
@@ -40,7 +41,7 @@ export default function IncomeListPage () {
           <div style={{
             margin : "30px 0"
           }}>
-            {isLoading?<div>로딩중</div>:<IncomeList selectedIncomeNameList={selectedIncomeNameList} handleClickevent={handleChange} incomes ={incomes}></IncomeList>}
+            {isLoading?<div><Loading></Loading></div>:<IncomeList selectedIncomeNameList={selectedIncomeNameList} handleClickevent={handleChange} incomes ={incomes}></IncomeList>}
           </div>
         </div>
         <FixedBottomButton disabled = {!selectedIncomeNameList.length} background={!selectedIncomeNameList.length?'lightgray':'#FFCC00'}  onClick={handleSubmit}>연동하기</FixedBottomButton>
